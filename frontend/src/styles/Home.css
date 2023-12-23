@@ -1,0 +1,42 @@
+/* Update your existing styles */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Righteous&display=swap');
+
+
+
+.main-section {
+    height: 70vh;
+    width: 100%;
+    background-size: cover;
+    background: #00d2ff;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #EDF6FF, #EDF6FF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #EDF6FF, #EDF6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    /* transition: background-image 1s ease-in-out; */
+}
+
+
+
+.special {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 0% auto !important;
+}
+
+.home-header{
+    padding-left: 2%;
+    width: 35%;
+    padding-top: 5%;
+}
+
+
+.home-header h1{
+    color: rgb(0, 0, 0);
+    font-size: 3rem;
+}
+
+.home-header span{
+    font-size: 3rem;
+    /* color: rgb(0, 78, 117); */
+    color: #2d76e4;
+}
+
