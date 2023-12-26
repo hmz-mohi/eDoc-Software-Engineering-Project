@@ -1,43 +1,102 @@
 /* Update your existing styles */
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Righteous&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&family=Righteous&display=swap");
 
 .main-section {
-    height: 70vh;
-    
-    width: 100%;
-    background-size: cover;
-    background: #00d2ff;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #EDF6FF, #EDF6FF);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #EDF6FF, #EDF6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 55vh;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  background-size: cover;
+  background: linear-gradient(
+    to bottom,
+    #edf6ff,
+    #edf6ff
+  );
 
-    /* transition: background-image 1s ease-in-out; */
 }
-
-
 
 .special {
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin: 0% auto !important;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 0% auto !important;
+  background: linear-gradient(
+    to bottom,
+    #edf6ff,
+    #edf6ff
+  );
 }
 
-.home-header{
-    padding-left: 2%;
-    width: 35%;
-    padding-top: 5%;
+.home-header {
+  padding: 7% 4%;
+  width: 40%;
+}
+
+.home-header h1 {
+  color: rgb(0, 0, 0);
+  font-size: 3.5rem;
+}
+
+.home-header span {
+  font-size: 3.5rem;
+  /* color: rgb(0, 78, 117); */
+  color: #2d76e4;
+}
+.img-div-home {
+    width: 50vw;
+    height: 50vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top ;
+    transition: background-image 2s ease-in-out; /* Adjust the duration and timing function as needed */
+    animation: slideshow 16s infinite; /* Adjust the duration and iteration as needed */
+}
+
+@keyframes slideshow {
+    0%, 20% {
+        background-image: url('../assets/images/Homepageb3.jpg');
+    }
+    25%, 45% {
+        background-image: url('https://cdn.dribbble.com/users/674925/screenshots/5641807/media/5ca551b7fa2aa8c67fa9072088d68ffb.jpg?resize=1000x750&vertical=center');
+    }
+    50%, 70% {
+        background-image: url('../assets/images/download.png');
+    }
+    75%, 100% {
+        background-image: url('../assets/images/Homepagebg4.jpg');
+    }
 }
 
 
-.home-header h1{
-    color: rgb(0, 0, 0);
-    font-size: 3rem;
+.services_section{
+  padding-top: 2%;
+  display: flex;
+  flex-direction: column;
+
 }
 
-.home-header span{
-    font-size: 3rem;
-    /* color: rgb(0, 78, 117); */
-    color: #2d76e4;
+
+.services_headers{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
+.services_headers h1{
+  font-size: 1.2rem;
+  color: #2d76e4;
+  font-weight: 500;
+}
+.services_headers h3{
+  color: rgb(45, 45, 45);
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+}
+
+.services_cards{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: -1.5em;
+  justify-content: center;
+}

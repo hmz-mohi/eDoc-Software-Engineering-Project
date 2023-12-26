@@ -1,0 +1,113 @@
+.card {
+    position: relative;
+    top: 2em;
+    width: 12.5em;
+    height: 7.5em;
+    background-color: #EDF6FF !important;
+    transition: 1s ease-in-out;
+    border-radius: 0px 20px !important;
+    /* border: none !important; */
+    overflow: hidden;
+  }
+
+  .heading,
+  .details,
+  .price,
+  .btn1,
+  .btn2 {
+    position: relative;
+    color: black;
+    transition: .4s ease-in-out;
+  }
+  .heading {
+    display: flex;
+    justify-content: left;
+    font-weight: 600;
+    padding-left: 5%;
+    font-size: 1em;
+    padding-top: 0.5em;
+    text-transform:uppercase;
+    /* padding-left: 1em; */
+  }
+
+  .details {
+    width: 12em;
+    display: flex;
+    justify-content: left;
+    font-size: 0.6em;
+    padding-top: 0.7em;
+    padding-left: 2em;
+  }
+
+  .btn1 {
+    border: none;
+    outline: none;
+    width: 50%;
+    background-color: white;
+    color: black;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    top: 3em;
+    left: 3.5em;
+    font-weight: bold;
+  }
+
+  .btn1:hover {
+    background-color: #2d76e4;
+    cursor: pointer;
+    color: white;
+  }
+
+
+
+  .glasses {
+    position: relative;
+    top: -4em;
+    -webkit-filter: drop-shadow(5px 5px 5px #666666);
+        filter: drop-shadow(5px 5px 5px #666666);
+    left: 10.5em;
+    width: 60px;
+    height: 60px;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .card:hover {
+    width: 12em;
+    border-radius: 30px !important;
+    height: 12em;
+    transform: translateY(1.25em);
+    transition: width 0.4s ease-in-out, height 0.4s ease-in-out, transform 0.4s ease-in-out;
+  }
+
+
+
+  .card:hover + .glasses {
+    transform: rotate(360deg);
+    height: 60px;
+    left: 35% ;
+    width: 60px;
+    top: -10em;
+  }
+  .card:hover .heading {
+    justify-content: center;
+    padding-left:0;
+    transform: translateY(2em);
+  }
+
+  .card:hover .details {
+    display: flex;
+
+    margin: 0 auto;
+    text-align: center;
+    padding-left: 0;
+    padding-top: 2em;
+    transform: translateY(2.3em);
+  }
+
+
+
+.custom_css{
+  background-color: transparent !important;
+}
