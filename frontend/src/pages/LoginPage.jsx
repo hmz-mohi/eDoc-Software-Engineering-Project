@@ -3,7 +3,7 @@ import "../styles/loginpage.css";
 import Navbar from "../components/Navbar";
 import google from '../assets/images/google.png'
 import facebook from '../assets/images/facebook.png'
-
+//hello this is the change
 function LoginPage() {
   const [login, setLogin] = useState(true);
 
@@ -22,7 +22,7 @@ function LoginPage() {
             {/* <p>
               {login
                 ? "hello this is sign in form you need to sign in to see our services and book our appointments"
-                : "hello this is sign up form you need to sign up to see our services and book our appointments"}
+                : "hello this is siecervevv  gn up form you need to sign up to see our services and book our appointments"}
             </p> */}
           </div>
           {login ? "" : <div className="inpDiv fullname">
