@@ -9,10 +9,11 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-function NavScrollExample({ className }) {
+function NavScrollExample(props) {
+  const login = false;
+
   return (
-    <Navbar expand="lg" className={`Navbar ${className}`}>
-      <Container fluid>
+    <Navbar className={`${props.className}`}>
         <div className="brand">
           <img src={iconimg} style={{ width: "8%", height: "8%" }} alt="" />
 
@@ -26,7 +27,7 @@ function NavScrollExample({ className }) {
 
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="nav-text" navbarScroll>
+          <Nav navbarScroll>
             <Link className="nav-text-para" to="/home">
               {" "}
               Home
@@ -35,17 +36,19 @@ function NavScrollExample({ className }) {
               {" "}
               ChatBot
             </Link>
-            <Link className="nav-text-para" to="/regasdoctor">
-              {" "}
-              <p className="regdoc">Register as Doctor</p>
-            </Link>
-            <Link className="nav-text-para loginbutton" to="/login">
+            {login ? ('Register as ululul') : (
+              <Link className="nav-text-para" to="/regasdoctor">
+                {" "}
+                <p className="regdoc">Register as Doctor</p>
+              </Link>)}
+            {login? ("") : (<Link className="nav-text-para loginbutton" to="/login">
               {" "}
               <p>Login</p>
-            </Link>
+            </Link>)}
+            
           </Nav>
         </Navbar.Collapse>
-      </Container>
+
     </Navbar>
   );
 }

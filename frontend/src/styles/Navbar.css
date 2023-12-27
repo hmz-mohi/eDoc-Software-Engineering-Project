@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&family=Raleway:wght@100;400;500;600&display=swap");
 
+
+
 .Navbar {
-  margin: 0% auto;
-  width: 100%;
-  overflow-x: hidden;
+  margin: 0;
+  width: 100vw !important;
+  display: flex !important;
+  justify-content: flex-end !important;
   background: transparent;
+  padding: 0%;
 }
 
 .brand {
+  margin-left: 2em;
   display: flex;
 }
 
@@ -27,17 +32,21 @@
   transition: 0.5s;
   transform: scale(1.2);
 }
-.nav-text {
-  margin: auto;
-  margin-left: 45%;
+.navbar-collapse{
+  margin: auto 4em;
+  display: flex;
+  justify-content: flex-end !important;
 }
+
+
+
 .nav-text-para {
   font-family: "Raleway", sans-serif;
   color: #2c2c2c;
   font-weight: 900 !important;
   text-decoration: none;
   font-size: 1rem;
-  margin: auto 4% !important;
+  margin: auto 0.7rem !important;
   transition: 0.5s;
 }
 
