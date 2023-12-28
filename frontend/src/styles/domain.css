@@ -1,0 +1,36 @@
+.domain_cards{
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    margin: auto 1rem;
+    align-items: center;
+    text-align: center;
+    border: none;
+    
+}
+
+
+.domain_cards:hover{
+    transform: scale(1.1);
+    transition: transform 0.5s ease; 
+}
+
+
+.domain_cards_heading{
+    color: #2d76e4;
+    font-size: 1rem;
+}
+
+.domain_cards img{
+    margin: auto;
+    width: 3em;
+
+}
+
+
+
+.addmore:hover img{
+    transform: rotate(360deg) !important;
+    transition: transform 0.2s ease;
+
+}

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 import "../styles/Navbar.css";
 import iconimg from "../assets/images/stethoscope.png";
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
