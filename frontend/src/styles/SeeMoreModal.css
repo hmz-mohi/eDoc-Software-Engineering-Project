@@ -1,0 +1,27 @@
+.all_domain_card{
+    display: flex;
+    border-radius: 15px;
+    width: 12em;
+    padding: 0.3em 0%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: transparent;
+    transition: 0.1s ease-in;
+}   
+
+.all_domain_card:hover{
+    cursor: pointer;
+    background-color: #c0d9ff;
+    color: white;
+}
+
+.all_domain_card p{
+    margin: auto 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.all_domain_card img{
+    width: 2em;
+    margin-left: 1em;
+    margin-right: 0.5em;
+}

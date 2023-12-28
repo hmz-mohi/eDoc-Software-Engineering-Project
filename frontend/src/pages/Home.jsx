@@ -24,7 +24,7 @@ import addmore from '../assets/images/plus.png';
 
 function Home() {
   const medicalDomains = [
-    "orthopedic",
+    "Orthopedic",
     "Gynecologist",
     "Eye Specialist",
     "Dermatologist",
@@ -148,22 +148,28 @@ function Home() {
         <Domain heading= "See More" img={addmore} className="addmore" onClick={handleSeeMoreClick}/>
       </div>
       <div>
-          {isSeeMoreModalOpen && (
-            <div className="modals">
-              <div className="modals-content">
-                <SeeMoreModal />
-                <button
-                  className="close-button"
-                  onClick={handleCloseSeeMoreModal}
-                >
-                  <span role="img" aria-label="Close">
-                    &#10006;
-                  </span>
-                </button>
-              </div>
-            </div>
-          )}
+  {isSeeMoreModalOpen && (
+    <div className="modals">
+      <div className="modals-content">
+        <div className="modal_heading">
+        <input
+        type="text"
+        placeholder="Search Doctors Here"
+      />
         </div>
+        {medicalDomains.map((domain, index) => (
+          <SeeMoreModal key={index} img={addmore} domain={domain} />
+        ))}
+        <button className="close-button" onClick={handleCloseSeeMoreModal}>
+          <span role="img" aria-label="Close">
+            &#10006;
+          </span>
+        </button>
+      </div>
+    </div>
+  )}
+</div>
+
     </div>
   );
 }

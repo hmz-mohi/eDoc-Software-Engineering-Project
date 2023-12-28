@@ -140,3 +140,58 @@
   display: flex;
   justify-content: center;
 }
+
+
+.modals {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent background overlay */
+}
+
+.modals-content {
+  max-width: 45vw; /* adjust the max-width as needed */
+  max-height: 80vh; /* adjust the max-height as needed */
+  overflow-y: auto; /* add a scrollbar if the content exceeds the max-height */
+  padding: 20px;
+  background: #fff; /* modal content background color */
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* adjust the gap between items */
+  justify-content: space-around;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Add any additional styles for your SeeMoreModal component here */
+
+
+.modal_heading{
+display: flex;
+width: 100%;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.modal_heading input{
+  padding: 1% 5%;
+  background: transparent;
+  color: #2d76e4;
+  width: 50% !important;
+}
