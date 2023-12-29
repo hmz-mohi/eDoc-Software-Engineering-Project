@@ -122,7 +122,8 @@ function Home() {
                 <SearchTable />
                 <button
                   className="close-button"
-                  onClick={handleCloseSearchModal}>
+                  onClick={handleCloseSearchModal}
+                >
                   <span role="img" aria-label="Close">
                     &#10006;
                   </span>
@@ -135,7 +136,8 @@ function Home() {
 
       <div className="domain_section">
         {firstFourMedicalDomains.map((domain, index) => {
-          const imagePath = `/assets/Domains/${domain.toLowerCase()}.png`;
+          // const imagePath = `/assets/Domains/${domain.toLowerCase()}.png`;
+          const imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
           return (
             <Domain
               key={index}
@@ -158,19 +160,22 @@ function Home() {
               <div className="modal_heading">
                 <h1>Domains</h1>
                 <button
-                className="close-button"
-                onClick={handleCloseSeeMoreModal}
-              >
-                <span role="img" aria-label="Close">
-                  &#10006;
-                </span>
-              </button>
+                  className="close-button"
+                  onClick={handleCloseSeeMoreModal}
+                >
+                  <span role="img" aria-label="Close">
+                    &#10006;
+                  </span>
+                </button>
                 <input type="text" placeholder="Search Doctors Here" />
               </div>
-              {medicalDomains.map((domain, index) => (
-                <SeeMoreModal key={index} img={addmore} domain={domain} />
-              ))}
-              
+
+              {firstFourMedicalDomains.map((domain, index) => {
+                const imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
+                return (
+                  <SeeMoreModal key={index} img={imagePath} domain={domain} />
+                );
+              })}
             </div>
           </div>
         )}
