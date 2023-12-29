@@ -9,18 +9,15 @@ import SearchTable from "../components/SearchFeature";
 import Domain from "../components/domains";
 import SeeMoreModal from "../components/SeeMoreModal";
 
-
 // import CSS
 import "../styles/Home.css";
-
 
 // import Pngs
 import chat_bot_img from "../assets/images/chat-bot.png";
 import nearby_img from "../assets/images/nearby.png";
 import search_img from "../assets/images/search.png";
 import emergencyimg from "../assets/images/emergency.png";
-import addmore from '../assets/images/plus.png';
-
+import addmore from "../assets/images/plus.png";
 
 function Home() {
   const medicalDomains = [
@@ -50,7 +47,6 @@ function Home() {
 
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
-
   // In Home component
   const handleSearchClick = () => {
     console.log("Search clicked");
@@ -61,7 +57,6 @@ function Home() {
     console.log("Modal closed");
     setIsSearchModalOpen(false);
   };
-
 
   // See More modal
 
@@ -76,7 +71,6 @@ function Home() {
     console.log("Modal closed");
     setIsSeeMoreModalOpen(false);
   };
-
 
   return (
     <div className="homepage">
@@ -123,13 +117,12 @@ function Home() {
         </div>
         <div>
           {isSearchModalOpen && (
-            <div className="modals">
+            <div className="search-modal modals">
               <div className="modals-content">
                 <SearchTable />
                 <button
                   className="close-button"
-                  onClick={handleCloseSearchModal}
-                >
+                  onClick={handleCloseSearchModal}>
                   <span role="img" aria-label="Close">
                     &#10006;
                   </span>
@@ -143,33 +136,45 @@ function Home() {
       <div className="domain_section">
         {firstFourMedicalDomains.map((domain, index) => {
           const imagePath = `/assets/Domains/${domain.toLowerCase()}.png`;
-          return <Domain key={index} heading={domain.toUpperCase()} img={imagePath} />;
+          return (
+            <Domain
+              key={index}
+              heading={domain.toUpperCase()}
+              img={imagePath}
+            />
+          );
         })}
-        <Domain heading= "See More" img={addmore} className="addmore" onClick={handleSeeMoreClick}/>
+        <Domain
+          heading="See More"
+          img={addmore}
+          className="addmore"
+          onClick={handleSeeMoreClick}
+        />
       </div>
       <div>
-  {isSeeMoreModalOpen && (
-    <div className="modals">
-      <div className="modals-content">
-        <div className="modal_heading">
-        <input
-        type="text"
-        placeholder="Search Doctors Here"
-      />
-        </div>
-        {medicalDomains.map((domain, index) => (
-          <SeeMoreModal key={index} img={addmore} domain={domain} />
-        ))}
-        <button className="close-button" onClick={handleCloseSeeMoreModal}>
-          <span role="img" aria-label="Close">
-            &#10006;
-          </span>
-        </button>
+        {isSeeMoreModalOpen && (
+          <div className="see-more-modal modals">
+            <div className="modals-content">
+              <div className="modal_heading">
+                <h1>Domains</h1>
+                <button
+                className="close-button"
+                onClick={handleCloseSeeMoreModal}
+              >
+                <span role="img" aria-label="Close">
+                  &#10006;
+                </span>
+              </button>
+                <input type="text" placeholder="Search Doctors Here" />
+              </div>
+              {medicalDomains.map((domain, index) => (
+                <SeeMoreModal key={index} img={addmore} domain={domain} />
+              ))}
+              
+            </div>
+          </div>
+        )}
       </div>
-    </div>
-  )}
-</div>
-
     </div>
   );
 }

@@ -142,7 +142,7 @@
 }
 
 
-.modals {
+.see-more-modal {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,37 +154,37 @@
   background: rgba(0, 0, 0, 0.5); /* semi-transparent background overlay */
 }
 
-.modals-content {
-  max-width: 45vw; /* adjust the max-width as needed */
-  max-height: 80vh; /* adjust the max-height as needed */
-  overflow-y: auto; /* add a scrollbar if the content exceeds the max-height */
+.see-more-modal .modals-content {
+  max-width: 55vw; 
+  max-height: 80vh;
+  overflow-y: auto;
   padding: 20px;
-  background: #fff; /* modal content background color */
+  background: #fff;
   border-radius: 8px;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px; /* adjust the gap between items */
+  gap: 16px;
   justify-content: space-around;
 }
 
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+.see-more-modal .close-button {
+  top: -1em;
+  right: -13em;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   color: #555;
 }
 
 /* Add any additional styles for your SeeMoreModal component here */
 
 
-.modal_heading{
+.see-more-modal .modal_heading{
 display: flex;
-width: 100%;
+width: 80%;
+margin-bottom: 2%;
 flex-wrap: wrap;
 justify-content: center;
 }
@@ -193,5 +193,5 @@ justify-content: center;
   padding: 1% 5%;
   background: transparent;
   color: #2d76e4;
-  width: 50% !important;
+  width: 40% !important;
 }
