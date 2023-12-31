@@ -23,13 +23,16 @@ function Home() {
   const medicalDomains = [
     "Orthopedic",
     "Gynecologist",
+    "Oncologist",
     "Eye Specialist",
     "Dermatologist",
     "Cardiologist",
     "Neurologist",
     "Pediatrician",
-    "Oncologist",
-
+    "Hello",
+    "Hello",
+    "Hello",
+    "Hello",
   ];
 
   const firstFourMedicalDomains = medicalDomains.slice(0, 4);
@@ -131,14 +134,13 @@ function Home() {
               key={index}
               heading={domain.toUpperCase()}
               img={imagePath}
-              to = "/doctor_cards"
-              
+              to="/doctor_cards"
             />
           );
         })}
         <Domain
           heading="See More"
-          img={addmore}
+          img={require("../assets/images/plus.png")}
           className="addmore"
           onClick={handleSeeMoreClick}
         />
@@ -160,13 +162,18 @@ function Home() {
                 <input type="text" placeholder="Search Doctors Here" />
               </div>
               {medicalDomains.map((domain, index) => {
+                let imagePath;
+                try {
+                  imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
+                } catch (error) {
+                  // If the image doesn't exist, fallback to the plus image
+                  imagePath = require("../assets/images/plus.png");
+                }
+
                 return (
-                  <SeeMoreModal key={index} img={ require(`../assets/images/Domains/${domain.toLowerCase()}.png`)} domain={domain} />
-                  // <SeeMoreModal key={index} img={addmore} domain={domain} />
-
+                  <SeeMoreModal key={index} img={imagePath} domain={domain} to="/doctor_cards"/>
                 );
-              })}  
-
+              })}
             </div>
           </div>
         )}

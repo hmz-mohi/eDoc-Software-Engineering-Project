@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
+import Doctor_cards from './pages/doctor_cards';
 
 
 //importing react routers
@@ -31,8 +32,9 @@ const router = createBrowserRouter([
 
   {
     path: "doctor_cards",
-    element: <doctor_cards/>,
-  },
+    element: <Doctor_cards/>,
+  } 
+
 
 ]);
 
