@@ -155,8 +155,7 @@
 }
 
 .see-more-modal .modals-content {
-  max-width: 55vw; 
-  max-height: 80vh;
+  width: 50vw; 
   overflow-y: auto;
   padding: 20px;
   background: #fff;
@@ -178,19 +177,29 @@
   color: #555;
 }
 
+
 /* Add any additional styles for your SeeMoreModal component here */
 
 
 .see-more-modal .modal_heading{
 display: flex;
 width: 80%;
-margin-bottom: 2%;
+margin-bottom: 0;
 flex-wrap: wrap;
 justify-content: center;
 }
 
+.see-more-modal .modal_heading h1{
+  text-transform: uppercase;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+  color: rgb(0, 104, 189);
+  }
+
 .modal_heading input{
-  padding: 1% 5%;
+  padding: 1% 2em;
+  height: 3em;
   background: transparent;
   color: #2d76e4;
   width: 40% !important;

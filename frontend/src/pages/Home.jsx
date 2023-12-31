@@ -29,18 +29,7 @@ function Home() {
     "Neurologist",
     "Pediatrician",
     "Oncologist",
-    "Psychiatrist",
-    "ENT Specialist",
-    "Dentist",
-    "Urologist",
-    "Endocrinologist",
-    "Radiologist",
-    "Gastroenterologist",
-    "Nephrologist",
-    "Pulmonologist",
-    "Rheumatologist",
-    "Hematologist",
-    "Allergist",
+
   ];
 
   const firstFourMedicalDomains = medicalDomains.slice(0, 4);
@@ -136,13 +125,14 @@ function Home() {
 
       <div className="domain_section">
         {firstFourMedicalDomains.map((domain, index) => {
-          // const imagePath = `/assets/Domains/${domain.toLowerCase()}.png`;
           const imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
           return (
             <Domain
               key={index}
               heading={domain.toUpperCase()}
               img={imagePath}
+              to = "/doctor_cards"
+              
             />
           );
         })}
@@ -169,13 +159,14 @@ function Home() {
                 </button>
                 <input type="text" placeholder="Search Doctors Here" />
               </div>
-
-              {firstFourMedicalDomains.map((domain, index) => {
-                const imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
+              {medicalDomains.map((domain, index) => {
                 return (
-                  <SeeMoreModal key={index} img={imagePath} domain={domain} />
+                  <SeeMoreModal key={index} img={ require(`../assets/images/Domains/${domain.toLowerCase()}.png`)} domain={domain} />
+                  // <SeeMoreModal key={index} img={addmore} domain={domain} />
+
                 );
-              })}
+              })}  
+
             </div>
           </div>
         )}
