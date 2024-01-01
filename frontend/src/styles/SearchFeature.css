@@ -22,6 +22,25 @@
     overflow-y: auto; /* Allow the container to scroll if needed */
     height: calc(100% - 68px); /* Adjust the height considering the padding and border of the table */
   }
+
+
+  .result-table-container::-webkit-scrollbar {
+    width: 10px;
+    height: 10px; /* Adjust the height to make it shorter */
+  }
+  
+  .result-table-container::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+  
+  .result-table-container::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: 3px solid transparent; /* Adjust the border to make it shorter */
+    background-clip: content-box;
+    background-color: #0092B3;
+  }
+  
   
   .result-table {
     width: 100%;

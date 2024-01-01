@@ -27,8 +27,8 @@ function SearchFeature() {
             }).map((item) => (
               <tr key={item.id}>
                 <td>{item.name}</td>
-                <td>{item.Specialization}</td>
-                <td>{item.email}</td>
+                <td>{item.specialization}</td>
+                <td>{item.doc_email}</td>
               </tr>
             ))}
             {/* Example row, you can dynamically render rows based on search results */}

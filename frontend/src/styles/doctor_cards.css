@@ -1,0 +1,64 @@
+.viewdoctors_main_section{
+    height: 60vh;
+    padding: 0 2%;
+
+    background-repeat: no-repeat;
+    background-color: #edf6ff;
+
+    transition: background-image 1s ease-in-out; /* Adjust the duration and timing function as needed */
+    animation: slideshow 17s infinite; /* Adjust the duration and iteration as needed */
+}
+
+@keyframes slideshow {
+    /* 0%, 20% {
+        background-position: 30em 2em;
+        background-size: contain;
+        background-image: url('https://cdn.pixabay.com/photo/2016/02/08/23/36/isolated-1188036_1280.png');
+    } */
+    15%, 45% {
+        background-position: 45em 2em;
+        background-size: 35em;
+        background-image: url('https://cdn.pixabay.com/photo/2017/08/22/13/17/doctor-2668918_1280.png');
+    }
+    50%, 70% {
+        background-position: 40em 0;
+        background-size: 45rem;
+        background-image: url('../assets/images/bgdoctor-2.png');
+    }
+    75%, 100% {
+        background-position: 40em 0;
+        background-size: 50em;
+        background-image: url('../assets/images/bgdoctor.png');
+    }
+}
+
+
+
+.doctor_header_text{
+    width: 50%;
+    padding: 5%;
+}
+
+.doctor_header_text span{
+    transform: scale(1.2);
+    font-size: 2rem;
+}
+
+
+.doctor_header_text h1 {
+    font-size: 2.75rem;
+    color: #0092b3;
+    border-right: 0.15em solid #0092b3; /* Create a cursor effect */
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typewriter 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite; /* Adjust duration and timing function */
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}

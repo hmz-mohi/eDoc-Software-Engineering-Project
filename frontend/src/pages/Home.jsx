@@ -29,15 +29,12 @@ function Home() {
     "Cardiologist",
     "Neurologist",
     "Pediatrician",
-    "Hello",
-    "Hello",
-    "Hello",
-    "Hello",
   ];
 
   const firstFourMedicalDomains = medicalDomains.slice(0, 4);
 
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const data = { name: 'John', age: 30 };
 
   // In Home component
   const handleSearchClick = () => {
@@ -125,26 +122,28 @@ function Home() {
           )}
         </div>
       </div>
-
-      <div className="domain_section">
-        {firstFourMedicalDomains.map((domain, index) => {
-          const imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
-          return (
-            <Domain
-              key={index}
-              heading={domain.toUpperCase()}
-              img={imagePath}
-              to="/doctor_cards"
-            />
-          );
-        })}
+      <div className="domain_section_outerdiv">
+        <div className="domain_section">
+          {medicalDomains.map((domain, index) => {
+            const imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
+            return (
+              <Domain
+                key={index}
+                heading={domain.toUpperCase()}
+                img={imagePath}
+                to={`/Doctor_cards/${domain}`}
+              />
+            );
+          })}
+        </div>
         <Domain
-          heading="See More"
-          img={require("../assets/images/plus.png")}
-          className="addmore"
-          onClick={handleSeeMoreClick}
-        />
+            heading="See More"
+            img={require("../assets/images/plus.png")}
+            className="addmore"
+            onClick={handleSeeMoreClick}
+          />
       </div>
+
       <div>
         {isSeeMoreModalOpen && (
           <div className="see-more-modal modals">
@@ -171,13 +170,19 @@ function Home() {
                 }
 
                 return (
-                  <SeeMoreModal key={index} img={imagePath} domain={domain} to="/doctor_cards"/>
+                  <SeeMoreModal
+                    key={index}
+                    img={imagePath}
+                    domain={domain}
+                    to={`/Doctor_cards/${domain}`}
+                  />
                 );
               })}
             </div>
           </div>
         )}
       </div>
+
     </div>
   );
 }

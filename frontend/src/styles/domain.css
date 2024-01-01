@@ -17,7 +17,7 @@
 
 
 .domain_cards_heading{
-    color: #2d76e4;
+    color: #00586e;
     font-size: 1rem;
 }
 
@@ -26,7 +26,12 @@
     width: 3em;
 
 }
-
+.addmore{ 
+    padding: 0;
+    padding-left: 2%;
+    padding-top: 2%;
+    justify-content: center;
+}
 
 
 .addmore:hover img{

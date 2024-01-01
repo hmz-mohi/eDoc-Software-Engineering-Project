@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa&family=Righteous&display=swap");
 
 .main-section {
+  --slideshow-home: slideshow-home 16s infinite;
   height: 55vh;
   display: flex;
   justify-content: space-evenly;
@@ -30,14 +31,14 @@
 }
 
 .home-header h1 {
-  color: rgb(0, 0, 0);
+  color: rgba(0, 0, 0, 0.757);
   font-size: 3.5rem;
 }
 
 .home-header span {
   font-size: 3.5rem;
   /* color: rgb(0, 78, 117); */
-  color: #2d76e4;
+  color: #0092b3;
 }
 .img-div-home {
     width: 50vw;
@@ -46,10 +47,10 @@
     background-repeat: no-repeat;
     background-position: top ;
     transition: background-image 2s ease-in-out; /* Adjust the duration and timing function as needed */
-    animation: slideshow 16s infinite; /* Adjust the duration and iteration as needed */
+    animation: var(--slideshow-home); /* Adjust the duration and iteration as needed */
 }
 
-@keyframes slideshow {
+@keyframes slideshow-home  {
     0%, 20% {
         background-image: url('../assets/images/Homepageb3.jpg');
     }
@@ -68,6 +69,7 @@
 .services_section{
   padding-top: 2%;
   display: flex;
+  margin: 3em auto;
   flex-direction: column;
 
 }
@@ -82,11 +84,12 @@
 
 .services_headers h1{
   font-size: 1.2rem;
+  /* color: #2d76e4; */
   color: #2d76e4;
   font-weight: 500;
 }
 .services_headers h3{
-  color: rgb(45, 45, 45);
+  color: #0092b3;
   font-family: "Raleway", sans-serif;
   font-weight: 900;
 }
@@ -132,14 +135,43 @@
   color: #555;
 }
 
-
-.domain_section{
-  background-color: #edf6ff;
-  padding-top: 3em;
-  padding-bottom: 3em;
+.domain_section_outerdiv{
+  margin: 3em auto;
+  background: linear-gradient(
+    to bottom,
+    #edf6ff,
+    #edf6ff
+  );
   display: flex;
   justify-content: center;
 }
+.domain_section{
+  /* background-color: #003541; */
+  width: 35vw;
+  border-radius: 25px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding-top: 3em;
+  display: flex;
+}
+
+.domain_section::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; /* Adjust the height to make it shorter */
+}
+
+.domain_section::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+.domain_section::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 3px solid transparent; /* Adjust the border to make it shorter */
+  background-clip: content-box;
+  background-color: #00586e;
+}
+
 
 
 .see-more-modal {
