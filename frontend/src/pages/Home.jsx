@@ -1,6 +1,9 @@
 // import basic
 import React from "react";
 import { useState } from "react";
+import { useRef } from "react";
+import { useDraggable } from "react-use-draggable-scroll";
+import { useEffect } from "react";
 
 // import components
 import Navbar from "../components/Navbar";
@@ -17,25 +20,21 @@ import chat_bot_img from "../assets/images/chat-bot.png";
 import nearby_img from "../assets/images/nearby.png";
 import search_img from "../assets/images/search.png";
 import emergencyimg from "../assets/images/emergency.png";
-import addmore from "../assets/images/plus.png";
+
+// import data files
+import { medicalDomains } from "../domain_data";
 
 function Home() {
-  const medicalDomains = [
-    "Orthopedic",
-    "Gynecologist",
-    "Oncologist",
-    "Eye Specialist",
-    "Dermatologist",
-    "Cardiologist",
-    "Neurologist",
-    "Pediatrician",
-  ];
 
-  const firstFourMedicalDomains = medicalDomains.slice(0, 4);
+  // to apply drag effect on scrolls
+  
+  const ref = useRef(); // We will use React useRef hook to reference the wrapping div:
+  const { events } = useDraggable(ref); // Now we pass the reference to the useDraggable hook:
 
+  
+  
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const data = { name: 'John', age: 30 };
-
+  
   // In Home component
   const handleSearchClick = () => {
     console.log("Search clicked");
@@ -47,6 +46,9 @@ function Home() {
     setIsSearchModalOpen(false);
   };
 
+
+
+
   // See More modal
 
   const [isSeeMoreModalOpen, setIsSeeMoreModalOpen] = useState(false);
@@ -56,10 +58,40 @@ function Home() {
     setIsSeeMoreModalOpen(true);
   };
 
-  const handleCloseSeeMoreModal = () => {
-    console.log("Modal closed");
-    setIsSeeMoreModalOpen(false);
+  const toggleModal = () => {
+    setIsSeeMoreModalOpen(!isSeeMoreModalOpen);
   };
+
+
+  const handleEscapeKey = (event) => {
+    if (event.key === 'Escape') {
+      toggleModal();
+    }
+  };
+
+  // Close the modal when clicking outside the modal content
+  const handleOutsideClick = (event) => {
+    if (event.target.classList.contains('see-more-modal')) {
+      toggleModal();
+    }
+  };
+
+  useEffect(() => {
+    if (isSeeMoreModalOpen) {
+      // Add event listeners when the modal is open
+      document.addEventListener('keydown', handleEscapeKey);
+      document.addEventListener('click', handleOutsideClick);
+    }
+
+    // Remove event listeners when the component is unmounted
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [isSeeMoreModalOpen, toggleModal]);
+
+
+
 
   return (
     <div className="homepage">
@@ -123,9 +155,16 @@ function Home() {
         </div>
       </div>
       <div className="domain_section_outerdiv">
-        <div className="domain_section">
+        <div className="domain_section" {...events}
+          ref={ref}>
           {medicalDomains.map((domain, index) => {
-            const imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
+            let imagePath;
+            try {
+              imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
+            } catch (error) {
+              // If the image doesn't exist, fallback to the plus image
+              imagePath = require("../assets/images/plus.png");
+            }
             return (
               <Domain
                 key={index}
@@ -137,11 +176,11 @@ function Home() {
           })}
         </div>
         <Domain
-            heading="See More"
-            img={require("../assets/images/plus.png")}
-            className="addmore"
-            onClick={handleSeeMoreClick}
-          />
+          heading="See More"
+          img={require("../assets/images/plus.png")}
+          className="addmore"
+          onClick={handleSeeMoreClick}
+        />
       </div>
 
       <div>
@@ -150,15 +189,7 @@ function Home() {
             <div className="modals-content">
               <div className="modal_heading">
                 <h1>Domains</h1>
-                <button
-                  className="close-button"
-                  onClick={handleCloseSeeMoreModal}
-                >
-                  <span role="img" aria-label="Close">
-                    &#10006;
-                  </span>
-                </button>
-                <input type="text" placeholder="Search Doctors Here" />
+
               </div>
               {medicalDomains.map((domain, index) => {
                 let imagePath;

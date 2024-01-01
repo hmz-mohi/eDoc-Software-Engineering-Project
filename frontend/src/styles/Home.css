@@ -143,6 +143,7 @@
     #edf6ff
   );
   display: flex;
+  cursor: grab !important;
   justify-content: center;
 }
 .domain_section{
@@ -153,6 +154,7 @@
   overflow-x: scroll;
   padding-top: 3em;
   display: flex;
+
 }
 
 .domain_section::-webkit-scrollbar {
@@ -183,7 +185,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* semi-transparent background overlay */
+  background: rgba(0, 0, 0, 0.7); /* semi-transparent background overlay */
 }
 
 .see-more-modal .modals-content {
@@ -215,9 +217,9 @@
 
 .see-more-modal .modal_heading{
 display: flex;
-width: 80%;
+width: 100%;
 margin-bottom: 0;
-flex-wrap: wrap;
+overflow-x: hidden;
 justify-content: center;
 }
 
@@ -228,11 +230,3 @@ justify-content: center;
   font-weight: bold;
   color: rgb(0, 104, 189);
   }
-
-.modal_heading input{
-  padding: 1% 2em;
-  height: 3em;
-  background: transparent;
-  color: #2d76e4;
-  width: 40% !important;
-}

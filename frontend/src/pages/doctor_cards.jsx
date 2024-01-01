@@ -12,11 +12,10 @@ function Doctor_cards() {
       <div>
         <div className="doctor_header_text">
           <h1>Your Health is Our Priority!!</h1>
-        <h3>Consult the Best <span>{domain}s</span> in <br /> Pakistan Online</h3>
+          <h3>Consult the Best <span>{domain}s</span> in <br /> Pakistan Online</h3>
         </div>
-
       </div>
-      
+
     </div>
   );
 }

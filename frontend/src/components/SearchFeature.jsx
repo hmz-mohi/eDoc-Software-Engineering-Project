@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/SearchFeature.css";
-import { data } from "../data.js";
+import { data } from "../doctor_data.js";
 
 function SearchFeature() {
   const [search, setSearch] = useState('')
