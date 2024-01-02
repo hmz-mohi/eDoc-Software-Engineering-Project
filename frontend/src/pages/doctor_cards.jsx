@@ -12,10 +12,10 @@ import Doctor_page_domains from '../components/doctor_page_domains';
 
 function Doctor_cards() {
 
-    // to apply drag effect on scrolls
-  
-    const ref = useRef(); // We will use React useRef hook to reference the wrapping div:
-    const { events } = useDraggable(ref); // Now we pass the reference to the useDraggable hook:
+  // to apply drag effect on scrolls
+
+  const ref = useRef(); // We will use React useRef hook to reference the wrapping div:
+  const { events } = useDraggable(ref); // Now we pass the reference to the useDraggable hook:
 
   const { domain } = useParams();
 
@@ -31,14 +31,14 @@ function Doctor_cards() {
         <div>
           <div className="doctor_header_text">
             <h1>Your Health is Our Priority!!</h1>
-            <h3>Consult the Best {domain === "null" ? "Doctors" : <span>{domain}s</span> } in <br /> Pakistan Online</h3>
+            <h3>Consult the Best {domain === "null" ? "Doctors" : <span>{domain}s</span>} in <br /> Pakistan Online</h3>
           </div>
 
           <div className="doctorPagedomain_section_outerdiv">
             <div className="doctorPagedomain_section" {...events}
-          ref={ref}>
+              ref={ref}>
               {medicalDomains.map((domainItem, index) => {
-                
+
                 const isCurrentDomain = domain === domainItem;
 
                 return (
@@ -48,15 +48,15 @@ function Doctor_cards() {
 
                     to={`/Doctor_cards/${domainItem}`}
                     className={isCurrentDomain ? "scaled-domain" : ""}
-                  /> 
+                  />
                 );
               })}
             </div>
             <Doctor_page_domains
-                  heading="All Doctors"
-                  to={`/Doctor_cards/null`}
-                  className="addmore"
-                />
+              heading="All Doctors"
+              to={`/Doctor_cards/null`}
+              className="addmore"
+            />
           </div>
         </div>
 
@@ -64,9 +64,16 @@ function Doctor_cards() {
           {/* Map through the filtered doctors and display information */}
           {filteredDoctors.map((doctor, index) => (
             <div key={index} className="doctor-card">
-              <h2>{doctor.name}</h2>
-              <p>Doctor ID: {doctor.doc_id}</p>
-              <p>Specialization: {doctor.specialization}</p>
+              <div className="doctor_card_image_div">
+                <img src={require('../assets/images/bgdoctor-2.png')}/>
+                <h2>{doctor.name}</h2>
+              </div>
+              <div className="below_image_div">
+                
+                <p>Doctor ID: {doctor.doc_id}</p>
+                <p>Specialization: {doctor.specialization}</p>
+              </div>
+
               {/* Add other details as needed */}
             </div>
           ))}

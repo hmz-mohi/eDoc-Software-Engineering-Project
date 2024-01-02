@@ -1,10 +1,10 @@
-:root{
+:root {
     overflow-x: hidden;
 }
 
-.viewdoctors_main_section{
+.viewdoctors_main_section {
     height: 50vh;
-    padding: 0 2% ;
+    padding: 0 2%;
     background-repeat: no-repeat;
     background-color: #edf6ff;
     transition: background-image 1s ease-in-out;
@@ -12,29 +12,35 @@
 }
 
 @keyframes slideshow {
-    0%, 45% {
+
+    0%,
+    45% {
         background-position: 45em 2em;
         background-size: 25em;
         background-image: url('https://cdn.pixabay.com/photo/2017/08/22/13/17/doctor-2668918_1280.png');
     }
-    50%, 70% {
+
+    50%,
+    70% {
         background-position: 40em 0;
         background-size: 35rem;
         background-image: url('../assets/images/bgdoctor-2.png');
     }
-    75%, 100% {
+
+    75%,
+    100% {
         background-position: 40em 0;
         background-size: 40em;
         background-image: url('../assets/images/bgdoctor.png');
     }
 }
 
-.doctor_header_text{
+.doctor_header_text {
     width: 50%;
     padding: 5%;
 }
 
-.doctor_header_text span{
+.doctor_header_text span {
     transform: scale(1.2);
     font-size: 2rem;
 }
@@ -43,22 +49,25 @@
 .doctor_header_text h1 {
     font-size: 2.75rem;
     color: #0092b3;
-    border-right: 0.15em solid #0092b3; /* Create a cursor effect */
+    border-right: 0.15em solid #0092b3;
+    /* Create a cursor effect */
     white-space: nowrap;
     overflow: hidden;
-    animation: typewriter 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite; /* Adjust duration and timing function */
+    animation: typewriter 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+    /* Adjust duration and timing function */
 }
 
 @keyframes typewriter {
     from {
         width: 0;
     }
+
     to {
         width: 100%;
     }
 }
 
-.doctorPagedomain_section_outerdiv{
+.doctorPagedomain_section_outerdiv {
     cursor: default !important;
     margin: 0em auto;
     background-color: transparent !important;
@@ -67,10 +76,10 @@
     justify-content: center;
     cursor: grab;
     margin-bottom: 5em;
-  }
+}
 
 
-  .doctorPagedomain_section{
+.doctorPagedomain_section {
     /* background-color: #003541; */
     width: 37vw;
     border-radius: 25px;
@@ -79,24 +88,61 @@
     overflow-x: scroll;
     padding-top: 3em;
     display: flex;
-  
-  }
+
+}
 
 
 
-  .doctorPagedomain_section::-webkit-scrollbar {
+.doctorPagedomain_section::-webkit-scrollbar {
     width: 10px;
-    height: 10px; /* Adjust the height to make it shorter */
-  }
-  
-  .doctorPagedomain_section::-webkit-scrollbar-track {
+    height: 10px;
+    /* Adjust the height to make it shorter */
+}
+
+.doctorPagedomain_section::-webkit-scrollbar-track {
     background-color: transparent;
     border-radius: 100px;
-  }
-  
-  .doctorPagedomain_section::-webkit-scrollbar-thumb {
+}
+
+.doctorPagedomain_section::-webkit-scrollbar-thumb {
     border-radius: 100px;
-    border: 3px solid transparent; /* Adjust the border to make it shorter */
+    border: 3px solid transparent;
+    /* Adjust the border to make it shorter */
     background-clip: content-box;
     background-color: #EDF6FF;
-  }
+}
+
+
+.doctors-list{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.doctor_card_image_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.doctor_card_image_div h2{
+    padding-top: 5%;
+    padding-right: 6%;
+}
+
+.doctor_card_image_div img{
+
+    background-color: #0092b3;
+    border-radius: 250px;
+    width: 10em;
+}
+.doctor-card{
+    width:27vw;
+    margin-right: 2%;
+    margin-bottom: 3%;
+    border-radius: 75px 0 0 0;
+    background-color: antiquewhite;
+    
+}
