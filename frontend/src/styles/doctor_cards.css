@@ -1,6 +1,10 @@
+:root{
+    overflow-x: hidden;
+}
+
 .viewdoctors_main_section{
-    height: 60vh;
-    padding: 0 2%;
+    height: 50vh;
+    padding: 0 2% ;
     background-repeat: no-repeat;
     background-color: #edf6ff;
     transition: background-image 1s ease-in-out;
@@ -10,17 +14,17 @@
 @keyframes slideshow {
     0%, 45% {
         background-position: 45em 2em;
-        background-size: 35em;
+        background-size: 25em;
         background-image: url('https://cdn.pixabay.com/photo/2017/08/22/13/17/doctor-2668918_1280.png');
     }
     50%, 70% {
         background-position: 40em 0;
-        background-size: 45rem;
+        background-size: 35rem;
         background-image: url('../assets/images/bgdoctor-2.png');
     }
     75%, 100% {
         background-position: 40em 0;
-        background-size: 50em;
+        background-size: 40em;
         background-image: url('../assets/images/bgdoctor.png');
     }
 }
@@ -53,3 +57,46 @@
         width: 100%;
     }
 }
+
+.doctorPagedomain_section_outerdiv{
+    cursor: default !important;
+    margin: 0em auto;
+    background-color: transparent !important;
+    display: flex;
+    cursor: grab !important;
+    justify-content: center;
+    cursor: grab;
+    margin-bottom: 5em;
+  }
+
+
+  .doctorPagedomain_section{
+    /* background-color: #003541; */
+    width: 37vw;
+    border-radius: 25px;
+    cursor: grabbing;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding-top: 3em;
+    display: flex;
+  
+  }
+
+
+
+  .doctorPagedomain_section::-webkit-scrollbar {
+    width: 10px;
+    height: 10px; /* Adjust the height to make it shorter */
+  }
+  
+  .doctorPagedomain_section::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+  
+  .doctorPagedomain_section::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: 3px solid transparent; /* Adjust the border to make it shorter */
+    background-clip: content-box;
+    background-color: #EDF6FF;
+  }

@@ -1,7 +1,7 @@
 export const data = [{
   "name": "Darrelle Trainor",
   "doc_id": "hmz05",
-  "specialization": "amet sem fusce consequat nulla nisl nunc nisl duis bibendum",
+  "specialization": "Orthopedic",
   "doc_username": "dtrainor0",
   "doc_password": "cB5<?HPrp@cM4",
   "doc_validity": "6/23/2023",
@@ -94,7 +94,7 @@ export const data = [{
 }, {
   "name": "Alphard Orred",
   "doc_id": "hmz05",
-  "specialization": "aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate",
+  "specialization": "Orthopedic",
   "doc_username": "aorred4",
   "doc_password": "hR6<I\"JI`w5",
   "doc_validity": "5/13/2023",
@@ -200,7 +200,7 @@ export const data = [{
 }, {
   "name": "Matilde Vedyashkin",
   "doc_id": "hmz05",
-  "specialization": "morbi odio odio elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet",
+  "specialization": "Orthopedic",
   "doc_username": "mvedyashkin9",
   "doc_password": "mH6`Q`3wrxh",
   "doc_validity": "11/16/2023",
@@ -294,7 +294,7 @@ export const data = [{
 }, {
   "name": "Emmie Larmour",
   "doc_id": "hmz05",
-  "specialization": "gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet justo morbi ut odio",
+  "specialization": "Gynecologist",
   "doc_username": "elarmourd",
   "doc_password": "sG9@@AL8",
   "doc_validity": "10/11/2023",
@@ -339,7 +339,7 @@ export const data = [{
 }, {
   "name": "Erik Neely",
   "doc_id": "hmz05",
-  "specialization": "lectus vestibulum quam sapien varius ut blandit non interdum in ante vestibulum ante ipsum primis in faucibus orci luctus",
+  "specialization": "Gynecologist",
   "doc_username": "eneelyf",
   "doc_password": "hN7(!dZBX",
   "doc_validity": "1/7/2023",
@@ -360,7 +360,7 @@ export const data = [{
 }, {
   "name": "Odelinda Lavers",
   "doc_id": "hmz05",
-  "specialization": "id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue",
+  "specialization": "Orthopedic",
   "doc_username": "olaversg",
   "doc_password": "mZ8|EFmWVJ1Os",
   "doc_validity": "9/11/2023",
@@ -385,7 +385,7 @@ export const data = [{
 }, {
   "name": "Lorain Mingaye",
   "doc_id": "hmz05",
-  "specialization": "sed vestibulum sit amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus",
+  "specialization": "Gynecologist",
   "doc_username": "lmingayeh",
   "doc_password": "fD7%MLv>rMye?!K",
   "doc_validity": "9/20/2023",
@@ -463,7 +463,7 @@ export const data = [{
 }, {
   "name": "Gratia Whistlecraft",
   "doc_id": "hmz05",
-  "specialization": "sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel",
+  "specialization": "Gynecologist",
   "doc_username": "gwhistlecraftk",
   "doc_password": "jT3\\EQue|",
   "doc_validity": "10/31/2023",
@@ -488,7 +488,7 @@ export const data = [{
 }, {
   "name": "Philly Labbey",
   "doc_id": "hmz05",
-  "specialization": "lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci mauris lacinia sapien quis libero nullam",
+  "specialization": "Orthopedic",
   "doc_username": "plabbeyl",
   "doc_password": "tC5'?W>X'/&'=D6I",
   "doc_validity": "3/21/2023",
@@ -573,7 +573,7 @@ export const data = [{
 }, {
   "name": "Janine Gilleson",
   "doc_id": "hmz05",
-  "specialization": "cubilia curae mauris viverra diam vitae quam suspendisse potenti nullam porttitor lacus at turpis donec",
+  "specialization": "Gynecologist",
   "doc_username": "jgillesono",
   "doc_password": "wH8'(TaRawU4",
   "doc_validity": "12/24/2023",
@@ -648,7 +648,7 @@ export const data = [{
 }, {
   "name": "Giovanna Scane",
   "doc_id": "hmz05",
-  "specialization": "molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci eget",
+  "specialization": "Orthopedic",
   "doc_username": "gscaner",
   "doc_password": "cA3<wfznb3meb",
   "doc_validity": "7/3/2023",
@@ -679,7 +679,7 @@ export const data = [{
 }, {
   "name": "Carine Carde",
   "doc_id": "hmz05",
-  "specialization": "nec sem duis aliquam convallis nunc proin at turpis a pede",
+  "specialization": "Gynecologist",
   "doc_username": "ccardes",
   "doc_password": "tG9&hc5T",
   "doc_validity": "4/20/2023",

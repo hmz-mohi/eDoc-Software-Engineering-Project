@@ -1,0 +1,43 @@
+.doctorPagedomain_cards {
+  background-color: transparent;
+  text-align: center;
+  margin: 0.4em 0.7em;
+  border: none;
+  cursor: grab !important;
+}
+
+.doctorPagedomain_cards .link{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.doctorPagedomain_cards_heading {
+  color: #00586e;
+  font-size: 1.1rem;
+
+}
+.doctorPagedomain_cards_heading:hover {
+  color: #00586e;
+}
+
+.scaled-domain .doctorPagedomain_cards_heading {
+  color: #00586e;
+  font-weight: 400;
+  padding-bottom: 4%;
+  border-bottom: 3px solid black;
+
+}
+
+.addmore{ 
+    padding: 0;
+    padding-left: 1%;
+    padding-top: 2.5%;
+    justify-content: center;
+}
+
+
+.addmore .doctorPagedomain_cards_heading {
+  color: #008ec1;
+}

@@ -39,3 +39,15 @@
     transition: transform 0.2s ease;
 
 }
+
+
+
+.extra{
+    background-color: white ;
+}
+
+
+.scaled-domain .domain_cards_heading{
+
+color: #00ccff;
+}

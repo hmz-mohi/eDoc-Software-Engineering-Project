@@ -4,12 +4,13 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // import components
 import Navbar from "../components/Navbar";
 import Feature from "../components/Feature";
 import SearchTable from "../components/SearchFeature";
-import Domain from "../components/domains";
+import Domain from "../components/home_page_domains";
 import SeeMoreModal from "../components/SeeMoreModal";
 
 // import CSS
@@ -22,6 +23,7 @@ import search_img from "../assets/images/search.png";
 import emergencyimg from "../assets/images/emergency.png";
 
 // import data files
+
 import { medicalDomains } from "../domain_data";
 
 function Home() {
@@ -105,6 +107,9 @@ function Home() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
             repellendus eligendi{" "}
           </p>
+          <button><Link to= "/Doctor_cards/null">Book Appointment</Link>
+            
+          </button>
         </div>
         <div className="img-div-home">{/* <img src={doctorimg}/> */}</div>
       </div>
