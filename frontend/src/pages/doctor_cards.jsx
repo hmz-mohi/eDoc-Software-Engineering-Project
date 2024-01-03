@@ -64,20 +64,27 @@ function Doctor_cards() {
           {/* Map through the filtered doctors and display information */}
           {filteredDoctors.map((doctor, index) => (
             <div key={index} className="doctor-card">
-              <div className="doctor_card_image_div">
-                <img src={require('../assets/images/bgdoctor-2.png')}/>
-                <h2>{doctor.name}</h2>
+              <div className="doctor_card_image_div" style={{ backgroundImage: `url(${require('../assets/images/doctor1.png')})` }}>
+                <img src={require('../assets/images/Homepageb3.jpg')}/>
+                
               </div>
               <div className="below_image_div">
-                
-                <p>Doctor ID: {doctor.doc_id}</p>
-                <p>Specialization: {doctor.specialization}</p>
+                <h2>{doctor.name}</h2>
+                <p>⭐⭐⭐⭐⭐</p>
+                <div className="doctor-cards-button-divs">
+                  <button>View Profile</button>
+                  <button>Book Appointment</button>
+                </div>
               </div>
 
-              {/* Add other details as needed */}
             </div>
           ))}
         </div>
+
+        <h1>Hello</h1>
+        <h1>Hello</h1>
+        <h1>Hello</h1>
+        <h1>Hello</h1>
       </div>
     </>
   );
