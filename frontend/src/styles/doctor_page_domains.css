@@ -14,7 +14,8 @@
 
 
 .doctorPagedomain_cards_heading {
-  color: #00586e;
+  color: #022c36;
+  font-weight: 600;
   font-size: 0.7rem;
 
 }
@@ -33,7 +34,7 @@
 .addmore{ 
     padding: 0;
     padding-left: 1%;
-    padding-top: 2.5%;
+    padding-top: 0.5%;
     justify-content: center;
 }
 

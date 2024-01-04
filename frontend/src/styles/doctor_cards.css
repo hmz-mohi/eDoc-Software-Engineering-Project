@@ -53,7 +53,7 @@
     /* Create a cursor effect */
     white-space: nowrap;
     overflow: hidden;
-    animation: typewriter 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+    animation: typewriter 3s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
     /* Adjust duration and timing function */
 }
 
@@ -63,7 +63,7 @@
     }
 
     to {
-        width: 100%;
+        width: 87%;
     }
 }
 
@@ -75,6 +75,8 @@
     cursor: grab !important;
     justify-content: center;
     cursor: grab;
+    margin-top: -3em;
+    background-color: #edf6ff !important;
     margin-bottom: 5em;
 }
 
@@ -86,7 +88,7 @@
     cursor: grabbing;
     overflow-y: hidden;
     overflow-x: scroll;
-    padding-top: 3em;
+    padding-top: 1em;
     display: flex;
 
 }
@@ -109,7 +111,7 @@
     border: 3px solid transparent;
     /* Adjust the border to make it shorter */
     background-clip: content-box;
-    background-color: #EDF6FF;
+    background-color: #ffffff;
 }
 
 
@@ -121,6 +123,7 @@
     width: 70%;
     justify-content: space-between;
     padding-bottom: 5em;
+    margin-top: -2em;
     
 }
 .doctor-card{
