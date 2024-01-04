@@ -1,5 +1,5 @@
 export const data = [{
-  "name": "Darrelle Trainor",
+  "name": "doctor",
   "doc_id": "hmz05",
   "specialization": "Orthopedic",
   "doc_username": "dtrainor0",
@@ -92,7 +92,7 @@ export const data = [{
   ],
   "doc_email": "edallywater3@google.co.jp"
 }, {
-  "name": "Alphard Orred",
+  "name": "doctor1",
   "doc_id": "hmz05",
   "specialization": "Orthopedic",
   "doc_username": "aorred4",
@@ -198,7 +198,7 @@ export const data = [{
   ],
   "doc_email": "skipping8@springer.com"
 }, {
-  "name": "Matilde Vedyashkin",
+  "name": "doctor1",
   "doc_id": "hmz05",
   "specialization": "Orthopedic",
   "doc_username": "mvedyashkin9",
@@ -358,7 +358,7 @@ export const data = [{
   ],
   "doc_email": "eneelyf@barnesandnoble.com"
 }, {
-  "name": "Odelinda Lavers",
+  "name": "doctor",
   "doc_id": "hmz05",
   "specialization": "Orthopedic",
   "doc_username": "olaversg",
@@ -383,7 +383,7 @@ export const data = [{
   ],
   "doc_email": "olaversg@cisco.com"
 }, {
-  "name": "Lorain Mingaye",
+  "name": "Lorain",
   "doc_id": "hmz05",
   "specialization": "Gynecologist",
   "doc_username": "lmingayeh",
@@ -486,7 +486,7 @@ export const data = [{
   ],
   "doc_email": "gwhistlecraftk@gmpg.org"
 }, {
-  "name": "Philly Labbey",
+  "name": "doctor1",
   "doc_id": "hmz05",
   "specialization": "Orthopedic",
   "doc_username": "plabbeyl",
@@ -646,7 +646,7 @@ export const data = [{
   ],
   "doc_email": "ekubickiq@prnewswire.com"
 }, {
-  "name": "Giovanna Scane",
+  "name": "doctor1",
   "doc_id": "hmz05",
   "specialization": "Orthopedic",
   "doc_username": "gscaner",

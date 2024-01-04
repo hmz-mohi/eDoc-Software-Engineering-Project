@@ -62,24 +62,39 @@ function Doctor_cards() {
 
         <div className="doctors-list">
           {/* Map through the filtered doctors and display information */}
-          {filteredDoctors.map((doctor, index) => (
-            <div key={index} className="doctor-card">
-              <div className="doctor_card_image_div" style={{ backgroundImage: `url(${require('../assets/images/doctor1.png')})` }}>
-                <img src={require('../assets/images/Homepageb3.jpg')}/>
-                
-              </div>
-              <div className="below_image_div">
-                <h2>{doctor.name}</h2>
-                <p>⭐⭐⭐⭐⭐</p>
-                <div className="doctor-cards-button-divs">
-                  <button>View Profile</button>
-                  <button>Book Appointment</button>
+          {filteredDoctors.map((doctor, index) => {
+            // Construct the image path dynamically based on doctor's name
+
+
+
+            // Try to load .png, if not found, provide a predefined fallback
+            let imageUrl;
+            try {
+              imageUrl = require(`../assets/images/Doctors/${doctor.name}.png`);
+            } catch (error) {
+              // If .png is not found, provide a predefined fallback
+              console.error(`Image not found for ${doctor.name}`);
+              imageUrl = 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'; // Replace with your fallback image path
+            }
+
+            return (
+              <div key={index} className="doctor-card">
+                <div className="doctor_card_image_div" style={{ backgroundImage: `url(${imageUrl})` }}>
+                </div>
+                <div className="below_image_div">
+                  <h2>{doctor.name}</h2>
+                  <p>⭐⭐⭐⭐⭐</p>
+                  <div className="doctor-cards-button-divs">
+                    <button>View Profile</button>
+                    <button>Book Appointment</button>
+                  </div>
                 </div>
               </div>
-
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+
 
         <h1>Hello</h1>
         <h1>Hello</h1>

@@ -114,20 +114,27 @@
 
 
 .doctors-list{
+    margin: auto;
     overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
+    width: 70%;
     justify-content: space-between;
     padding-bottom: 5em;
-    padding-left: 4%;
     
+}
+.doctor-card{
+    position: relative;
+    margin-right: 8%;
+    margin-bottom: 3%;
+    border-radius: 75px 0 0 0;
 }
 
 
 .doctor_card_image_div{
-    height: 20em;
+    height: 16em;
     border-radius: 15px;
-    width: 22em;
+    width: 17em;
     text-align: center;
     background-color: #EDF6FF;
     background-size: cover;
@@ -140,11 +147,11 @@
     position: absolute;
     border-radius: 15px;
     padding: 3% 5%;
-    margin-top: -5em;
+    margin-top: -3em;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     background-color: white;
     left: 2.5%;
-    height: 10em;
+    height: 8em;
     color: rgb(127, 10, 211);
     width: 95%;
 }
@@ -152,19 +159,9 @@
 .doctor_card_image_div h2{
     padding-top: 5%;
     padding-right: 6%;
+    font-size: 1rem;
 }
 
-.doctor_card_image_div img{
-    width: 17em;
-    display: none;
-}
-.doctor-card{
-    position: relative;
-    margin-right: 5%;
-    margin-bottom: 3%;
-    border-radius: 75px 0 0 0;
-   
-}
 
 
 .below_image_div h2{
@@ -176,20 +173,20 @@
 
 .below_image_div p{
     color: black;
-    font-size: 1.3rem;
+    font-size: 0.8rem;
     text-align: center;
 }
 
 .doctor-cards-button-divs{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 
 .doctor-cards-button-divs button{
     background: transparent;
-    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     padding: 3%;
+    font-size: 0.7rem;
     border-radius: 15px;
 }
 
@@ -197,3 +194,22 @@
     background-color: #015cab;
     color: white;
 }
+
+
+
+.doctors-list::-webkit-scrollbar {
+    width: 10px;
+    height: 10px; /* Adjust the height to make it shorter */
+  }
+  
+  .doctors-list::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+  }
+  
+  .doctors-list::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: 3px solid transparent; /* Adjust the border to make it shorter */
+    background-clip: content-box;
+    background-color: #00586e;
+  }

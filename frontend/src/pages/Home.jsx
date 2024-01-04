@@ -17,10 +17,10 @@ import SeeMoreModal from "../components/SeeMoreModal";
 import "../styles/Home.css";
 
 // import Pngs
-import chat_bot_img from "../assets/images/chat-bot.png";
-import nearby_img from "../assets/images/nearby.png";
-import search_img from "../assets/images/search.png";
-import emergencyimg from "../assets/images/emergency.png";
+import chat_bot_img from "../assets/images/feature-cards/chat-bot.png";
+import nearby_img from "../assets/images/feature-cards/nearby.png";
+import search_img from "../assets/images/feature-cards/search.png";
+import emergencyimg from "../assets/images/feature-cards/emergency.png";
 
 // import data files
 
@@ -29,14 +29,14 @@ import { medicalDomains } from "../domain_data";
 function Home() {
 
   // to apply drag effect on scrolls
-  
+
   const ref = useRef(); // We will use React useRef hook to reference the wrapping div:
   const { events } = useDraggable(ref); // Now we pass the reference to the useDraggable hook:
 
-  
-  
+
+
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  
+
   // In Home component
   const handleSearchClick = () => {
     console.log("Search clicked");
@@ -107,9 +107,27 @@ function Home() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
             repellendus eligendi{" "}
           </p>
-          <button><Link to= "/Doctor_cards/null">Book Appointment</Link>
+          <button class="cta">
             
+            <span class="hover-underline-animation"><Link style={{ textDecoration: 'none', color: "inherit" }} to="/Doctor_cards/null">Book Appointment</Link></span>
+            <svg
+              id="arrow-horizontal"
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="10"
+              viewBox="0 0 46 16"
+            >
+              <path
+                id="Path_10"
+                data-name="Path 10"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                transform="translate(30)"
+              ></path>
+            </svg>
           </button>
+
+
+
         </div>
         <div className="img-div-home">{/* <img src={doctorimg}/> */}</div>
       </div>
@@ -168,7 +186,7 @@ function Home() {
               imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
             } catch (error) {
               // If the image doesn't exist, fallback to the plus image
-              imagePath = require("../assets/images/plus.png");
+              imagePath = require("../assets/images/icons/plus.png");
             }
             return (
               <Domain
@@ -182,7 +200,7 @@ function Home() {
         </div>
         <Domain
           heading="See More"
-          img={require("../assets/images/plus.png")}
+          img={require("../assets/images/icons/plus.png")}
           className="addmore"
           onClick={handleSeeMoreClick}
         />
@@ -202,7 +220,7 @@ function Home() {
                   imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
                 } catch (error) {
                   // If the image doesn't exist, fallback to the plus image
-                  imagePath = require("../assets/images/plus.png");
+                  imagePath = require("../assets/images/icons/plus.png");
                 }
 
                 return (

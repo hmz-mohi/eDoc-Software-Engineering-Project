@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../styles/loginpage.css";
 import Navbar from "../components/Navbar";
-import google from '../assets/images/google.png'
-import facebook from '../assets/images/facebook.png'
+import google from '../assets/images/icons/google.png'
+import facebook from '../assets/images/icons/facebook.png'
 //hello this is the change rtvrv rgrg
 
 function LoginPage() {
