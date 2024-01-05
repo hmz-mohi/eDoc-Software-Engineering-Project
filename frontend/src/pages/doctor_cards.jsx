@@ -71,7 +71,7 @@ function Doctor_cards() {
 
         <div className="doctors-list">
           {filteredDoctors.length > 0 ? (
-            // Map through the filtered doctors and display information
+            // Map through the filtered doctors and display informatio
             filteredDoctors.map((doctor, index) => {
               let imageUrl;
               try {
