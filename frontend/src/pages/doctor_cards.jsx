@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from "../components/Navbar";
 import { useParams } from 'react-router-dom';
 import "../styles/doctor_cards.css";
@@ -23,6 +23,15 @@ function Doctor_cards() {
   const filteredDoctors = domain === "null"
     ? data
     : data.filter(doctor => doctor.specialization === domain);
+
+
+
+  const [isSeeProfileModalOpen, setIsSeeProfileModalOpen] = useState(false)
+
+  const handleSeeProfileClick = () => {
+    console.log("See Profile clicked");
+    setIsSeeProfileModalOpen(true);
+  };
 
   return (
     <>
@@ -61,41 +70,44 @@ function Doctor_cards() {
         </div>
 
         <div className="doctors-list">
-          {/* Map through the filtered doctors and display information */}
-          {filteredDoctors.map((doctor, index) => {
-            // Construct the image path dynamically based on doctor's name
+          {filteredDoctors.length > 0 ? (
+            // Map through the filtered doctors and display information
+            filteredDoctors.map((doctor, index) => {
+              let imageUrl;
+              try {
+                imageUrl = require(`../assets/images/Doctors/${doctor.name}.png`);
+              } catch (error) {
+                console.error(`Image not found for ${doctor.name}`);
+                imageUrl = 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+              }
 
-
-
-            // Try to load .png, if not found, provide a predefined fallback
-            let imageUrl;
-            try {
-              imageUrl = require(`../assets/images/Doctors/${doctor.name}.png`);
-            } catch (error) {
-              // If .png is not found, provide a predefined fallback
-              console.error(`Image not found for ${doctor.name}`);
-              imageUrl = 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'; // Replace with your fallback image path
-            }
-
-            return (
-              <div key={index} className="doctor-card">
-                <div className="doctor_card_image_div" style={{ backgroundImage: `url(${imageUrl})` }}>
-                </div>
-                <div className="below_image_div">
-                  <h2>{doctor.name}</h2>
-                  <p>⭐⭐⭐⭐⭐</p>
-                  <div className="doctor-cards-button-divs">
-                    <button>View Profile</button>
-                    <button>Book Appointment</button>
+              return (
+                <div key={index} className="doctor-card">
+                  <div className="doctor_card_image_div" style={{ backgroundImage: `url(${imageUrl})` }}>
+                  </div>
+                  <div className="below_image_div">
+                    <h2>{doctor.name}</h2>
+                    <p>⭐⭐⭐⭐⭐</p>
+                    <div className="doctor-cards-button-divs">
+                      <button onClick={handleSeeProfileClick}>View Profile</button>
+                      <button>Book Appointment</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            // Display a message when no doctors are available
+            <div className="no-doctors-message">
+              <h2>No doctors available in the selected domain.</h2>
+            </div>
+          )}
         </div>
+        {isSeeProfileModalOpen && (
           <div className="bookAppointment_modal_outerdiv">
-            
-          </div>
+            <h1>hello</h1>
+          </div>)}
+
       </div>
     </>
   );

@@ -63,7 +63,7 @@
     }
 
     to {
-        width: 87%;
+        width: 95%;
     }
 }
 
@@ -216,5 +216,15 @@
     background-color: #00586e;
   }
 
+.no-doctors-message{
+    text-align: center;
+    margin: auto;
+}
+.no-doctors-message h2{
+    font-size: 1.2rem;
+}
 
 
+.bookAppointment_modal_outerdiv{
+    height: 50vh;
+}
