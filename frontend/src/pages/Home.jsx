@@ -1,10 +1,12 @@
 // import basic
+import Axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+
 
 // import components
 import Navbar from "../components/Navbar";
@@ -21,10 +23,12 @@ import chat_bot_img from "../assets/images/feature-cards/chat-bot.png";
 import nearby_img from "../assets/images/feature-cards/nearby.png";
 import search_img from "../assets/images/feature-cards/search.png";
 import emergencyimg from "../assets/images/feature-cards/emergency.png";
+import { data } from "../doctor_data";
+import { medicalDomains } from "../domain_data";
+//to get all domains of specialization
 
 // import data files
 
-import { medicalDomains } from "../domain_data";
 
 function Home() {
 
@@ -214,7 +218,7 @@ function Home() {
                 <h1>Domains</h1>
 
               </div>
-              {medicalDomains.map((domain, index) => {
+              {data.map((domain, index) => {
                 let imagePath;
                 try {
                   imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
