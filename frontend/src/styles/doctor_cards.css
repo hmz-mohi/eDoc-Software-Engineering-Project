@@ -3,7 +3,7 @@
 }
 
 .viewdoctors_main_section {
-    height: 50vh;
+    height: 45vh;
     padding: 0 2%;
     background-repeat: no-repeat;
     background-color: #edf6ff;
@@ -75,9 +75,9 @@
     cursor: grab !important;
     justify-content: center;
     cursor: grab;
-    margin-top: -3em;
-    background-color: #edf6ff !important;
-    margin-bottom: 5em;
+    margin-top: -1em;
+    background-color: transparent;
+    margin-bottom: 2em;
 }
 
 
@@ -123,7 +123,6 @@
     width: 70%;
     justify-content: space-between;
     padding-bottom: 5em;
-    margin-top: -2em;
     
 }
 .doctor-card{
@@ -216,3 +215,6 @@
     background-clip: content-box;
     background-color: #00586e;
   }
+
+
+

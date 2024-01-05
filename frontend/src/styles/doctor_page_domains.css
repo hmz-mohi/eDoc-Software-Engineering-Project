@@ -31,10 +31,10 @@
 
 }
 
-.addmore{ 
+.addmores{ 
     padding: 0;
     padding-left: 1%;
-    padding-top: 0.5%;
+    padding-top: 0.5% !important;
     justify-content: center;
 }
 

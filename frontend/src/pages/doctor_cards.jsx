@@ -55,7 +55,7 @@ function Doctor_cards() {
             <Doctor_page_domains
               heading="All Doctors"
               to={`/Doctor_cards/null`}
-              className="addmore"
+              className="addmores"
             />
           </div>
         </div>
@@ -93,6 +93,9 @@ function Doctor_cards() {
             );
           })}
         </div>
+          <div className="bookAppointment_modal_outerdiv">
+            
+          </div>
       </div>
     </>
   );
