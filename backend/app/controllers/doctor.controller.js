@@ -10,7 +10,8 @@ exports.create = (req, res) => {
 exports.findAlldomains=async (req,res)=>{
     let domains= await db.doctors.findAll({attributes: [[db.Sequelize.fn('DISTINCT', db.Sequelize.col('doc_specialization')), 'doc_specialization']]})
     const specializationList = domains.map(doctor => doctor.doc_specialization);
-    res.send(specializationList)}
+    console.log(specializationList)
+    res.json(specializationList)}
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   

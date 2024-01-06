@@ -3,14 +3,45 @@ import "../styles/loginpage.css";
 import Navbar from "../components/Navbar";
 import google from '../assets/images/icons/google.png'
 import facebook from '../assets/images/icons/facebook.png'
-//hello this is the change rtvrv rgrg
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
-function LoginPage() {
+export default function LoginPage() {
   const [login, setLogin] = useState(true);
+  const [values, setValues] =useState({
+    email: '',
+    password: '',
+    Fname: '',
+    Lname: '',
+    contactno: '',
+    dob: ''
+  });
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
 
   const handleClick = () => {
     setLogin(!login);
   };
+  const handleSubmit = (event) =>{
+    event.preventDefault();
+    if(login===true){
+      axios.post('http://localhost:5000/auth/login',{'email':values['email'], 'password':values['password']})
+    .then(result => {
+      if(result.data.loginStatus == true){
+        navigate('/home')
+      }
+    })
+    .catch(err => console.log(err));
+    }else{
+      axios.post('http://localhost:5000/auth/signup',values)
+    .then(result => {
+      if(result.data.loginStatus == true){
+        navigate('/home')
+      }
+    })
+    .catch(err => console.log(err));
+    }
+  }
 
   return (
     <div className="Loginpage_main_section">
@@ -23,7 +54,7 @@ function LoginPage() {
             {/* <p>
               {login
                 ? "hello this is sign in form you need to sign in to see our services and book our appointments"
-                : "hello this is siecervevv  gn up form you need to sign up to see our services and book our appointments"}
+                : "hello this is sign up form you need to sign up to see our services and book our appointments"}
             </p> */}
           </div>
           {login ? "" : <div className="inpDiv fullname">
@@ -32,16 +63,16 @@ function LoginPage() {
               <label>Last Name</label>
             </div>
             <div className="Inputs">
-              <input type="text" placeholder="Enter your First Name" />
-              <input type="text" placeholder="Enter your last Name" />
+              <input type="text" onChange={(e) => setValues({...values, Fname : e.target.value})} placeholder="Enter your First Name" />
+              <input type="text" onChange={(e) => setValues({...values, lname : e.target.value})} placeholder="Enter your last Name" />
             </div>
             <div className="labels" style={{ width: "59%" }}>
               <label>Contact Number</label>
               <label>Date of Birth</label>
             </div>
             <div className="Inputs">
-              <input type="tel" placeholder="Enter your Contact Number" />
-              <input type="date" placeholder="Enter your Date of Birth" />
+              <input type="tel" onChange={(e) => setValues({...values, contactno : e.target.value})} placeholder="Enter your Contact Number" />
+              <input type="date" onChange={(e) => setValues({...values, dob : e.target.value})} placeholder="Enter your Date of Birth" />
             </div>
 
 
@@ -49,23 +80,23 @@ function LoginPage() {
 
           <div className="inpDiv">
             <label>Your Email</label>
-            <input type="email" placeholder="Enter your Email" />
+            <input type="email" onChange={(e) => setValues({...values, email : e.target.value})} placeholder="Enter your Email" />
           </div>
           <div className="inpDiv">
             <label>Your password</label>
-            <input type="password" placeholder="Enter your Password" />
+            <input type="password" onChange={(e) => setValues({...values, password : e.target.value})} placeholder="Enter your Password" />
           </div>
 
-          <button className="login-signupbtn">
+          <button className="login-signupbtn" onClick={handleSubmit}>
             {login ? "SIGN IN" : "SIGN UP"}
           </button>
           {!login? "" : <div className="google-facebook-button" style={{ display: 'flex', marginTop: "5%" }}>
             <button class="button-google">
-              <img src={google} style={{ width: "9%" }} alt="" srcset="" />
+              <img src={google} style={{ width: "9%" }} alt="" srcSet="" />
               Login with Google
             </button>
             <button class="button-google">
-              <img src={facebook} style={{ width: "12%" }} alt="" srcset="" />
+              <img src={facebook} style={{ width: "12%" }} alt="" srcSet="" />
               Login with Facebook
             </button>
           </div> }
@@ -86,9 +117,5 @@ function LoginPage() {
     </div>
   );
 }
-
-export default LoginPage;
-
-
 
 

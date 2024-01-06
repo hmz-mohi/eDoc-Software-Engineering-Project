@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useDraggable } from "react-use-draggable-scroll";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 // import components
@@ -30,6 +31,23 @@ import { medicalDomains } from "../domain_data";
 
 
 function Home() {
+  const [medicalDomains, setMedicalDomains] = useState([]);
+
+  useEffect(() => {
+    const fetchMedicalDomains = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/doctors/domains');
+        const data = response.data;
+
+        setMedicalDomains(data);
+      } catch (error) {
+        console.error('Error while fetching medical domains:', error);
+      }
+    };
+
+    fetchMedicalDomains();
+  }, []);
+
 
   // to apply drag effect on scrolls
 

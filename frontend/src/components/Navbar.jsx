@@ -31,7 +31,7 @@ function NavScrollExample(props) {
               {" "}
               Home
             </Link>
-            <Link className="nav-text-para" to="/login">
+            <Link className="nav-text-para" to="/auth">
               {" "}
               ChatBot
             </Link>
@@ -40,7 +40,7 @@ function NavScrollExample(props) {
                 {" "}
                 <p className="regdoc">Register as Doctor</p>
               </Link>)}
-            {login? ("") : (<Link className="nav-text-para loginbutton" to="/login">
+            {login? ("") : (<Link className="nav-text-para loginbutton" to="/auth">
               {" "}
               <p>Login</p>
             </Link>)}
