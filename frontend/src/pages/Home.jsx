@@ -24,7 +24,6 @@ import nearby_img from "../assets/images/feature-cards/nearby.png";
 import search_img from "../assets/images/feature-cards/search.png";
 import emergencyimg from "../assets/images/feature-cards/emergency.png";
 import { data } from "../doctor_data";
-import { medicalDomains } from "../domain_data";
 //to get all domains of specialization
 
 // import data files
@@ -235,7 +234,7 @@ function Home() {
                 <h1>Domains</h1>
 
               </div>
-              {data.map((domain, index) => {
+              {medicalDomains.map((domain, index) => {
                 let imagePath;
                 try {
                   imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
