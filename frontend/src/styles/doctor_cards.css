@@ -226,5 +226,8 @@
 
 
 .bookAppointment_modal_outerdiv{
+    position: fixed;
+    top: 0;
+    margin: auto;
     height: 50vh;
 }

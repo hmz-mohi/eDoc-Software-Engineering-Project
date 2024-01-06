@@ -104,7 +104,10 @@ function Doctor_cards() {
           )}
         </div>
         {isSeeProfileModalOpen && (
-          <div className="bookAppointment_modal_outerdiv">
+          <div className="bookAppointment_modal_outerdiv modals">
+            <div className="modals-content">
+              
+            </div>
             <h1>hello</h1>
           </div>)}
 
