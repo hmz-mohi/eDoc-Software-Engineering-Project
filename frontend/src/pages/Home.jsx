@@ -23,7 +23,6 @@ import chat_bot_img from "../assets/images/feature-cards/chat-bot.png";
 import nearby_img from "../assets/images/feature-cards/nearby.png";
 import search_img from "../assets/images/feature-cards/search.png";
 import emergencyimg from "../assets/images/feature-cards/emergency.png";
-import { data } from "../doctor_data";
 //to get all domains of specialization
 
 // import data files
@@ -127,9 +126,9 @@ function Home() {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
             repellendus eligendi{" "}
           </p>
-          <button class="cta">
+          <button className="cta">
             
-            <span class="hover-underline-animation"><Link style={{ textDecoration: 'none', color: "inherit" }} to="/Doctor_cards/null">Book Appointment</Link></span>
+            <span className="hover-underline-animation"><Link style={{ textDecoration: 'none', color: "inherit" }} to="/Doctor_cards/null">Book Appointment</Link></span>
             <svg
               id="arrow-horizontal"
               xmlns="http://www.w3.org/2000/svg"

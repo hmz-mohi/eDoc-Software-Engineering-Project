@@ -7,6 +7,8 @@ import { useDraggable } from "react-use-draggable-scroll";
 import { useRef } from "react";
 import { medicalDomains } from "../domain_data";
 import Doctor_page_domains from '../components/doctor_page_domains';
+import { useEffect } from 'react';
+import CalendarComp from '../components/Calendar';
 
 // ... (other imports)
 
@@ -24,14 +26,53 @@ function Doctor_cards() {
     ? data
     : data.filter(doctor => doctor.specialization === domain);
 
-
-
+  const [isBookAppDivOpen, setIsBookAppDivOpen] = useState(false)
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [isSeeProfileModalOpen, setIsSeeProfileModalOpen] = useState(false)
 
-  const handleSeeProfileClick = () => {
-    console.log("See Profile clicked");
+  const handleSeeProfileClick = (doctor) => {
+    setSelectedDoctor(doctor);
     setIsSeeProfileModalOpen(true);
   };
+  const handleBookAppClick = (doctor) => {
+    setSelectedDoctor(doctor);
+    setIsBookAppDivOpen(!isBookAppDivOpen);
+  };
+
+
+  const toggleModal = () => {
+    setIsSeeProfileModalOpen(!isSeeProfileModalOpen);
+  };
+
+
+  const handleEscapeKey = (event) => {
+    if (event.key === 'Escape') {
+      toggleModal();
+    }
+  };
+
+  // Close the modal when clicking outside the modal content
+  const handleOutsideClick = (event) => {
+    if (event.target.classList.contains('bookAppointment_modal_outerdiv')) {
+      toggleModal();
+    }
+  };
+
+  useEffect(() => {
+    if (isSeeProfileModalOpen) {
+      // Add event listeners when the modal is open
+      document.addEventListener('keydown', handleEscapeKey);
+      document.addEventListener('click', handleOutsideClick);
+    }
+
+    // Remove event listeners when the component is unmounted
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [isSeeProfileModalOpen, toggleModal]);
+
+
 
   return (
     <>
@@ -77,7 +118,6 @@ function Doctor_cards() {
               try {
                 imageUrl = require(`../assets/images/Doctors/${doctor.name}.png`);
               } catch (error) {
-                console.error(`Image not found for ${doctor.name}`);
                 imageUrl = 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
               }
 
@@ -89,8 +129,10 @@ function Doctor_cards() {
                     <h2>{doctor.name}</h2>
                     <p>⭐⭐⭐⭐⭐</p>
                     <div className="doctor-cards-button-divs">
-                      <button onClick={handleSeeProfileClick}>View Profile</button>
-                      <button>Book Appointment</button>
+                      <button onClick={() => handleSeeProfileClick(doctor)}>
+                        View Profile
+                      </button>
+                      <button onClick={() => handleBookAppClick(doctor)}>Book Appointment</button>
                     </div>
                   </div>
                 </div>
@@ -106,10 +148,60 @@ function Doctor_cards() {
         {isSeeProfileModalOpen && (
           <div className="bookAppointment_modal_outerdiv modals">
             <div className="modals-content">
-              
+              {(() => {
+                let imageUrl;
+                try {
+                  imageUrl = require(`../assets/images/Doctors/${selectedDoctor.name}.png`);
+                } catch (error) {
+                  imageUrl = 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+                }
+                return (
+                  <div className="main-div">
+                    <div className="left-div">
+                      <div className="image-div" style={{ backgroundImage: `url(${imageUrl})` }}>
+                      </div>
+                      <div className="text-div">                      
+                        <h6>{selectedDoctor.name}</h6>
+                        <p>{selectedDoctor.specialization}</p>
+                        <p>{selectedDoctor.doc_validity}</p>
+
+                      </div>
+                    </div>
+                    <div className="right-div">
+                      {/* Rendering certifications */}
+                      {selectedDoctor.doc_certification && selectedDoctor.doc_certification.length > 0 && (
+                        <div>
+                          <h6>Certifications:</h6>
+                          <ul>
+                            {selectedDoctor.doc_certification.map((cert, index) => (
+                              <li key={index}>{Object.values(cert)[0]}</li>
+                            ))}
+                          </ul>
+                          <p>name</p>
+                        <p>age</p>
+                        <p>experience</p>
+                        <p>rating</p>
+                        <p>education</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                );
+              })()}
             </div>
-            <h1>hello</h1>
-          </div>)}
+          </div>
+        )}
+        {isBookAppDivOpen && (
+        <div className="book-app-div">
+          <h1>Hello {selectedDoctor.name}</h1>
+          <div className="parent-div">
+            <CalendarComp/>
+          </div>
+        </div>
+        )}
+
+
 
       </div>
     </>
