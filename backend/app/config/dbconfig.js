@@ -1,7 +1,7 @@
 module.exports={
     HOST:"localhost",
     USER:"root",
-    PASSWORD:"mydbpassword",
+    PASSWORD:"zicre573wef0",
     DB:'edocexpertisedb',
     dialect:"mysql",
     pool:{
@@ -9,5 +9,4 @@ module.exports={
         min:0,
         acquire:30000,
         idle:10000
-
     }};

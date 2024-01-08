@@ -26,8 +26,8 @@ app.use(express.static("public"));
 app.use(cors());
 const db=require("./app/models");
 require("./app/routes/doctors.routes.js")(app);
-//require ("./app/routes/patient_login.route.js")(app);
-//require ("./app/routes/patient_register.route.js")(app);
+require ("./app/routes/patient_login.route.js")(app);
+require ("./app/routes/patient_register.route.js")(app);
 /* db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db."); */
 //});

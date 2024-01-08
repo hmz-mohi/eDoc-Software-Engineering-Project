@@ -18,7 +18,7 @@ function NavScrollExample(props) {
 
           <Navbar.Brand className="nav-heading">
             {" "}
-            <Link className="nav-heading" to="/home">
+            <Link className="nav-heading" to="/ ">
               eDoc
             </Link>{" "}
           </Navbar.Brand>
@@ -27,7 +27,7 @@ function NavScrollExample(props) {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav navbarScroll>
-            <Link className="nav-text-para" to="/home">
+            <Link className="nav-text-para" to="/">
               {" "}
               Home
             </Link>
