@@ -235,7 +235,7 @@ function Home() {
                 <h1>Domains</h1>
 
               </div>
-              {data.map((domain, index) => {
+              {medicalDomains.map((domain, index) => {
                 let imagePath;
                 try {
                   imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
