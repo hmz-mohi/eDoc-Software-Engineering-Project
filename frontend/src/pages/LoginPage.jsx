@@ -27,7 +27,7 @@ export default function LoginPage() {
     if(login===true){
       axios.post('http://localhost:5000/auth/login',{'email':values['email'], 'password':values['password']})
     .then(result => {
-      if(result.data.loginStatus == true){
+      if(result.data.loginStatus === true){
         navigate('/home')
       }
     })
@@ -35,7 +35,7 @@ export default function LoginPage() {
     }else{
       axios.post('http://localhost:5000/auth/signup',values)
     .then(result => {
-      if(result.data.loginStatus == true){
+      if(result.data.loginStatus === true){
         navigate('/home')
       }
     })
