@@ -9,11 +9,11 @@ const io = require("socket.io")(server, {
     origin: '*'
   }
 });
-/* app.use(cors({
+ app.use(cors({
   origin: ['http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT'],
   credentials: true
-})); */
+})); 
 app.use(express.json());
 
 const { ExpressPeerServer } = require("peer");
@@ -23,13 +23,13 @@ const opinions = {
 
 app.use("/peerjs", ExpressPeerServer(server, opinions));
 app.use(express.static("public"));
-app.use(cors());
+//app.use(cors());
 const db=require("./app/models");
 require("./app/routes/doctors.routes.js")(app);
 require ("./app/routes/patient_login.route.js")(app);
 require ("./app/routes/patient_register.route.js")(app);
-/* db.sequelize.sync({ force: false }).then(() => {
-  console.log("Drop and re-sync db."); */
+//db.sequelize.sync({ force: false }).then(() => {
+  //console.log("Drop and re-sync db."); 
 //});
 app.get("/genrateid", (req, res) => {
   res.redirect(`/${uuidv4()}`);
