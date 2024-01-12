@@ -1,3 +1,5 @@
+
+//all domains nikalna k lye
 module.exports=app=>{
 const doctors=require("../controllers/doctor.controller.js");
 var router =require("express").Router();

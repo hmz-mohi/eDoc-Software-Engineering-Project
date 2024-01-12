@@ -1,5 +1,6 @@
-const Doctor = require('./doctors.model');
+
 module.exports = (sequelize, Sequelize) => {
+const Doctor = require('./doctors.model.js');
 const BookingDoctor = sequelize.define('BookingDoctor', {
   bookingDocId: {
     type: Sequelize.INTEGER,
@@ -15,10 +16,12 @@ const BookingDoctor = sequelize.define('BookingDoctor', {
     allowNull: false,
   },
 });
-BookingDoctor.associate = (models) => {
-  BookingDoctore.belongsTo(models.Doctor, {foreignKey: 'ID'});
-  return BookingDoctor
 
-}};
+
+BookingDoctor.associate = (models) => {
+  BookingDoctor.belongsTo(models.Doctor, {foreignKey: 'doc_id'});
+}
+return BookingDoctor
+};
 
 

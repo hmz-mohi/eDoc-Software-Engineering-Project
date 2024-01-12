@@ -20,10 +20,6 @@
     },
   });
 
-  Slot.belongsTo(sequelize.models.BookingDoctor, {
-    foreignKey: 'doc_id',
-    onDelete: 'CASCADE',
-  });
-
+ 
   return Slot;
 };

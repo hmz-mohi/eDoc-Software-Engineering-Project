@@ -25,7 +25,7 @@ function SearchFeature() {
             {data.filter((item) => {
                 return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search)
             }).map((item) => (
-              <tr key={item.id}>
+              <tr key={item.doc_id}>
                 <td>{item.name}</td>
                 <td>{item.specialization}</td>
                 <td>{item.doc_email}</td>

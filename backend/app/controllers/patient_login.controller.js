@@ -10,15 +10,16 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.get_credentials_for_auth=async (req,res)=>{
-    const { username, password } = req.body;
+    const { email, password } = req.body;
     try {
     
         const user = await db.patients_data.findOne({
           where: {
-            pt_username: username,
+            pt_email: email,
             pt_password: password, // Assuming you have a password field in your User model
           },
         });
+        console.log(user)
         if(user){
             return true
             
@@ -35,10 +36,7 @@ exports.get_credentials_for_auth=async (req,res)=>{
         console.error('Error authenticating user:', error);
         throw error;
       }
-   // let domains= await db.doctors.findAll({attributes: [[db.Sequelize.fn('DISTINCT', db.Sequelize.col('doc_specialization')), 'doc_specialization']]})
-    //const specializationList = domains.map(doctor => doctor.doc_specialization);
-    //console.log(specializationList)
-    //res.json(specializationList)
+  
 }
 // Find a single Tutorial with an id
 exports.findOne = (req, res) => {

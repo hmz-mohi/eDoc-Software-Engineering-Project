@@ -5,33 +5,39 @@ module.exports=app=>{
     const express = require('express');
     const jwt = require('jsonwebtoken');
     var router =require("express").Router();
-    let usersdb = ["backend se data lana controller bna k"]
+    const register_controller=require("../controllers/patient_register.controller.js");
+   // let usersdb = ["backend se data lana controller bna k"]
     
-    const doesExist = (username)=>{
-        let userswithsamename = users.filter((user)=>{
-          return user.username === username
-        });
-        if(userswithsamename.length > 0){
-          return true;
-        } else {
-          return false;
-        }
-      }
-router.post("/signup", (req,res) => {
-        const username = req.body.username;
+  
+   
+
+router.post("/signup", async (req,res) => {
+  try{
+        const variable = await register_controller.doesexist(req, res);
+        const email = req.body.email;
         const password = req.body.password;
-        console.log(username)
-        if (username && password) {
-          
-          if (!doesExist(username)) { 
-            usersdb.push({"username":username,"password":password});
-            return res.status(200).json({message: "User successfully registred. Now you can login"});
-          } else {
-            return res.status(404).json({message: "User already exists!"});    
+        console.log(email)
+        if(!variable){
+          console.log("not entering")
+          return res.status(404).json({message: "User already exists!"});  
+        }
+        else{
+          console.log("entering")
+          const variable=await register_controller.create(req,res)
+          if(variable=="new_patient_registered"){
+            console.log("onn scene")
+            res.json("user_registered")
           }
-        } 
-        return res.status(404).json({message: "Unable to register user."});
-      });
+          else{
+            res.json("error_registering_patient")
+          }
+        }
+      
+      }
+      catch (error) {
+        console.error('Error authenticating user:', error);
+        throw error;
+      }});
     //router.post('/login', (req, res) => {
       //  console.log(req.body);
         // const sql = 'SELECT * from reg_patients where email = ? password + ?'

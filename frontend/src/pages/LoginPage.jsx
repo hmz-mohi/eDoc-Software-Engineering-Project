@@ -27,15 +27,15 @@ export default function LoginPage() {
     if(login===true){
       console.log("idher hn meon")
      
-      const decide =await axios.post('http://localhost:5000/auth/login',{'username':values['email'], 'password':values['password']})
+      const decide =await axios.post('http://localhost:5000/auth/login',{'email':values['email'], 'password':values['password']})
      
       console.log(decide.data)
-      if(decide.data=="true user"){
+      if(decide.data[0]=="true user"){
         console.log("it is true user")
         
        navigate('/home')
       }
-      if(decide.data=="false user"){
+      if(decide.data[0]=="false user"){
         console.log("it is false user")
       }}
     
@@ -72,7 +72,7 @@ export default function LoginPage() {
             </div>
             <div className="Inputs">
               <input type="text" onChange={(e) => setValues({...values, Fname : e.target.value})} placeholder="Enter your First Name" />
-              <input type="text" onChange={(e) => setValues({...values, lname : e.target.value})} placeholder="Enter your last Name" />
+              <input type="text" onChange={(e) => setValues({...values, Lname : e.target.value})} placeholder="Enter your last Name" />
             </div>
             <div className="labels" style={{ width: "59%" }}>
               <label>Contact Number</label>

@@ -1,7 +1,7 @@
 export const data = [{
-  "name": "doctor",
+  "name": "usaid",
   "doc_id": "hmz05",
-  "specialization": "Orthopedics",
+  "specialization": "Cardiologist",
   "doc_username": "dtrainor0",
   "doc_password": "cB5<?HPrp@cM4",
   "doc_validity": "6/23/2023",
@@ -35,7 +35,7 @@ export const data = [{
 }, {
   "name": "Dore Winyard",
   "doc_id": "hmz05",
-  "specialization": "blandit mi in porttitor pede justo eu massa donec dapibus duis at velit eu est congue elementum in hac habitasse",
+  "specialization": "Cardiologist",
   "doc_username": "dwinyard1",
   "doc_password": "gZ3>)zO\\11YnZDb",
   "doc_validity": "10/8/2023",

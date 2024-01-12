@@ -28,6 +28,8 @@ const db=require("./app/models");
 require("./app/routes/doctors.routes.js")(app);
 require ("./app/routes/patient_login.route.js")(app);
 require ("./app/routes/patient_register.route.js")(app);
+require ("./app/routes/booking_doctor_data.route.js")(app);
+require ("./app/routes/emergency_doctor_data.route.js")(app);
 //db.sequelize.sync({ force: false }).then(() => {
   //console.log("Drop and re-sync db."); 
 //});
@@ -57,16 +59,6 @@ app.get("/:room", (req, res) => {
     });
   }); */
   
-app.post("/login",(req,res)=>{
-  print("azher ka code dalna")
 
-})
-app.post("/signup",(req,res)=>{
-  print("azher ka code dalna")
-
-})
-app.get("/",(req,res)=>{
-  res.json({message:"hello i am here "})
-})
 
 server.listen(process.env.PORT || 5000);

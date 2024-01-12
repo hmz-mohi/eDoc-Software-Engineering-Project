@@ -5,14 +5,32 @@ import "../styles/doctor_cards.css";
 import { data } from "../doctor_data";
 import { useDraggable } from "react-use-draggable-scroll";
 import { useRef } from "react";
-import { medicalDomains } from "../domain_data";
+//import { medicalDomains } from "../domain_data";
 import Doctor_page_domains from '../components/doctor_page_domains';
 import { useEffect } from 'react';
 import CalendarComp from '../components/Calendar';
-
+import axios from "axios";
+                               
 // ... (other imports)
 
 function Doctor_cards() {
+  const [medicalDomains, setMedicalDomains] = useState([]);
+
+  useEffect(() => {
+    const fetchMedicalDomains = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/doctors/domains');
+        const data = response.data;
+        console.log(response.data)
+
+        setMedicalDomains(data);
+      } catch (error) {
+        console.error('Error while fetching medical domains:', error);
+      }
+    };
+
+    fetchMedicalDomains();
+  }, []);
 
   // to apply drag effect on scrolls
 
@@ -35,6 +53,8 @@ function Doctor_cards() {
     setIsSeeProfileModalOpen(true);
   };
   const handleBookAppClick = (doctor) => {
+    // idher krn hai axios 
+    
     setSelectedDoctor(doctor);
     setIsBookAppDivOpen(!isBookAppDivOpen);
   };
