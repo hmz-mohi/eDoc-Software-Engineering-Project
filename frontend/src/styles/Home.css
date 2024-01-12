@@ -3,7 +3,7 @@
 
 .main-section {
   --slideshow-home: slideshow-home 16s infinite;
-  height: 55vh;
+  height: 50vh;
   display: flex;
   justify-content: space-evenly;
   width: 100%;
@@ -108,7 +108,7 @@
 
 @keyframes slideshow-home  {
     0%, 20% {
-        background-image: url('../assets/images/Homepageb3.jpg');
+        background-image: url('../assets/images/bgdoctor.png');
     }
     25%, 45% {
         background-image: url('https://cdn.dribbble.com/users/674925/screenshots/5641807/media/5ca551b7fa2aa8c67fa9072088d68ffb.jpg?resize=1000x750&vertical=center');
@@ -117,13 +117,12 @@
         background-image: url('../assets/images/download.png');
     }
     75%, 100% {
-        background-image: url('../assets/images/Homepagebg4.jpg');
+        background-image: url('../assets/images/bgdoctor-2.png');
     }
 }
 
 
 .services_section{
-  padding-top: 2%;
   display: flex;
   margin: 3em auto;
   flex-direction: column;

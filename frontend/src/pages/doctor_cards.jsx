@@ -97,7 +97,7 @@ function Doctor_cards() {
   return (
     <>
       <div className='viewdoctors_main_section'>
-        <Navbar />
+        <Navbar className="special" />
         <div>
           <div className="doctor_header_text">
             <h1>Your Health is Our Priority!!</h1>
