@@ -30,9 +30,9 @@ require ("./app/routes/patient_login.route.js")(app);
 require ("./app/routes/patient_register.route.js")(app);
 require ("./app/routes/booking_doctor_data.route.js")(app);
 require ("./app/routes/emergency_doctor_data.route.js")(app);
-//db.sequelize.sync({ force: false }).then(() => {
-  //console.log("Drop and re-sync db."); 
-//});
+// db.sequelize.sync({ force: false }).then(() => {
+//   console.log("Drop and re-sync db."); 
+// });
 app.get("/genrateid", (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });

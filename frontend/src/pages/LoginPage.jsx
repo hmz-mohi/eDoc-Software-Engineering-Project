@@ -32,24 +32,25 @@ export default function LoginPage() {
       console.log(decide.data)
       if(decide.data[0]=="true user"){
         console.log("it is true user")
+        const username="hamza"
+        sessionStorage.setItem("username", username)
         
        navigate('/home')
       }
       if(decide.data[0]=="false user"){
-        console.log("it is false user")
+        alert("it is false user")
       }}
     
     else{
-      axios.post('http://localhost:5000/auth/signup',values)
-    .then(result => {
-      if(result.data.loginStatus ===true){
+      const check =  await axios.post('http://localhost:5000/auth/signup',values)
+      
+      if(check.data == 'user_registered'){
         console.log("hello mother ficjer")
-        //navigate('/home')
+        navigate('/home')
       }
-    })
-    .catch(err => console.log(err));
     }
-  }
+    }
+  
 
   return (
     <div className="Loginpage_main_section">
@@ -59,11 +60,6 @@ export default function LoginPage() {
           <h1>{login ? "SIGN IN" : "SIGN UP"}</h1>
           <hr style={{width: "50%", marginLeft: "20%"}}/>
           <div className="paralogin-signuptext">
-            {/* <p>
-              {login
-                ? "hello this is sign in form you need to sign in to see our services and book our appointments"
-                : "hello this is sign up form you need to sign up to see our services and book our appointments"}
-            </p> */}
           </div>
           {login ? "" : <div className="inpDiv fullname">
             <div className="labels">
