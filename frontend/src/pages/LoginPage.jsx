@@ -30,6 +30,8 @@ export default function LoginPage() {
       const decide =await axios.post('http://localhost:5000/auth/login',{'email':values['email'], 'password':values['password']})
      
       console.log(decide.data)
+      const username=decide.data[1]
+      console.log(username)
       if(decide.data[0]=="true user"){
         console.log("it is true user")
         
@@ -40,15 +42,14 @@ export default function LoginPage() {
       }}
     
     else{
-      axios.post('http://localhost:5000/auth/signup',values)
-    .then(result => {
-      if(result.data.loginStatus ===true){
+      const check=await axios.post('http://localhost:5000/auth/signup',values)
+   
+      if(check.data=="user_registered"){
         console.log("hello mother ficjer")
-        //navigate('/home')
+        navigate('/home')
       }
-    })
-    .catch(err => console.log(err));
     }
+
   }
 
   return (

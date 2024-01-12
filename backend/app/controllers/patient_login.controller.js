@@ -21,7 +21,9 @@ exports.get_credentials_for_auth=async (req,res)=>{
         });
         console.log(user)
         if(user){
-            return true
+          const username = user.pt_name;
+          console.log(username)
+            return [true,username]
             
 
         }

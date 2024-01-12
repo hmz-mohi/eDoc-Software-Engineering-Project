@@ -31,14 +31,15 @@ exports.create = async (req, res) => {
 
   // Insert the new patient data into the reg_patient model
   await db.patients_data.create(newPatient)
-    .then(patient => {
+  return "new_patient_registered"
+   /*  .then(patient => {
       //res.status(201).json({ success: true, data: patient });
       return "new_patient_registered"
-    })
+  
     .catch(error => {
       console.error('Error creating patient:', error);
       res.status(500).json({ success: false, message: 'Internal server error' });
-    });
+    }); */
 };
 
 // Retrieve all Tutorials from the database.
