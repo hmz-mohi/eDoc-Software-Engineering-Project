@@ -30,6 +30,8 @@ export default function LoginPage() {
       const decide =await axios.post('http://localhost:5000/auth/login',{'email':values['email'], 'password':values['password']})
      
       console.log(decide.data)
+      const username=decide.data[1]
+      console.log(username)
       if(decide.data[0]=="true user"){
         console.log("it is true user")
         const username="hamza"
@@ -49,8 +51,7 @@ export default function LoginPage() {
         navigate('/home')
       }
     }
-    }
-  
+  }
 
   return (
     <div className="Loginpage_main_section">

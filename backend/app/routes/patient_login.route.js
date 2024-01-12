@@ -17,17 +17,18 @@ router.post("/login",async(req,res)=>{
     console.log(result)
 
 // Check the result and send an appropriate response
-    if (result) {
+    if (result[0]) {
+      username=result[1]
         let accessToken = jwt.sign({
         data: password
       }, 'access', { expiresIn: 60 * 60 });
   
       req.session.authorization = {
-     accessToken//name dalna hai 
+     accessToken,username//name dalna hai 
     }
    // console.log(req.session.authorization)
    // res.json(["true user",req.session.authorization.username]);
-   res.json(["true user"]);
+   res.json(["true user",username]);
     }
       //ores.status(200).json({ success: true, message: "Login successful" });
     //} else if (result === "username password incorrect") {
