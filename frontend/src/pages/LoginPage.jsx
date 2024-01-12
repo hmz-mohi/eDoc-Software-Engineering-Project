@@ -31,11 +31,14 @@ export default function LoginPage() {
      
       console.log(decide.data)
       const username=decide.data[1]
+      const email = decide.data[2]
       console.log(username)
+
       if(decide.data[0]=="true user"){
         console.log("it is true user")
-        const username="hamza"
         sessionStorage.setItem("username", username)
+        sessionStorage.setItem("email", email)
+
         
        navigate('/home')
       }
@@ -44,9 +47,9 @@ export default function LoginPage() {
       }}
     
     else{
-      const check =  await axios.post('http://localhost:5000/auth/signup',values)
+      const check =await axios.post('http://localhost:5000/auth/signup',values)
       
-      if(check.data == 'user_registered'){
+      if(check.data=="user_registered"){
         console.log("hello mother ficjer")
         navigate('/home')
       }

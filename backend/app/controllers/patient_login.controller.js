@@ -22,8 +22,9 @@ exports.get_credentials_for_auth=async (req,res)=>{
         console.log(user)
         if(user){
           const username = user.pt_name;
+          const email = user.pt_email
           console.log(username)
-            return [true,username]
+            return [true,username,email]
             
 
         }
