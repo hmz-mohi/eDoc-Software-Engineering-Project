@@ -5,6 +5,8 @@ import App from './App';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import Doctor_cards from './pages/doctor_cards';
+import DoctorDashboard from './pages/DoctorDashboard';
+import DoctorAuth from './pages/DoctorAuth';
 
 
 //importing react routers
@@ -12,6 +14,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
 
 
 const router = createBrowserRouter([
@@ -33,7 +36,18 @@ const router = createBrowserRouter([
   {
     path: "/Doctor_cards/:domain",
     element: <Doctor_cards/>,
-  } 
+  },
+  {
+    path: "/Doctor_Dashboard",
+    element:<DoctorDashboard/>
+  },
+  {
+  path:"/regasdoctor",
+  element:<DoctorAuth/>,
+  },
+
+  
+
 
 
 ]);

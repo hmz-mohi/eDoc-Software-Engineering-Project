@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+.custnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.3rem 2%;
+  background-color: #0092b3;
+}
+.NavHeader {
+  display: flex;
+  align-items: center;
+}
+.NavHeader img {
+  width: 3rem;
+}
+.NavHeader h1 {
+  margin-left: 0.5rem;
+  font-size: 1.6rem;
+  color: white;
+}
+.NavElements {
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  width: 12vw;
+  margin-right: 2rem;
+  margin-left: auto;
+}
+.NavElements p {
+  margin: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: white;
+}
+.doctor-dashboard {
+  padding-top: 2%;
+  padding-left: 7%;
+}
+.doctor-dashboardbutton {
+  background-image: url(../assets/images/Doctors/Lorain.png);
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  border-radius: 50% !important;
+  width: 30px;
+  height: 30px;
+  border: none;
+  font-size: 1.2rem;
+}
+.doctor-dashboardbutton:hover {
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+.modals {
+  border-radius: 30px !important;
+  background: none !important;
+  z-index: 1;
+  width: 20vw !important;
+}
+.doctor-profile-modal .modals-content {
+  position: absolute;
+  left: 76rem;
+  padding: 0%;
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+  height: 45vh;
+  top: 4rem;
+  width: 15vw !important;
+}
+.doctor-profile-top-div {
+  display: flex;
+  justify-content: center;
+  height: 20%;
+  background-color: #EDF6FF;
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+}
+.doctor-profile-top-div button {
+  margin-top: 2.6rem;
+  width: 50px;
+  height: 50px;
+}
+.doctor-top-div-details {
+  font-family: 'Comfortaa', sans-serif;
+  display: flex;
+  padding-top: 9.6%;
+  flex-direction: column;
+  text-align: center;
+}
+.doctor-top-div-details :first-child {
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 0.7rem;
+  color: black;
+}
+.doctor-top-div-details :nth-child(2) {
+  padding: 0;
+  margin: 0;
+  color: black;
+  font-size: 0.7rem;
+  margin-bottom: 3%;
+}
+.updateprofilebtn {
+  padding-left: 7%;
+  display: flex;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.updateprofilebtn p {
+  color: black;
+  font-weight: 900;
+  margin: auto;
+  padding: 0%;
+  font-size: 0.6rem;
+}
+.profile-div img {
+  margin-right: 0.4rem;
+  width: 1.2rem;
+}
+.profile-div {
+  margin-top: 6%;
+}
+.updateprofilebtn:hover p {
+  transition: 0.3s ease-in-out;
+  transform: translateX(0.5rem);
+}
+.application-div p {
+  margin-bottom: 10%;
+  font-size: 0.7rem;
+  color: #616161;
+}
+.Btn {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: #0092b3;
+}
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sign svg {
+  width: 13px;
+}
+.sign svg path {
+  fill: white;
+}
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 0.8em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+.Btn:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+.Btn:active {
+  transform: translate(2px, 2px);
+}

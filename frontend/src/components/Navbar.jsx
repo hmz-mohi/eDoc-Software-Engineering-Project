@@ -9,7 +9,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 function NavScrollExample(props) {
-  const login = true;
+  const login = false;
   const [isuserDashboardOpen, setUserDashboardOpen] = useState(false);
 
   const handleDashboardClick = () => {
@@ -17,7 +17,7 @@ function NavScrollExample(props) {
   };
 
   return (
-    <Navbar className={`${props.className}`}>
+    <Navbar className={`fixed-top ${props.className}`}>
       <div className="brand">
         <img src={iconimg} style={{ width: "8%", height: "8%" }} alt="" />
 
@@ -41,17 +41,8 @@ function NavScrollExample(props) {
             ChatBot
           </Link>
           {login ? (
-            <div className="user-dashboard">
-              <button onClick={handleDashboardClick}></button>
-
-              {isuserDashboardOpen && (
-                <div className="modal-container">
-                  <div className="modals">
-                    <p>Hello, this is the modal content!</p>
-                    <button onClick={handleDashboardClick}>Close Modal</button>
-                  </div>
-                </div>
-              )}
+            <div className="nav-text-para">
+              <img src={require('../assets/images/icons/notification.png')} style={{ width: '20px' }} />
             </div>
           ) : (
             <Link className="nav-text-para" to="/regasdoctor">
@@ -60,7 +51,19 @@ function NavScrollExample(props) {
             </Link>
           )}
           {login ? (
-            ""
+            <div className="user-dashboard">
+              <button onClick={handleDashboardClick}></button>
+
+              {isuserDashboardOpen && (
+                <div className="user-profile-modal modals">
+                  <div className="modals-content">
+                    <div className="user-profile-top-div">
+                      <button onClick={handleDashboardClick}></button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           ) : (
             <Link className="nav-text-para loginbutton" to="/auth">
               {" "}
