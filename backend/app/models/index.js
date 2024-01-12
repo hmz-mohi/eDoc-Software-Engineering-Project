@@ -22,11 +22,12 @@ db.sequelize = sequelize;
 
 db.tutorials = require("./admin.model.js")(sequelize, Sequelize);
 db.doctors = require("./doctors.model.js")(sequelize, Sequelize);
-db.tutorials = require("./emergency_doctor.model.js")(sequelize, Sequelize);
-db.tutorials = require("./certification.model.js")(sequelize, Sequelize);
-db.tutorials = require("./booking_doctor.model.js")(sequelize, Sequelize);
-db.tutorials = require("./salary.model.js")(sequelize, Sequelize);
-db.tutorials = require("./slot.model.js")(sequelize, Sequelize);
+db.patients_data = require("./reg_patient.model.js")(sequelize, Sequelize);
+//db.tutorials = require("./emergency_doctor.model.js")(sequelize, Sequelize);
+//db.tutorials = require("./certification.model.js")(sequelize, Sequelize);
+//db.tutorials = require("./booking_doctor.model.js")(sequelize, Sequelize);
+//db.tutorials = require("./salary.model.js")(sequelize, Sequelize);
+//db.tutorials = require("./slot.model.js")(sequelize, Sequelize);
 
 
 

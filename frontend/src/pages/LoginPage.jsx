@@ -22,21 +22,29 @@ export default function LoginPage() {
   const handleClick = () => {
     setLogin(!login);
   };
-  const handleSubmit = (event) =>{
+  const handleSubmit =async (event) =>{
     event.preventDefault();
     if(login===true){
-      axios.post('http://localhost:5000/auth/login',{'email':values['email'], 'password':values['password']})
-    .then(result => {
-      if(result.data.loginStatus === true){
-        navigate('/home')
+      console.log("idher hn meon")
+     
+      const decide =await axios.post('http://localhost:5000/auth/login',{'username':values['email'], 'password':values['password']})
+     
+      console.log(decide.data)
+      if(decide.data=="true user"){
+        console.log("it is true user")
+        
+       navigate('/home')
       }
-    })
-    .catch(err => console.log(err));
-    }else{
+      if(decide.data=="false user"){
+        console.log("it is false user")
+      }}
+    
+    else{
       axios.post('http://localhost:5000/auth/signup',values)
     .then(result => {
-      if(result.data.loginStatus === true){
-        navigate('/home')
+      if(result.data.loginStatus ===true){
+        console.log("hello mother ficjer")
+        //navigate('/home')
       }
     })
     .catch(err => console.log(err));

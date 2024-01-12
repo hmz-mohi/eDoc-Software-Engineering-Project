@@ -36,6 +36,7 @@ function Home() {
       try {
         const response = await axios.get('http://localhost:5000/api/doctors/domains');
         const data = response.data;
+        console.log(response.data)
 
         setMedicalDomains(data);
       } catch (error) {
