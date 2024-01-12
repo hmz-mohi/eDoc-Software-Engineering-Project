@@ -2,14 +2,21 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 import iconimg from "../assets/images/icons/stethoscope.png";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import axios from 'axios'
 
 function NavScrollExample(props) {
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
+
   const handleLogoutClick = ()=>{
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("email");
+    navigate('/home')
     
   }
 
