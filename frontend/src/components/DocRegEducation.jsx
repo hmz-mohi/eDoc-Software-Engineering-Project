@@ -53,11 +53,11 @@ function DocRegEducation() {
           />
         </div>
         {/* Display the selected file names */}
-        <div>
+        {/* <div>
           {certificationFiles.length > 0 && (
             <p>Selected Files: {certificationFiles.join(', ')}</p>
           )}
-        </div>
+        </div> */}
 
       </div>
     </div>

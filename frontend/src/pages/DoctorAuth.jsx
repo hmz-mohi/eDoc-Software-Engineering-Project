@@ -8,6 +8,7 @@ import DocRegCred from '../components/DocRegCred';
 import DocRegEducation from '../components/DocRegEducation';
 
 function DoctorAuth() {
+    const [DoctorAuth, setDoctorAuth] = useState(true)
     return (
         <div>
             <div className="doctor-auth-top-section">
