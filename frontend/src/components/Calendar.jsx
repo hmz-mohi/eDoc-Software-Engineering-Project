@@ -3,7 +3,10 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import '../styles/CalendarComp.css'
 
-function CalendarComp() {
+function CalendarComp(props) {
+    const Doctor = props.doctor
+    console.log(Doctor)
+
     const today = new Date();
     const oneMonthLater = new Date();
     oneMonthLater.setMonth(today.getMonth() + 1);
@@ -28,10 +31,17 @@ function CalendarComp() {
         }
     };
 
+
+
     return (
         <div>
             <div className="component-parent-div">
                 <div className="calendar-div">
+                    <div className="calender-div-text">
+                    <h4>Select the date to book appointment</h4>
+                    </div>
+                    <hr />
+
                     <Calendar
                         onChange={onChange}
                         value={selectedDate}
@@ -39,11 +49,26 @@ function CalendarComp() {
                         tileClassName={tileClassName}
                         showNeighboringMonth={false}
                         minDate={new Date()}
+                        className="BookingCalender"
                     />
                 </div>
                 <div className="slots-div">
-                    <h1>Slots for {selectedDate.toDateString()} </h1>
+                <div className="calender-div-text">
+                    <h4>Slots for {selectedDate.toDateString()}</h4>
+                    </div>
+                    <hr />
+                    <div className="slots-container">
+                    {Doctor && Doctor.slots
+                        ? Doctor.slots.map((slot, index) => (
+                            <button key={index}>
+                                {slot.start} - {slot.end}
+                            </button>
+                        ))
+                        : 'No slots available'}
+                    </div>
+                    
                 </div>
+
             </div>
 
         </div>

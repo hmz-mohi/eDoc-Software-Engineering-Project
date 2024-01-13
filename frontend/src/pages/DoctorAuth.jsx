@@ -1,26 +1,13 @@
 import React, { useState } from 'react'
-import ReactPaginate from 'react-paginate';
+import Accordion from 'react-bootstrap/Accordion';
 import '../styles/DoctorAuth.css'
 import DocRegIntro from '../components/DocRegIntro'
 import DocRegContact from '../components/DocRegContact'
 import DocRegAdditional from '../components/DocRegAdditional';
 import DocRegCred from '../components/DocRegCred';
+import DocRegEducation from '../components/DocRegEducation';
+
 function DoctorAuth() {
-
-    const componentsArray = [DocRegIntro, DocRegContact, DocRegCred, DocRegAdditional];
-
-    const [currentPage, setCurrentPage] = useState(0);
-    const itemsPerPage = 2;
-    const pageCount = Math.ceil(componentsArray.length / itemsPerPage);
-
-    const handlePageChange = ({ selected }) => {
-        setCurrentPage(selected);
-    };
-
-    const startIndex = currentPage * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const displayedComponents = componentsArray.slice(startIndex, endIndex);
-
     return (
         <div>
             <div className="doctor-auth-top-section">
@@ -31,18 +18,39 @@ function DoctorAuth() {
             </div>
             <div className="doctor-auth-form-section">
                 <div className="formdiv">
-                    {displayedComponents.map((Component, index) => (
-                        <Component key={index} />
-                    ))}
-                    <ReactPaginate
-                        pageCount={pageCount}
 
-                        onPageChange={handlePageChange}
-                        containerClassName={'PaginationContainer'}
-                        activeClassName={'active'}
-                        previousLabel={<span className="previous-button">Previous</span>}
-                        nextLabel={<span className="next-button">Next</span>}
-                    />
+                    <Accordion defaultActiveKey="0" flush>
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Doctor's Introduction</Accordion.Header>
+                            <Accordion.Body>
+                                <DocRegIntro />
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header>Contact Details</Accordion.Header>
+                            <Accordion.Body>
+                                <DocRegContact />
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header>Education & Qualification</Accordion.Header>
+                            <Accordion.Body>
+                                <DocRegEducation />
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="3">
+                            <Accordion.Header>Additional Details</Accordion.Header>
+                            <Accordion.Body>
+                                <DocRegAdditional />
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="4">
+                            <Accordion.Header>Credential Part</Accordion.Header>
+                            <Accordion.Body>
+                                <DocRegCred />
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
 
                 </div>
                 <div className='image-div'>

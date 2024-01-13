@@ -171,7 +171,6 @@ function Home() {
             img={emergencyimg}
             btn_text="Consult"
           />
-          <Feature heading="Chatbot" img={chat_bot_img} btn_text="Interact" />
           <Feature
             heading="Nearby Clinics"
             className="custom_css"
@@ -206,7 +205,7 @@ function Home() {
               imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
             } catch (error) {
               // If the image doesn't exist, fallback to the plus image
-              imagePath = require("../assets/images/icons/plus.png");
+              imagePath = require("../assets/images/Domains/fallback.png");
             }
             return (
               <Domain
@@ -240,7 +239,7 @@ function Home() {
                   imagePath = require(`../assets/images/Domains/${domain.toLowerCase()}.png`);
                 } catch (error) {
                   // If the image doesn't exist, fallback to the plus image
-                  imagePath = require("../assets/images/icons/plus.png");
+                  imagePath = require("../assets/images/Domains/fallback.png");
                 }
 
                 return (
@@ -256,6 +255,8 @@ function Home() {
           </div>
         )}
       </div>
+
+      
 
     </div>
   );
