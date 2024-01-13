@@ -33,7 +33,7 @@ require ("./app/routes/emergency_doctor_data.route.js")(app);
 // db.sequelize.sync({ force: false }).then(() => {
 //   console.log("Drop and re-sync db."); 
 // });
-app.get("/genrateid", (req, res) => {
+app.get("/", (req, res) => {
   res.redirect(`/${uuidv4()}`);
 });
 
@@ -41,7 +41,7 @@ app.get("/:room", (req, res) => {
   res.render("room", { roomId: req.params.room });
 });
 
-/* io.on("connection", (socket) => {
+io.on("connection", (socket) => {
     socket.on("join-room", (roomId, userId, userName) => {
       socket.join(roomId);
       setTimeout(() => {
@@ -57,7 +57,7 @@ app.get("/:room", (req, res) => {
         io.to(roomId).emit("createMessage", message, userName);
       });
     });
-  }); */
+  }); 
   
 
 

@@ -3,18 +3,18 @@ export const Booking =[{
     "patient_id": "425956792-6",
     "patient_name": "bballing0",
     "doc_name": "cdowyer0",
-    "date": "1/12/2024",
-    "Slot_start_time": "7:00 PM",
-    "Slot_end_time": "7:03 PM"
+    "date": "1/13/2024",
+    "Slot_start_time": "11:48 PM",
+    "Slot_end_time": "12:30 AM"
 
   },{
     "doc_id": "10",
     "patient_id": "425956792-6",
     "patient_name": "bballing0",
     "doc_name": "cASDASDASDASDAS",
-    "date": "1/11/2024",
-    "Slot_start_time": "7:30 PM",
-    "Slot_end_time": "7:39 PM"
+    "date": "1/14/2024",
+    "Slot_start_time": "12:10 AM",
+    "Slot_end_time": "2:39 AM"
 
   },{
     "doc_id": "10",

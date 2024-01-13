@@ -15,37 +15,49 @@ function convertTo24HourFormat(timeString) {
   return [hours, minutes];
 }
 
+function formatTime(time) {
+  return new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
 
 function generateSlots(docDuration, meetingDuration, breakDuration) {
   const [start, end] = docDuration.split('-').map(time => convertTo24HourFormat(time));
 
-  console.log("Start and End Time:", start, end);
+  console.log("Start and End Time:", formatTime(new Date(2000, 0, 1, start[0], start[1])), formatTime(new Date(2000, 0, 1, end[0], end[1])));
 
   const startDate = new Date(2000, 0, 1, start[0], start[1]);
   let endDate = new Date(2000, 0, 1, end[0], end[1]);
 
   // Adjust the end date if it is earlier than the start date (span across midnight)
   if (endDate < startDate) {
-    endDate = new Date(endDate.getTime() + 24 * 60 * 60 * 1000);
+    endDate =new Date(endDate.getTime() + 12 * 60 * 60 * 1000);
   }
 
-  console.log("Start and End Date:", startDate, endDate);
+  console.log("Start and End Date:", formatTime(startDate), formatTime(endDate));
 
   const slots = [];
   let currentSlot = startDate;
 
-  console.log("Initial Current Slot:", currentSlot);
+  console.log("Initial Current Slot:", formatTime(currentSlot));
 
   while (currentSlot < endDate) {
     const slotEnd = new Date(currentSlot.getTime() + meetingDuration * 60000);
-    slots.push({ start: currentSlot, end: slotEnd });
 
-    console.log("Slot Start and End:", currentSlot, slotEnd);
+    // Check if the slot end time is beyond the doctor's working hours
+    if (slotEnd > endDate) {
+      break;
+    }
+
+    slots.push({
+      start: formatTime(currentSlot),
+      end: formatTime(slotEnd),
+    });
+
+    console.log("Slot Start and End:", formatTime(currentSlot), formatTime(slotEnd));
 
     // Add break
     currentSlot = new Date(slotEnd.getTime() + breakDuration * 60000);
 
-    console.log("Next Current Slot:", currentSlot);
+    console.log("Next Current Slot:", formatTime(currentSlot));
   }
 
   return slots;
