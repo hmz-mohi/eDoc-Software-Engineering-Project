@@ -1,6 +1,6 @@
 import React from 'react'
 
-function xDocRegAdditional() {
+function DocRegAdditional() {
   return (
     <div>DocRegAdditional</div>
   )
