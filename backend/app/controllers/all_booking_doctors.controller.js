@@ -2,17 +2,12 @@ const db = require("../models");
 const Op = db.Sequelize.Op;
 
 function convertTo24HourFormat(timeString) {
-  const [time, period] = timeString.split(/(?=[APMapm])/); // Split time and AM/PM
-  let [hours, minutes] = time.split(':').map(Number);
+  const [start, end] = timeString.split('-').map(time => {
+    const [hours, minutes] = time.split(':').map(Number);
+    return [hours, minutes];
+  });
 
-  // Convert to 24-hour format
-  if (period.toLowerCase() === 'pm' && hours !== 12) {
-    hours += 12;
-  } else if (period.toLowerCase() === 'am' && hours === 12) {
-    hours = 0;
-  }
-
-  return [hours, minutes];
+  return [start, end];
 }
 
 function formatTime(time) {
@@ -20,17 +15,12 @@ function formatTime(time) {
 }
 
 function generateSlots(docDuration, meetingDuration, breakDuration) {
-  const [start, end] = docDuration.split('-').map(time => convertTo24HourFormat(time));
+  const [start, end] = convertTo24HourFormat(docDuration);
 
   console.log("Start and End Time:", formatTime(new Date(2000, 0, 1, start[0], start[1])), formatTime(new Date(2000, 0, 1, end[0], end[1])));
 
   const startDate = new Date(2000, 0, 1, start[0], start[1]);
-  let endDate = new Date(2000, 0, 1, end[0], end[1]);
-
-  // Adjust the end date if it is earlier than the start date (span across midnight)
-  if (endDate < startDate) {
-    endDate =new Date(endDate.getTime() + 12 * 60 * 60 * 1000);
-  }
+  const endDate = new Date(2000, 0, 1, end[0], end[1]);
 
   console.log("Start and End Date:", formatTime(startDate), formatTime(endDate));
 
