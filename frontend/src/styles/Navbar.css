@@ -120,6 +120,7 @@
   border-radius: 30px !important;
   background: none !important; 
   z-index: 1;
+  background-color: #0092b3 !important;
 }
 .user-profile-modal .modals-content{
   position: absolute;

@@ -3,7 +3,7 @@
 }
 
 .viewdoctors_main_section {
-    height: 45vh;
+    height: 40vh;
     padding: 0 2%;
     background-repeat: no-repeat;
     background-color: #edf6ff;
@@ -15,22 +15,22 @@
 
     0%,
     45% {
-        background-position: 45em 2em;
+        background-position: 45em 3em;
         background-size: 25em;
         background-image: url('https://cdn.pixabay.com/photo/2017/08/22/13/17/doctor-2668918_1280.png');
     }
 
     50%,
     70% {
-        background-position: 40em 0;
-        background-size: 35rem;
+        background-position: 45em 3.4em;
+        background-size: 25rem;
         background-image: url('../assets/images/bgdoctor-2.png');
     }
 
     75%,
     100% {
-        background-position: 40em 0;
-        background-size: 40em;
+        background-position: 40em 2em;
+        background-size: 30em;
         background-image: url('../assets/images/bgdoctor.png');
     }
 }
@@ -75,9 +75,9 @@
     cursor: grab !important;
     justify-content: center;
     cursor: grab;
-    margin-top: -1em;
+    margin-top: 1.1em;
     background-color: transparent;
-    margin-bottom: 2em;
+    margin-bottom: 0.5em;
 }
 
 
@@ -117,26 +117,35 @@
 
 .doctors-list{
     margin: auto;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     display: flex;
-    width: 70%;
-    justify-content: space-between;
+    width: 100vw;
+    justify-content: center;
+    /* justify-content: space-between; */
     padding-bottom: 5em;
     
 }
 .doctor-card{
     position: relative;
-    margin-right: 8%;
-    margin-bottom: 3%;
+    margin-right: 4%;
+    /* margin-bottom: 3%; */
     border-radius: 75px 0 0 0;
 }
 
+.doctor-card:hover .below_image_div{
+    transition: 0.4s ease-in-out;
+    transform: translateY(-5rem);
+}
 
+.doctor-card:hover .doctor_card_image_div{
+    transition: 0.4s ease-in-out;
+    transform: translateY(3rem);
+}
 .doctor_card_image_div{
-    height: 16em;
+    height: 14em;
     border-radius: 15px;
-    width: 17em;
+    width: 15em;
     text-align: center;
     background-color: #EDF6FF;
     background-size: cover;
@@ -150,11 +159,10 @@
     border-radius: 15px;
     padding: 3% 5%;
     margin-top: -3em;
-    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    background-color: white;
+    /* box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+    background-color:#EDF6FF;
     left: 2.5%;
     height: 8em;
-    color: rgb(127, 10, 211);
     width: 95%;
 }
 
@@ -169,12 +177,12 @@
 .below_image_div h2{
     text-align: center;
     font-size: 1.5rem;
-    color: #015cab;
+    color: #0092B3;
     font-weight: 600;
 }
 
 .below_image_div p{
-    color: black;
+    color: #0092B3;
     font-size: 0.8rem;
     text-align: center;
 }
@@ -189,32 +197,15 @@
     background: transparent;
     padding: 3%;
     font-size: 0.7rem;
+    outline: none;
+    color: #0092B3;
     border-radius: 15px;
 }
 
 .doctor-cards-button-divs button:hover{
-    background-color: #015cab;
-    color: white;
+    background-color: #0092B3;
+    color: rgb(255, 255, 255);
 }
-
-
-
-.doctors-list::-webkit-scrollbar {
-    width: 10px;
-    height: 10px; /* Adjust the height to make it shorter */
-  }
-  
-  .doctors-list::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 100px;
-  }
-  
-  .doctors-list::-webkit-scrollbar-thumb {
-    border-radius: 100px;
-    border: 3px solid transparent; /* Adjust the border to make it shorter */
-    background-clip: content-box;
-    background-color: #00586e;
-  }
 
 .no-doctors-message{
     text-align: center;
@@ -287,6 +278,48 @@
 }
 
 .book-app-div .parent-div{
-    background-color: #EDF6FF;
-    padding-top: 6%;
+    /* background-color: #EDF6FF; */
+    padding-top: 4%;
+    width: 100vw;
+    margin-left: -2em !important;
 }
+
+
+.Pagination {
+    display: flex;
+    padding-top: 3%;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 10px;
+}
+
+.Pagination a {
+    font-family: "Comfortaa";
+    font-weight: bold;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    color: rgb(255, 255, 255) !important;
+    transition: 0.1s all ease-in-out;
+}
+
+.Pagination a:hover {
+    background-color: #0092b3 !important;
+}
+
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .doctor-card {
+    animation: fadeIn 0.5s ease-in-out;
+  }

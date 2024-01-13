@@ -1,55 +1,49 @@
-.react-calendar__navigation__next2-button{
+.BookingCalender .react-calendar__navigation__next2-button{
   display: none;
-}
-
-.react-calendar__navigation__prev2-button{
+}.BookingCalender .react-calendar__navigation__prev2-button{
   display: none;
-}
-
-
-.react-calendar{
+}.BookingCalender {
   margin: auto;
   border-radius: 30px;
   padding: 3%;
-  width: 70%;
+  width: 45%;
   background-color: transparent;
 }
-.react-calendar__month-view__days__day--weekend {
+.BookingCalender .react-calendar__month-view__days__day--weekend {
   color: white;
 }
-
-.react-calendar__month-view__weekdays__weekday abbr {
+.BookingCalender .react-calendar__month-view__weekdays__weekday abbr {
   color: rgb(0, 0, 0);
   font-size: 1rem;
   font-weight: 400;
   text-decoration: none;
 }
 
-.react-calendar__month-view__weekdays__weekday abbr:hover{
+.BookingCalender .react-calendar__month-view__weekdays__weekday abbr:hover{
   cursor: default;
 }
-.react-calendar__tile {
+.BookingCalender .react-calendar__tile {
   color: rgb(0, 0, 0);
   font-size: 1.1rem;
 }
 
 
-.react-calendar__tile:disabled {
+.BookingCalender .react-calendar__tile:disabled {
   background-color: transparent;
   color: rgb(0, 0, 0);
   opacity: 0.5;
 }
 
-.react-calendar__month-view__days__day--weekend {
+.BookingCalender .react-calendar__month-view__days__day--weekend {
   color: rgb(0, 0, 0)
 }
 
 
-.react-calendar__navigation button:disabled {
+.BookingCalender .react-calendar__navigation button:disabled {
   background-color: transparent;
 }
 
-.react-calendar__tile--now {
+.BookingCalender .react-calendar__tile--now {
   background-color: transparent;
   color: #68b3ff;
   font-weight: bold;
@@ -57,20 +51,60 @@
 
 
 
-.component-parent-div{
+.component-parent-div {
   display: flex;
-
-  
+  padding: 0;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+  /* Linear gradient for fading effect */
+  background: linear-gradient(to top, rgba(0, 54, 115, 1), rgba(0, 54, 115, 0));
 }
+
 
 .component-parent-div .calender-div{
   width: 50vw;
-  padding-top: 4%;
+  padding-top: 2%;
 
+}
+
+.calender-div-text{
+  display: flex;
+  justify-content: center;
+}
+
+.calender-div-text h4{
+  color: rgb(0, 0, 0);
+  font-weight: 600;
 }
 
 .component-parent-div .slots-div{
   width: 50vw;
-
   height: 50vh;
+}
+
+.slots-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.slots-container button{
+  background-color: transparent;
+  outline: none;
+  border: 1px solid #003673;
+  border-radius: 11px;
+  padding: 0.4em 1em;
+  margin: 2% 1%;
+}
+
+.slots-container button:hover{
+  background-color: #003673;
+  color: white;
+  transform: translateY(-0.5em);
+  transition: 0.3s ease-in-out;
+}
+
+
+.component-parent-div hr{
+  border: 2px solid white;
+  border-width: 50%;
 }

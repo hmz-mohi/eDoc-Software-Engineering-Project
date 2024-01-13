@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 .DoctorDashboard-main-section {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     display: flex;
     padding: 1%;
     height: 100vh;
@@ -9,7 +10,8 @@
 }
 
 .appointments-div {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     background-color: transparent;
     border-radius: 15px;
     margin-top: 1%;
@@ -20,7 +22,7 @@
 }
 
 .appointments-div h1 {
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
     text-align: center;
     font-size: 1.6rem;
 }
@@ -32,12 +34,14 @@ table {
     border-collapse: collapse;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid #ddd;
-    
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     text-align: left;
 }
@@ -51,58 +55,126 @@ thead th {
     padding: 2% 5%;
 }
 
-.react-calendar {
-    font-family: 'Poppins', sans-serif;
+.DashboardCalender {
+    font-family: "Poppins", sans-serif;
     margin: 2%;
     margin-top: 5%;
     width: 25%;
+    border-radius: 25px;
     border: none;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    height: 40%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    height: 42%;
     padding: 2%;
     margin-right: 0 !important;
     margin-left: 0;
 }
 
-.react-calendar__tile {
+.DashboardCalender .react-calendar__tile {
     color: #0092b3;
     font-size: 1rem;
 }
 
-.react-calendar__navigation {
+.DashboardCalender .react-calendar__navigation {
     height: auto;
 }
 
-.react-calendar__tile--active:enabled {
+.DashboardCalender .react-calendar__tile--active:enabled {
     background: #0092b3;
     border-radius: 100%;
     color: white;
 }
 
-.react-calendar__navigation:hover{
-    background: none;
+.DashboardCalender .react-calendar__navigation:hover {
+    background-color: transparent !important;
 }
-.react-calendar__navigation button{
+
+.DashboardCalender .react-calendar__navigation button {
     font-size: 1.3rem;
+    background-color: transparent;
 }
-.react-calendar__navigation button:hover{
+
+.DashboardCalender .react-calendar__navigation button:hover {
     background: #00586e;
 }
-.react-calendar__tile:hover {
+
+.DashboardCalender .react-calendar__tile:hover {
     border-radius: 100%;
     background-color: #0092b3;
     color: white;
 }
 
+.DashboardCalender .react-calendar__navigation__next2-button {
+    display: none;
+}
+
+.DashboardCalender .react-calendar__navigation__prev2-button {
+    display: none;
+}
+
+.DashboardCalender .react-calendar__tile:disabled {
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    opacity: 0.5;
+}
+.DashboardCalender .react-calendar__month-view__weekdays__weekday abbr {
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+  }
+
+.DashboardCalender .react-calendar__month-view__weekdays__weekday abbr:hover{
+    cursor: default;
+  }
+
+
+.react-calendar__navigation__label, .react-calendar__navigation__label:hover {
+    background-color: transparent !important;
+}
+
+.react-calendar__year-view .react-calendar__tile, .react-calendar__decade-view .react-calendar__tile, .react-calendar__century-view .react-calendar__tile{
+    padding: 1.3em 0.5em;
+}
+
+
+.react-calendar__tile--hasActive {
+background-color: transparent;
+}
+
+
+.react-calendar__tile--hasActive:hover{
+    color: black;
+    background-color: transparent !important;
+}
+
+.DashboardCalender .react-calendar__tile--now {
+    background-color: transparent;
+    color: #68b3ff;
+    font-weight: bold;
+  }
+
+
+  .react-calendar__navigation button:disabled:hover{
+    background-color: transparent;
+  }
+
+
+  .DashboardCalender .react-calendar__navigation button:not(:disabled):hover{
+    background-color: transparent;
+    transform: scale(1.2);
+    transition: 0.4s ease-in-out;
+  }
 /* CSS */
 
 .patient_div {
     padding: 2% 1%;
     margin-top: 1%;
-    
+
     width: 22vw;
     border-radius: 15px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     height: 60vh;
     overflow: auto;
 }
@@ -113,7 +185,8 @@ thead th {
     margin-top: 2%;
 }
 
-.patientTable th, .patientTable td {
+.patientTable th,
+.patientTable td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
@@ -135,18 +208,19 @@ thead th {
     font-size: 1.7rem;
 }
 
-
 .btn-div {
     margin: auto 0;
 }
-.button:disabled{
+
+.button:disabled {
     cursor: not-allowed;
     background-color: #00586e;
 }
 
-.button:disabled:hover{
+.button:disabled:hover {
     background-color: #00586e;
 }
+
 .button {
     display: flex;
     justify-content: center;
@@ -155,35 +229,34 @@ thead th {
     height: 30px;
     border-radius: 100%;
     border: none;
-    background-color: #30C04F;
+    background-color: #30c04f;
 }
 
 .button:hover {
     background-color: #2bac47;
 }
 
-
-.PaginationContainer{
+.PaginationContainer {
     display: flex;
     padding-top: 3%;
     justify-content: center;
     align-items: center;
     list-style: none;
     gap: 10px;
-  }
-  
-  .PaginationContainer a{
+}
+
+.PaginationContainer a {
     font-family: "Comfortaa";
     font-weight: bold;
     padding: 8px 16px;
     text-decoration: none;
     cursor: pointer;
     border-radius: 20px;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.3);
     color: rgb(255, 255, 255) !important;
     transition: 0.1s all ease-in-out;
-  }
-  
-  .PaginationContainer a:hover{
-    background-color:#0092B3 !important;
-  }
+}
+
+.PaginationContainer a:hover {
+    background-color: #0092b3 !important;
+}

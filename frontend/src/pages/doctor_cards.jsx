@@ -2,19 +2,27 @@ import React, { useState } from 'react';
 import Navbar from "../components/Navbar";
 import { useParams } from 'react-router-dom';
 import "../styles/doctor_cards.css";
-import { data } from "../doctor_data";
 import { useDraggable } from "react-use-draggable-scroll";
 import { useRef } from "react";
-//import { medicalDomains } from "../domain_data";
 import Doctor_page_domains from '../components/doctor_page_domains';
 import { useEffect } from 'react';
 import CalendarComp from '../components/Calendar';
 import axios from "axios";
+import ReactPaginate from 'react-paginate';
+
                                
 // ... (other imports)
 
 function Doctor_cards() {
   const [medicalDomains, setMedicalDomains] = useState([]);
+  const [bookingDoctors, setBookingDoctors] = useState([]);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  // Modals USE STATES
+  const [isBookAppDivOpen, setIsBookAppDivOpen] = useState(false)
+  const [isSeeProfileModalOpen, setIsSeeProfileModalOpen] = useState(false)
+  // Pagination USE STATES
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 3; // Set the number of items per page
 
   useEffect(() => {
     const fetchMedicalDomains = async () => {
@@ -32,22 +40,41 @@ function Doctor_cards() {
     fetchMedicalDomains();
   }, []);
 
+  useEffect(() => {
+    const fetchBookingDoctors = async () => {
+      try {
+        const BookingDoctorresponse = await axios.get('http://localhost:5000/api/doctors/Booking');
+        const BookingDoctordata1 = BookingDoctorresponse.data; 
+        const BookingDoctordata = BookingDoctordata1["data"]
+        console.log(BookingDoctorresponse.data)
+
+        setBookingDoctors(BookingDoctordata);
+      } catch (error) {
+        console.error('Error while fetching booking doctors:', error);
+      }
+    };
+    fetchBookingDoctors();
+  }, []);
+
+
+
   // to apply drag effect on scrolls
 
-  const ref = useRef(); // We will use React useRef hook to reference the wrapping div:
-  const { events } = useDraggable(ref); // Now we pass the reference to the useDraggable hook:
-
+  const ref = useRef();
+  const { events } = useDraggable(ref); 
   const { domain } = useParams();
+
+
 
   // Filter doctors based on the specified domain or show all doctors if domain is null
   const filteredDoctors = domain === "null"
-    ? data
-    : data.filter(doctor => doctor.specialization === domain);
+    ? bookingDoctors
+    : bookingDoctors.filter(doctor => doctor.doc_specialization === domain);
 
-  const [isBookAppDivOpen, setIsBookAppDivOpen] = useState(false)
-  const [selectedDoctor, setSelectedDoctor] = useState(null);
-  const [isSeeProfileModalOpen, setIsSeeProfileModalOpen] = useState(false)
 
+
+
+  // MODALS LOGIC
   const handleSeeProfileClick = (doctor) => {
     setSelectedDoctor(doctor);
     setIsSeeProfileModalOpen(true);
@@ -59,18 +86,15 @@ function Doctor_cards() {
     setIsBookAppDivOpen(!isBookAppDivOpen);
   };
 
-
   const toggleModal = () => {
     setIsSeeProfileModalOpen(!isSeeProfileModalOpen);
   };
-
 
   const handleEscapeKey = (event) => {
     if (event.key === 'Escape') {
       toggleModal();
     }
   };
-
   // Close the modal when clicking outside the modal content
   const handleOutsideClick = (event) => {
     if (event.target.classList.contains('bookAppointment_modal_outerdiv')) {
@@ -84,7 +108,6 @@ function Doctor_cards() {
       document.addEventListener('keydown', handleEscapeKey);
       document.addEventListener('click', handleOutsideClick);
     }
-
     // Remove event listeners when the component is unmounted
     return () => {
       document.removeEventListener('keydown', handleEscapeKey);
@@ -92,6 +115,28 @@ function Doctor_cards() {
     };
   }, [isSeeProfileModalOpen, toggleModal]);
 
+
+
+  useEffect(() => {
+    // Scroll to the book appointment modal when it opens
+    if (isBookAppDivOpen) {
+      const modalElement = document.querySelector('.book-app-div');
+      modalElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [isBookAppDivOpen]);
+
+
+
+
+  
+  // PAGINATION CODE
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage.selected);
+  };
+
+  const indexOfLastItem = (currentPage + 1) * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredDoctors.slice(indexOfFirstItem, indexOfLastItem);
 
 
   return (
@@ -131,14 +176,13 @@ function Doctor_cards() {
         </div>
 
         <div className="doctors-list">
-          {filteredDoctors.length > 0 ? (
-            // Map through the filtered doctors and display informatio
-            filteredDoctors.map((doctor, index) => {
+        {currentItems.length > 0 ? (
+          currentItems.map((doctor, index) => {
               let imageUrl;
               try {
-                imageUrl = require(`../assets/images/Doctors/${doctor.name}.png`);
+                imageUrl = require(`../assets/images/Doctors/${doctor.doc_id}.png`);
               } catch (error) {
-                imageUrl = 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+                imageUrl = 'https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
               }
 
               return (
@@ -146,7 +190,7 @@ function Doctor_cards() {
                   <div className="doctor_card_image_div" style={{ backgroundImage: `url(${imageUrl})` }}>
                   </div>
                   <div className="below_image_div">
-                    <h2>{doctor.name}</h2>
+                    <h2>{doctor.doc_name}</h2>
                     <p>⭐⭐⭐⭐⭐</p>
                     <div className="doctor-cards-button-divs">
                       <button onClick={() => handleSeeProfileClick(doctor)}>
@@ -165,13 +209,23 @@ function Doctor_cards() {
             </div>
           )}
         </div>
+        {filteredDoctors.length > itemsPerPage && (
+        <ReactPaginate
+          pageCount={Math.ceil(filteredDoctors.length / itemsPerPage)}
+          pageRangeDisplayed={3}
+          marginPagesDisplayed={1}
+          onPageChange={handlePageChange}
+          containerClassName={'Pagination'}
+          activeClassName={'active'}
+        />
+      )}
         {isSeeProfileModalOpen && (
           <div className="bookAppointment_modal_outerdiv modals">
             <div className="modals-content">
               {(() => {
                 let imageUrl;
                 try {
-                  imageUrl = require(`../assets/images/Doctors/${selectedDoctor.name}.png`);
+                  imageUrl = require(`../assets/images/Doctors/${selectedDoctor.doc_id}.png`);
                 } catch (error) {
                   imageUrl = 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
                 }
@@ -181,32 +235,30 @@ function Doctor_cards() {
                       <div className="image-div" style={{ backgroundImage: `url(${imageUrl})` }}>
                       </div>
                       <div className="text-div">                      
-                        <h6>{selectedDoctor.name}</h6>
-                        <p>{selectedDoctor.specialization}</p>
-                        <p>{selectedDoctor.doc_validity}</p>
-
+                        <h6>{selectedDoctor.doc_name}</h6>
+                        <p>{selectedDoctor.doc_specialization}</p>
+                        <p>{selectedDoctor.doc_valid}</p>
                       </div>
                     </div>
                     <div className="right-div">
-                      {/* Rendering certifications */}
-                      {selectedDoctor.doc_certification && selectedDoctor.doc_certification.length > 0 && (
-                        <div>
-                          <h6>Certifications:</h6>
-                          <ul>
-                            {selectedDoctor.doc_certification.map((cert, index) => (
-                              <li key={index}>{Object.values(cert)[0]}</li>
-                            ))}
-                          </ul>
-                          <p>name</p>
+                    <p>name</p>
                         <p>age</p>
                         <p>experience</p>
                         <p>rating</p>
                         <p>education</p>
+                      {/* Rendering certifications */}
+                      {selectedDoctor.Certifications && selectedDoctor.Certifications.length > 0 && (
+                        <div>
+                          <h6>Certifications:</h6>
+                          <ul>
+                            {selectedDoctor.Certifications.map((cert, index) => (
+                              <li key={index}>{Object.values(cert)[1]}</li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                     </div>
                   </div>
-
                 );
               })()}
             </div>
@@ -214,15 +266,11 @@ function Doctor_cards() {
         )}
         {isBookAppDivOpen && (
         <div className="book-app-div">
-          <h1>Hello {selectedDoctor.name}</h1>
           <div className="parent-div">
-            <CalendarComp/>
+            <CalendarComp doctor= {selectedDoctor}/>
           </div>
         </div>
         )}
-
-
-
       </div>
     </>
   );

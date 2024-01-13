@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 
 function DocRegIntro() {
+
+    
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
 
@@ -14,8 +17,6 @@ function DocRegIntro() {
     };
     return (
         <div className="introduction">
-            <h1>Doctor's Introduction</h1>
-            <hr />
             <div className="first-row">
                 <div className="row1-fields">
                     <label>First Name</label>
@@ -27,7 +28,8 @@ function DocRegIntro() {
                 </div>
                 <div className="row1-fields">
                     <label>DOB</label>
-                    <input type="text" name="" placeholder='Your Date Of Birth' id="" />
+                    <input type="date" name="" placeholder='Bin Laden' id="" />
+                    
                 </div>
 
             </div>

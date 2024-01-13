@@ -97,7 +97,7 @@ input::placeholder{
     font-size: 0.8rem;
 }
 .formdiv .row1-fields input{
-    width: 15rem;
+    width: 14rem;
 }
 
 .row2-fields{
@@ -107,7 +107,7 @@ input::placeholder{
 }
 
 .formdiv .row2-fields input{
-    width: 15rem;
+    width: 14rem;
 }
 
 
@@ -128,30 +128,3 @@ input[type="file"] {
     /* Hide the default file input button */
     font-size: 0.8em;
 }
-
-
-.PaginationContainer{
-    display: flex;
-    padding-top: 3%;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    gap: 10px;
-  }
-  
-  .PaginationContainer a{
-    font-family: "Comfortaa";
-    font-weight: bold;
-    padding: 8px 16px;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 20px;
-    background: rgba(0,0,0,0.3);
-    color: rgb(255, 255, 255) !important;
-    transition: 0.1s all ease-in-out;
-  }
-  
-  .PaginationContainer a:hover{
-    background-color:#0092B3 !important;
-  }
-
