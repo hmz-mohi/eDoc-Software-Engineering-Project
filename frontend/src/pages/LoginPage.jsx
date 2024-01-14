@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [login, setLogin] = useState(true);
-  const [values, setValues] =useState({
+  const [values, setValues] = useState({
     email: '',
     password: '',
     Fname: '',
@@ -22,34 +22,35 @@ export default function LoginPage() {
   const handleClick = () => {
     setLogin(!login);
   };
-  const handleSubmit =async (event) =>{
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if(login===true){
+    if (login === true) {
       console.log("idher hn meon")
-     
-      const decide =await axios.post('http://localhost:5000/auth/login',{'email':values['email'], 'password':values['password']})
-     
+
+      const decide = await axios.post('http://localhost:5000/auth/login', { 'email': values['email'], 'password': values['password'] })
+
       console.log(decide.data)
-      const username=decide.data[1]
+      const username = decide.data[1]
       const email = decide.data[2]
       console.log(username)
 
-      if(decide.data[0]=="true user"){
+      if (decide.data[0] == "true user") {
         console.log("it is true user")
         sessionStorage.setItem("username", username)
         sessionStorage.setItem("email", email)
 
-        
-       navigate('/home')
+
+        navigate('/home')
       }
-      if(decide.data[0]=="false user"){
+      if (decide.data[0] == "false user") {
         alert("it is false user")
-      }}
-    
-    else{
-      const check =await axios.post('http://localhost:5000/auth/signup',values)
-      
-      if(check.data=="user_registered"){
+      }
+    }
+
+    else {
+      const check = await axios.post('http://localhost:5000/auth/signup', values)
+
+      if (check.data == "user_registered") {
         console.log("hello mother ficjer")
         navigate('/home')
       }
@@ -62,7 +63,7 @@ export default function LoginPage() {
       <div className="login-signup-container">
         <div className="login-signupLeftDiv col-lg-6">
           <h1>{login ? "SIGN IN" : "SIGN UP"}</h1>
-          <hr style={{width: "50%", marginLeft: "20%"}}/>
+          <hr style={{ width: "50%", marginLeft: "20%" }} />
           <div className="paralogin-signuptext">
           </div>
           {login ? "" : <div className="inpDiv fullname">
@@ -71,16 +72,16 @@ export default function LoginPage() {
               <label>Last Name</label>
             </div>
             <div className="Inputs">
-              <input type="text" onChange={(e) => setValues({...values, Fname : e.target.value})} placeholder="Enter your First Name" />
-              <input type="text" onChange={(e) => setValues({...values, Lname : e.target.value})} placeholder="Enter your last Name" />
+              <input type="text" onChange={(e) => setValues({ ...values, Fname: e.target.value })} placeholder="Enter your First Name" />
+              <input type="text" onChange={(e) => setValues({ ...values, Lname: e.target.value })} placeholder="Enter your last Name" />
             </div>
             <div className="labels" style={{ width: "59%" }}>
               <label>Contact Number</label>
               <label>Date of Birth</label>
             </div>
             <div className="Inputs">
-              <input type="tel" onChange={(e) => setValues({...values, contactno : e.target.value})} placeholder="Enter your Contact Number" />
-              <input type="date" onChange={(e) => setValues({...values, dob : e.target.value})} placeholder="Enter your Date of Birth" />
+              <input type="tel" onChange={(e) => setValues({ ...values, contactno: e.target.value })} placeholder="Enter your Contact Number" />
+              <input type="date" onChange={(e) => setValues({ ...values, dob: e.target.value })} placeholder="Enter your Date of Birth" />
             </div>
 
 
@@ -88,26 +89,17 @@ export default function LoginPage() {
 
           <div className="inpDiv">
             <label>Your Email</label>
-            <input type="email" onChange={(e) => setValues({...values, email : e.target.value})} placeholder="Enter your Email" />
+            <input type="email" onChange={(e) => setValues({ ...values, email: e.target.value })} placeholder="Enter your Email" />
           </div>
           <div className="inpDiv">
             <label>Your password</label>
-            <input type="password" onChange={(e) => setValues({...values, password : e.target.value})} placeholder="Enter your Password" />
+            <input type="password" onChange={(e) => setValues({ ...values, password: e.target.value })} placeholder="Enter your Password" />
           </div>
-
-          <button className="login-signupbtn" onClick={handleSubmit}>
-            {login ? "SIGN IN" : "SIGN UP"}
-          </button>
-          {!login? "" : <div className="google-facebook-button" style={{ display: 'flex', marginTop: "5%" }}>
-            <button class="button-google">
-              <img src={google} style={{ width: "9%" }} alt="" srcSet="" />
-              Login with Google
+          <div className="login-signup-btn-div">
+            <button className="login-signupbtn" onClick={handleSubmit}>
+              {login ? "SIGN IN" : "SIGN UP"}
             </button>
-            <button class="button-google">
-              <img src={facebook} style={{ width: "12%" }} alt="" srcSet="" />
-              Login with Facebook
-            </button>
-          </div> }
+          </div>
 
           <div className='switchaccdiv'>
 

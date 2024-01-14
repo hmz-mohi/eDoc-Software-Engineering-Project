@@ -5,8 +5,8 @@ export const Booking = [
     "patient_name": "John Doe",
     "doc_name": "cdowyer0",
     "date": "1/14/2024",
-    "Slot_start_time": "2:45 AM",
-    "Slot_end_time": "2:52 AM"
+    "Slot_start_time": "05:28 PM",
+    "Slot_end_time": "05:29 PM"
   },
   {
     "doc_id": "10",

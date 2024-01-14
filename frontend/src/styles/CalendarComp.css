@@ -53,7 +53,7 @@
 
 .component-parent-div {
   display: flex;
-  padding: 0;
+  padding: 3rem;
   width: 100vw;
   font-family: "Poppins", sans-serif;
   /* Linear gradient for fading effect */
@@ -79,17 +79,19 @@
 
 .component-parent-div .slots-div{
   width: 50vw;
-  height: 50vh;
 }
 
 .slots-container{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .slots-container button{
   background-color: transparent;
   outline: none;
+  width: 11rem;
+  font-size: 0.8rem;
   border: 1px solid #003673;
   border-radius: 11px;
   padding: 0.4em 1em;
@@ -102,9 +104,13 @@
   transform: translateY(-0.5em);
   transition: 0.3s ease-in-out;
 }
-
-
 .component-parent-div hr{
   border: 2px solid white;
   border-width: 50%;
 }
+.slots-container button:disabled{
+  background-color: inherit;
+  /* color:inherit; */
+  color: rgba(0, 0, 0, 0.41);
+  transform: translateY(0);
+  cursor: not-allowed;}
