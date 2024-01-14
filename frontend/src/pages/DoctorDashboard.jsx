@@ -5,7 +5,9 @@ import "react-calendar/dist/Calendar.css";
 import { Booking } from "../bookingdata";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import ReactPaginate from 'react-paginate';
-
+//to send link to patient 
+//import io from 'socket.io-client'
+//const socket=io('http://localhost:5000')
 
 function DoctorDashboard() {
   const today = new Date();
@@ -15,6 +17,12 @@ function DoctorDashboard() {
   const [selectedDate, setSelectedDate] = useState(today);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [appointments, setAppointments] = useState([]);
+  //to send lonk 
+/*  const sendlinkcomponent=()=>{
+    useEffect(()=>{
+      socket.on('recievelink ',(link))
+    })
+  } */ 
 
 
 
@@ -41,7 +49,9 @@ function DoctorDashboard() {
   const isToday = formattedSelectedDate === today.toLocaleDateString("en-US");
 
   const initiatecall= async () => {
+    const pt_id= sessionStorage.getItem("pt_id")
     window.location.href = 'http://localhost:5000';
+    
     
   }
 

@@ -34,8 +34,14 @@ require ("./app/routes/Booked_slot.route.js")(app);
 db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db."); });
 app.get("/", (req, res) => {
-  res.redirect(`/${uuidv4()}`);
+  id=`${uuidv4()}`
+  const link=sessionStorage.setItem("http://localhost:5000"+`/${id}`)
+  console.log(sessionStorage.getItem(link))
+  res.redirect(`/${id}`)
+ // res.redirect(`/${uuidv4()}`);
 });
+app.get("/sendlinktouser",(req,res)=>{
+})
 
 app.get("/:room", (req, res) => {
   res.render("room", { roomId: req.params.room });
