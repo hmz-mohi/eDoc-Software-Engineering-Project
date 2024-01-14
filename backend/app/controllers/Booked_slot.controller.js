@@ -65,6 +65,13 @@ exports.deleteAll = (req, res) => {
 };
 
 // Find all published Tutorials
-const findAll = (req, res) => {
+exports.findAll =async  (req, res) => {
+  try {
+    const allBookedslots = await db.Booked_slots.findAll();
+    console.log(allBookedslots);
+    return ["true",allBookedslots]
+  } catch (error) {
+    console.error('Error retrieving data:', error);
+  }
     
 };

@@ -2,7 +2,7 @@ import CustomNavbar from "../components/CustomNavbar";
 import "../styles/DoctorDashboard.css";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { Booking } from "../bookingdata";
+//import { Booking } from "../bookingdata";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import ReactPaginate from 'react-paginate';
 import axios from "axios";
@@ -11,6 +11,26 @@ import axios from "axios";
 //const socket=io('http://localhost:5000')
 
 function DoctorDashboard() {
+  const [Booking, set_booked_slots] = useState([]);
+
+  useEffect(() => {
+    const fetchbookedlsots= async () => {
+      try {
+       
+        const response = await axios.get('http://localhost:5000/get_booked_appointments');
+        const data = response.data;
+        console.log(response.data)
+
+        set_booked_slots(data);
+      } catch (error) {
+        console.error('Error while fetching booked slots:', error);
+      }
+    };
+
+    fetchbookedlsots();
+  }, []);
+  console.log("book",Booking)
+
   const today = new Date();
   const oneMonthLater = new Date(today);
   oneMonthLater.setMonth(today.getMonth() + 1);
@@ -80,17 +100,18 @@ function DoctorDashboard() {
 
 
 
-  useEffect(() => {
+  /* useEffect(() => {
     // Filter the data based on doc_id and date
     const filteredData = Booking.filter(
-      (data) => data.doc_id === "10" && data.date === formattedSelectedDate
+      (data) => data.DoctorDocId === 2 
     );
 
     // Set appointments and reset pageNumber to 0
     setAppointments(filteredData);
     setPageNumber(0);
-  }, [formattedSelectedDate]);
-  
+    console.log("filter",filteredData)
+  }, []); */
+ 
 
   return (
     <>
@@ -122,15 +143,15 @@ function DoctorDashboard() {
         </thead>
         <tbody>
           {displayedAppointments.map((data, index) => {
-            const slotStartTime = new Date(`${data.date} ${data.Slot_start_time}`);
-            const slotEndTime = new Date(`${data.date} ${data.Slot_end_time}`);
+            const slotStartTime = new Date(`${data.slot_date} ${data.slot_start_time}`);
+            const slotEndTime = new Date(`${data.slot_date} ${data.slot_end_time}`);
 
             return (
               <tr key={index} className="AppointmentCard">
-                <td>{data.Slot_start_time}</td>
-                <td>{data.doc_name}</td>
-                <td>{data.patient_id}</td>
-                <td>{data.date}</td>
+                <td>{data.slot_start_time}</td>
+                <td>{data.pt_name}</td>
+                <td>{data.regPatientId}</td>
+                <td>{data.slot_date}</td>
                 <td>
                   <div className="btn-div">
                     <button

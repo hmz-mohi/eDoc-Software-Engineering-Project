@@ -24,5 +24,26 @@ module.exports = app => {
         throw error;
       }
     });
+    router.get("/get_booked_appointments", async (req, res) => {
+      try {
+        const variable = await appointment_booked_controller.findAll(req, res);
+        if (variable[0]) {
+          res.json(variable[1])
+          
+        }
+        else {     
+          console.log("error finding the data")
+        }
+  
+    }
+      catch (error) {
+       /// console.error('Error authenticating user:', error);
+        throw error;
+      }
+    });
+
+
+
+
     app.use(router)
 }

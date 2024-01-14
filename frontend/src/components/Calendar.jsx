@@ -66,7 +66,7 @@ function CalendarComp(props) {
             try {
                 handleClose(); // Close the modal after saving changes
                 window.location.reload()
-                const response = await axios.post('http://localhost:5000/auth/appointmentbooked', {
+                const response = await axios.post('http://localhost:5000/appointmentbooked', {
                     doc_id: Doctor.doc_id,
                     pt_name: sessionStorage.getItem('username'),
                     pt_id: sessionStorage.getItem('pt_id'),
