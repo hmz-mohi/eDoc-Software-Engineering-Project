@@ -70,7 +70,9 @@ exports.getAllDoctorsData = async (req, res) => {
         doc_type:"Booking", // Assuming you have a password field in your User model
       },include: [{
           model: db.certifications // Make sure this matches the alias you used in the association
-        },
+        },{
+          model:db.Booked_slots
+        }
       ]
       
     });

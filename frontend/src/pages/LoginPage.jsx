@@ -51,8 +51,17 @@ export default function LoginPage() {
 
     else {
       const check = await axios.post('http://localhost:5000/auth/signup', values)
+      const email =values["email"]
+      const Fname =values["Fname"]
+      const Lname=values["Lname"]
+      const username=Fname+Lname
+      const pt_id=check.data[0]
 
-      if (check.data == "user_registered") {
+
+      if (check.data[0] == "user_registered") {
+        sessionStorage.setItem("username", username)
+        sessionStorage.setItem("email", email)
+        sessionStorage.setItem("pt_id",pt_id)
         console.log("hello mother ficjer")
         navigate('/home')
       }

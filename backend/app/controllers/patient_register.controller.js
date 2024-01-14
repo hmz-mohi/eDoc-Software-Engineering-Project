@@ -30,7 +30,14 @@ exports.create = async (req, res) => {
 
   // Insert the new patient data into the reg_patient model
   await db.patients_data.create(newPatient)
-  return "new_patient_registered"
+  const user = await db.patients_data.findOne({
+    where: {
+      pt_email: pt_email,
+      pt_password: pt_password, // Assuming you have a password field in your User model
+    }});
+  const pt_id=user.id
+
+  return ["new_patient_registered",pt_id]
    /*  .then(patient => {
       //res.status(201).json({ success: true, data: patient });
       return "new_patient_registered"

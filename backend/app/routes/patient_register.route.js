@@ -24,9 +24,9 @@ module.exports = app => {
       else {
         console.log("entering")
         const variable = await register_controller.create(req, res)
-        if (variable == "new_patient_registered") {
+        if (variable[0] == "new_patient_registered") {
           console.log("onn scene")
-          res.json("user_registered")
+          res.json(["user_registered",variable[1]])
         }
         else {
           res.json("error_registering_patient")

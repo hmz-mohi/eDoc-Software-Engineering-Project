@@ -3,23 +3,23 @@ const Op = db.Sequelize.Op;
 
 exports.createnewappointment = async (req, res) => {
   console.log("here ")
-  const pt_id=req.body.pt_id
-  const  pt_name  = req.body.pt_name;
-  const doc_id=req.body.doc_id;
+  const  regPatientId=req.body.pt_id
+  const  pt_name = req.body.pt_name;
+  const  DoctorDocId=req.body.doc_id;
   const slot_start_time=req.body.start_time
   const slot_end_time=req.body.endtime
   const slot_date=req.body.slot_date
 
   // Validate required fields
-  if ( !pt_name || !doc_id || !slot_start_time || !slot_end_time|| !slot_date) {
+  if ( !pt_name || !DoctorDocId || !slot_start_time || !slot_end_time|| !slot_date) {
     console.log("panga hgya")
     //return res.status(400).json({ success: false, message: 'All fields are required' });
   }
 
   // Create a new reg_patient instance
   const newappointment = {
-    doc_id,
-    pt_id,
+    regPatientId,
+    DoctorDocId,
     slot_start_time,
     slot_end_time,
     pt_name,

@@ -5,15 +5,6 @@ module.exports = (sequelize, Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      doc_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      pt_id: {
-        type: Sequelize.INTEGER,
-        unique: true,
-        allowNull: false,
-      },
       slot_start_time: {
         type: Sequelize.STRING,
         allowNull: false,
