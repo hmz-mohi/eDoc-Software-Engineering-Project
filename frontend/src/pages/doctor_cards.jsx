@@ -10,13 +10,15 @@ import CalendarComp from '../components/Calendar';
 import axios from "axios";
 import ReactPaginate from 'react-paginate';
 
-                               
+
 // ... (other imports)
 
 function Doctor_cards() {
   const [medicalDomains, setMedicalDomains] = useState([]);
   const [bookingDoctors, setBookingDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
+
+  const [bookedSlots, setBookedSlots] = useState([]);
   // Modals USE STATES
   const [isBookAppDivOpen, setIsBookAppDivOpen] = useState(false)
   const [isSeeProfileModalOpen, setIsSeeProfileModalOpen] = useState(false)
@@ -44,7 +46,7 @@ function Doctor_cards() {
     const fetchBookingDoctors = async () => {
       try {
         const BookingDoctorresponse = await axios.get('http://localhost:5000/api/doctors/Booking');
-        const BookingDoctordata1 = BookingDoctorresponse.data; 
+        const BookingDoctordata1 = BookingDoctorresponse.data;
         const BookingDoctordata = BookingDoctordata1["data"]
         console.log(BookingDoctorresponse.data)
 
@@ -56,12 +58,26 @@ function Doctor_cards() {
     fetchBookingDoctors();
   }, []);
 
+  const fetchBookedSlots = async (docId) => {
+    const doctor = bookingDoctors.find(doc => doc.doc_id === docId);
+    console.log(doctor)
+    if (doctor) {
+      // Access the Bookedslots for the selected doctor
+      const bookedSlots = doctor.Bookedslots;
+      setBookedSlots(bookedSlots)
+
+      // Now you have the booked slots for the selected doctor
+    } else {
+      console.log("Doctor not found in the data array");
+    }
+  };
+
 
 
   // to apply drag effect on scrolls
 
   const ref = useRef();
-  const { events } = useDraggable(ref); 
+  const { events } = useDraggable(ref);
   const { domain } = useParams();
 
 
@@ -80,10 +96,10 @@ function Doctor_cards() {
     setIsSeeProfileModalOpen(true);
   };
   const handleBookAppClick = (doctor) => {
-    // idher krn hai axios 
-    
     setSelectedDoctor(doctor);
     setIsBookAppDivOpen(!isBookAppDivOpen);
+
+    fetchBookedSlots(doctor.doc_id);
   };
 
   const toggleModal = () => {
@@ -128,7 +144,7 @@ function Doctor_cards() {
 
 
 
-  
+
   // PAGINATION CODE
   const handlePageChange = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
@@ -137,7 +153,6 @@ function Doctor_cards() {
   const indexOfLastItem = (currentPage + 1) * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredDoctors.slice(indexOfFirstItem, indexOfLastItem);
-
 
   return (
     <>
@@ -176,8 +191,8 @@ function Doctor_cards() {
         </div>
 
         <div className="doctors-list">
-        {currentItems.length > 0 ? (
-          currentItems.map((doctor, index) => {
+          {currentItems.length > 0 ? (
+            currentItems.map((doctor, index) => {
               let imageUrl;
               try {
                 imageUrl = require(`../assets/images/Doctors/${doctor.doc_id}.png`);
@@ -210,15 +225,15 @@ function Doctor_cards() {
           )}
         </div>
         {filteredDoctors.length > itemsPerPage && (
-        <ReactPaginate
-          pageCount={Math.ceil(filteredDoctors.length / itemsPerPage)}
-          pageRangeDisplayed={3}
-          marginPagesDisplayed={1}
-          onPageChange={handlePageChange}
-          containerClassName={'Pagination'}
-          activeClassName={'active'}
-        />
-      )}
+          <ReactPaginate
+            pageCount={Math.ceil(filteredDoctors.length / itemsPerPage)}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={1}
+            onPageChange={handlePageChange}
+            containerClassName={'Pagination'}
+            activeClassName={'active'}
+          />
+        )}
         {isSeeProfileModalOpen && (
           <div className="bookAppointment_modal_outerdiv modals">
             <div className="modals-content">
@@ -234,18 +249,18 @@ function Doctor_cards() {
                     <div className="left-div">
                       <div className="image-div" style={{ backgroundImage: `url(${imageUrl})` }}>
                       </div>
-                      <div className="text-div">                      
+                      <div className="text-div">
                         <h6>{selectedDoctor.doc_name}</h6>
                         <p>{selectedDoctor.doc_specialization}</p>
                         <p>{selectedDoctor.doc_valid}</p>
                       </div>
                     </div>
                     <div className="right-div">
-                    <p>name</p>
-                        <p>age</p>
-                        <p>experience</p>
-                        <p>rating</p>
-                        <p>education</p>
+                      <p>name</p>
+                      <p>age</p>
+                      <p>experience</p>
+                      <p>rating</p>
+                      <p>education</p>
                       {/* Rendering certifications */}
                       {selectedDoctor.Certifications && selectedDoctor.Certifications.length > 0 && (
                         <div>
@@ -265,11 +280,11 @@ function Doctor_cards() {
           </div>
         )}
         {isBookAppDivOpen && (
-        <div className="book-app-div">
-          <div className="parent-div">
-            <CalendarComp doctor= {selectedDoctor}/>
+          <div className="book-app-div">
+            <div className="parent-div">
+              <CalendarComp doctor={selectedDoctor} BookedSlots={bookedSlots} />
+            </div>
           </div>
-        </div>
         )}
       </div>
     </>
