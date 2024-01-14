@@ -28,6 +28,11 @@ db.certifications = require("./certification.model.js")(sequelize, Sequelize);
 //db.bookingdoctors= require("./booking_doctor.model.js")(sequelize, Sequelize);
 db.tutorials = require("./salary.model.js")(sequelize, Sequelize);
 db.slot = require("./slot.model.js")(sequelize, Sequelize);
+db.Booked_slots = require("./Booked_slots.model.js")(sequelize, Sequelize);
+db.doctors.hasMany(db.Booked_slots)
+db.Booked_slots.belongsTo(db.doctors)
+db.patients_data.hasMany(db.Booked_slots)
+db.Booked_slots.belongsTo(db.patients_data)
 db.doctors.hasMany(db.certifications)
 db.certifications.belongsTo(db.doctors)
 
