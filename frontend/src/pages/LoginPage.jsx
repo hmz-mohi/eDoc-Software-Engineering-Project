@@ -32,12 +32,14 @@ export default function LoginPage() {
       console.log(decide.data)
       const username = decide.data[1]
       const email = decide.data[2]
+      const pt_id=decide.data[3]
       console.log(username)
 
       if (decide.data[0] == "true user") {
         console.log("it is true user")
         sessionStorage.setItem("username", username)
         sessionStorage.setItem("email", email)
+        sessionStorage.setItem("pt_id",pt_id)
 
 
         navigate('/home')

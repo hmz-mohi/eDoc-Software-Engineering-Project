@@ -40,6 +40,11 @@ function DoctorDashboard() {
 
   const isToday = formattedSelectedDate === today.toLocaleDateString("en-US");
 
+  const initiatecall= async () => {
+    window.location.href = 'http://localhost:5000';
+    
+  }
+
 
 
   // PAGINATE
@@ -117,9 +122,9 @@ function DoctorDashboard() {
                     <button
                       className="button"
                       disabled={!isToday || currentTime < slotStartTime || currentTime > slotEndTime}
-                      onClick={() => {
-                        alert(`Button clicked for Slot_start_time: ${data.Slot_start_time}`);
-                      }}
+                      onClick={initiatecall}
+                        //alert(`Button clicked for Slot_start_time: ${data.Slot_start_time}`);
+                   // }}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
