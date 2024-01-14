@@ -55,7 +55,7 @@ export default function LoginPage() {
       const Fname =values["Fname"]
       const Lname=values["Lname"]
       const username=Fname+Lname
-      const pt_id=check.data[0]
+      const pt_id=check.data[1]
 
 
       if (check.data[0] == "user_registered") {

@@ -34,6 +34,7 @@ function Home() {
   useEffect(() => {
     const fetchMedicalDomains = async () => {
       try {
+       
         const response = await axios.get('http://localhost:5000/api/doctors/domains');
         const data = response.data;
         console.log(response.data)

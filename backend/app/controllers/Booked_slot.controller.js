@@ -9,6 +9,7 @@ exports.createnewappointment = async (req, res) => {
   const slot_start_time=req.body.start_time
   const slot_end_time=req.body.endtime
   const slot_date=req.body.slot_date
+  console.log(regPatientId)
 
   // Validate required fields
   if ( !pt_name || !DoctorDocId || !slot_start_time || !slot_end_time|| !slot_date) {

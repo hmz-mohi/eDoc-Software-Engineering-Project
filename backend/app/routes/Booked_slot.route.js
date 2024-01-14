@@ -11,6 +11,7 @@ module.exports = app => {
     router.post("/appointmentbooked", async (req, res) => {
       try {
         const variable = await appointment_booked_controller.createnewappointment(req, res);
+        console.log()
         if (variable=="new_appointment_entered") {
           console.log("appp booked")
         }
@@ -23,5 +24,5 @@ module.exports = app => {
         throw error;
       }
     });
-    app.use("/auth",router)
+    app.use(router)
 }

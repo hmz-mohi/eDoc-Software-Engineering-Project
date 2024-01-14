@@ -25,6 +25,7 @@ app.use("/peerjs", ExpressPeerServer(server, opinions));
 app.use(express.static("public"));
 //app.use(cors());
 const db=require("./app/models");
+const { link } = require("fs");
 require("./app/routes/doctors.routes.js")(app);
 require ("./app/routes/patient_login.route.js")(app);
 require ("./app/routes/patient_register.route.js")(app);
@@ -33,12 +34,24 @@ require ("./app/routes/emergency_doctor_data.route.js")(app);
 require ("./app/routes/Booked_slot.route.js")(app);
 db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db."); });
+
+const savelinkcontroller=require("./app/controllers/tosavelink.controller.js");
+//var router =require("express").Router();
+//router.get("/domains",doctors.findAlldomains);
 app.get("/", (req, res) => {
   id=`${uuidv4()}`
-  const link=sessionStorage.setItem("http://localhost:5000"+`/${id}`)
-  console.log(sessionStorage.getItem(link))
-  res.redirect(`/${id}`)
- // res.redirect(`/${uuidv4()}`);
+  const link="http://localhost:5000"+`/${id}`
+  console.log(link)
+  const pt_id = req.query.pt_id;
+  console.log(pt_id)
+  savelinkcontroller.update(req,res,pt_id,link)
+  console.log(pt_id)
+
+
+ 
+
+
+  res.json({link});
 });
 app.get("/sendlinktouser",(req,res)=>{
 })

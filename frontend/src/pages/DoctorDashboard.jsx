@@ -5,6 +5,7 @@ import "react-calendar/dist/Calendar.css";
 import { Booking } from "../bookingdata";
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import ReactPaginate from 'react-paginate';
+import axios from "axios";
 //to send link to patient 
 //import io from 'socket.io-client'
 //const socket=io('http://localhost:5000')
@@ -50,7 +51,10 @@ function DoctorDashboard() {
 
   const initiatecall= async () => {
     const pt_id= sessionStorage.getItem("pt_id")
-    window.location.href = 'http://localhost:5000';
+    const linkresponse=await axios.get(`http://localhost:5000?pt_id=${pt_id}`)
+    //const response = await axios.get('http://localhost:5000/api/doctors/domains',);
+    const link = linkresponse.data.link;
+    window.location.href = link;
     
     
   }
