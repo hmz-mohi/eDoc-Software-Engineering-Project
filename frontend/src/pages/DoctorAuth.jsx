@@ -6,6 +6,7 @@ import DocRegContact from '../components/DocRegContact'
 import DocRegAdditional from '../components/DocRegAdditional';
 import DocRegCred from '../components/DocRegCred';
 import DocRegEducation from '../components/DocRegEducation';
+import { FaStar } from "react-icons/fa";
 
 function DoctorAuth() {
     const [DoctorAuth, setDoctorAuth] = useState(true)
@@ -19,7 +20,6 @@ function DoctorAuth() {
             </div>
             <div className="doctor-auth-form-section">
                 <div className="formdiv">
-
                     <Accordion defaultActiveKey="0" flush>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Doctor's Introduction</Accordion.Header>
@@ -28,7 +28,7 @@ function DoctorAuth() {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                            <Accordion.Header>Contact Details</Accordion.Header>
+                            <Accordion.Header>Contact Details<FaStar style={{color:"red"}} /></Accordion.Header>
                             <Accordion.Body>
                                 <DocRegContact />
                             </Accordion.Body>
@@ -49,9 +49,13 @@ function DoctorAuth() {
                             <Accordion.Header>Credential Part</Accordion.Header>
                             <Accordion.Body>
                                 <DocRegCred />
+                                <div class="buttons">
+                        <button class="btn"><span></span><p data-start="good luck!" data-text="start!" data-title="new game"></p></button>
+                    </div>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
+
 
                 </div>
                 <div className='image-div'>

@@ -104,7 +104,7 @@ function CalendarComp(props) {
                         ? Doctor.slots.map((slot, index) => (
                             <button    key={index} onClick={()=>handleslotclick(slot.start,slot.end)} >
                                 {slot.start} - {slot.end}
-                            </button>
+                            </button>   
                         ))
                         : 'No slots available'}
                     </div>
