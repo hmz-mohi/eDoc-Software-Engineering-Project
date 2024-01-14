@@ -16,12 +16,12 @@ module.exports = (sequelize, Sequelize) => {
 
       pt_name: {
         type: Sequelize.STRING,
-        unique: true,
+        unique: false,
         allowNull: false,
       },
       slot_date: {
         type: Sequelize.STRING,
-        unique: true,
+        unique: false,
         allowNull: false,
       },
       
