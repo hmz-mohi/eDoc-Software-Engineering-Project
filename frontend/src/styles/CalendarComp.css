@@ -114,3 +114,11 @@
   color: rgba(0, 0, 0, 0.41);
   transform: translateY(0);
   cursor: not-allowed;}
+
+
+
+  /* Add this to your CalendarComp.css file or your styles file */
+ .modal-backdrop {
+  /* Set the background color to transparent or the color you desire */
+  background-color: rgba(0, 0, 0, 1) !important; 
+}
