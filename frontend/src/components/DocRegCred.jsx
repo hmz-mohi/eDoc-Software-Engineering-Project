@@ -8,7 +8,7 @@ function DocRegCred({ updateCredDetails }) {
 
   return (
     <div className="introduction">
-      <div className="Second-row">
+      <div className="first-row">
         <div className="row2-fields">
           <label>UserName</label>
           <input
