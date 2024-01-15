@@ -11,41 +11,37 @@ import axios from "axios";
 //const socket=io('http://localhost:5000')
 
 function DoctorDashboard() {
-  const [Booking, set_booked_slots] = useState([]);
-
-  useEffect(() => {
-    const fetchbookedlsots= async () => {
-      try {
-       
-        const response = await axios.get('http://localhost:5000/get_booked_appointments');
-        const data = response.data;
-        console.log(response.data)
-
-        set_booked_slots(data);
-      } catch (error) {
-        console.error('Error while fetching booked slots:', error);
-      }
-    };
-
-    fetchbookedlsots();
-  }, []);
-  console.log("book",Booking)
-
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [appointments, setAppointments] = useState('');
   const today = new Date();
+  const [selectedDate, setSelectedDate] = useState(today);  
+  
+
+  let Slots= []
+
   const oneMonthLater = new Date(today);
   oneMonthLater.setMonth(today.getMonth() + 1);
 
-  const [selectedDate, setSelectedDate] = useState(today);
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [appointments, setAppointments] = useState([]);
-  //to send lonk 
-/*  const sendlinkcomponent=()=>{
-    useEffect(()=>{
-      socket.on('recievelink ',(link))
-    })
-  } */ 
+
+  useEffect(() => {
+    const fetchbookedlsots= async () => {
+        const response = await axios.get('http://localhost:5000/get_booked_appointments');
+        const data = response.data;
+        console.log("response",data)
+
+        Slots = response.data;
 
 
+        const filteredData = Slots.filter(
+          (data) => data.DoctorDocId === 17 && data.slot_date == formattedSelectedDate
+          
+          );
+
+          setAppointments(filteredData);
+          setPageNumber(0);
+    }
+    fetchbookedlsots();
+  }, [selectedDate]);
 
 
   useLayoutEffect(() => {
@@ -65,14 +61,13 @@ function DoctorDashboard() {
 
   const tileDisabled = ({ date, view }) => view === "month" && date > oneMonthLater;
 
-  const formattedSelectedDate = selectedDate.toLocaleDateString("en-US");
+  const formattedSelectedDate = selectedDate.toDateString();
 
-  const isToday = formattedSelectedDate === today.toLocaleDateString("en-US");
+  const isToday = formattedSelectedDate === today.toDateString();
 
   const initiatecall= async () => {
     const pt_id= sessionStorage.getItem("pt_id")
     const linkresponse=await axios.get(`http://localhost:5000?pt_id=${pt_id}`)
-    //const response = await axios.get('http://localhost:5000/api/doctors/domains',);
     const link = linkresponse.data.link;
     window.location.href = link;
     
@@ -99,19 +94,6 @@ function DoctorDashboard() {
   };
 
 
-
-  /* useEffect(() => {
-    // Filter the data based on doc_id and date
-    const filteredData = Booking.filter(
-      (data) => data.DoctorDocId === 2 
-    );
-
-    // Set appointments and reset pageNumber to 0
-    setAppointments(filteredData);
-    setPageNumber(0);
-    console.log("filter",filteredData)
-  }, []); */
- 
 
   return (
     <>
@@ -210,8 +192,8 @@ function DoctorDashboard() {
           ) : (
             appointments.map((data, index) => (
               <div key={index} className="patientCard">
-                <p>{data.doc_name}</p>
-                <p>{data.patient_id}</p>
+                <p>{data.pt_name}</p>
+                <p>{data.regPatientId}</p>
               </div>
             ))
           )}
