@@ -7,6 +7,7 @@ import DocRegAdditional from '../components/DocRegAdditional';
 import DocRegCred from '../components/DocRegCred';
 import DocRegEducation from '../components/DocRegEducation';
 import { FaStar } from 'react-icons/fa';
+import axios from "axios"
 
 function DoctorAuth() {
 
@@ -23,13 +24,13 @@ function DoctorAuth() {
     highSchool: { institution: '', grade: '' },
     college: { institution: '', grade: '' },
     specialization: '',
-    certificationFiles: [],
+    certificationFiles: "certification 1 , certification 2",
     firstName: '',
     lastName: '',
     dob: '',
     nationality: '',
     cnic: '',
-    profilePicture: null,
+    profilePicture: "uploaded",
     userName: '',
     password: '',
     confirmPassword: '',
@@ -78,6 +79,10 @@ function DoctorAuth() {
   const handleIsRegisterClick = () => {
     SetIsRegister(!isRegister)
   }
+  const submitclicked =async () => {
+    const check = await axios.post('http://localhost:5000/applyforregisteration', doctorAuth)
+  }
+ 
 
   return (
     <div>
@@ -130,7 +135,7 @@ function DoctorAuth() {
                   {/* Pass the function to update state down to DocRegCred */}
                   <DocRegCred updateCredDetails={updateCredDetails} />
                   <div className="buttons">
-                    <button className="btn"><span></span><p data-start="good luck!" data-text="RegisterNow" data-title="SUBMIT"></p></button>
+                    <button className="btn" onClick={submitclicked}><span></span><p data-start="good luck!" data-text="RegisterNow" data-title="SUBMIT"></p></button>
                   </div>
                 </Accordion.Body>
               </Accordion.Item>

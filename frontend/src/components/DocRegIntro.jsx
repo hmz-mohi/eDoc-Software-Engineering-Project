@@ -3,21 +3,23 @@ import React, { useState, useEffect, createRef } from 'react';
 
 function DocRegIntro({ updateIntroDetails }) {
 
-    const [profilePicture, setProfilePicture] = useState("");
+    const [profilePicture, setProfilePicture] = useState(null);
     const fileinput = createRef();
   
     const handleFileChange = (event) => {
+      event.preventDefault();
       const selectedFile = event.target.files[0];
   
-      if (selectedFile && selectedFile.type === 'image/png') {
+      if (selectedFile ) {
         const formData = new FormData();
-        formData.set("profilePicture", fileinput.current.files[0]);
+        formData.set("profilePicture", selectedFile);
   
         // Update the state with the FormData
         setProfilePicture(formData);
   
         // Pass the updated profile picture to the parent component
         updateIntroDetails({ profilePicture: formData });
+        console.log("i am here")
       } else {
         // Invalid file type
         console.error('Please select a PNG file.');
@@ -124,8 +126,8 @@ function DocRegIntro({ updateIntroDetails }) {
             name="profilePicture"
             
             ref={fileinput}
-            accept=".png"
-            placeholder="png file"
+           // accept=".png"
+           // placeholder="png file"
             id=""
             onChange={handleFileChange}
           />

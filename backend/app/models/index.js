@@ -29,6 +29,7 @@ db.certifications = require("./certification.model.js")(sequelize, Sequelize);
 db.tutorials = require("./salary.model.js")(sequelize, Sequelize);
 db.slot = require("./slot.model.js")(sequelize, Sequelize);
 db.Booked_slots = require("./Booked_slots.model.js")(sequelize, Sequelize);
+db.register_applicants = require("./register_applicants.model.js")(sequelize, Sequelize);
 db.doctors.hasMany(db.Booked_slots)
 db.Booked_slots.belongsTo(db.doctors)
 db.patients_data.hasMany(db.Booked_slots)

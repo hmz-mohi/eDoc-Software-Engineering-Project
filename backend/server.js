@@ -4,6 +4,7 @@ const server = require("http").Server(app);
 const { v4: uuidv4 } = require("uuid");
 const cors = require('cors');
 app.set("view engine", "ejs");
+const fileupload=require('express-fileupload')
 const io = require("socket.io")(server, {
   cors: {
     origin: '*'
@@ -14,6 +15,7 @@ const io = require("socket.io")(server, {
   methods: ['GET', 'POST', 'PUT'],
   credentials: true
 })); 
+app.use(fileupload())
 app.use(express.json());
 
 const { ExpressPeerServer } = require("peer");
@@ -32,6 +34,7 @@ require ("./app/routes/patient_register.route.js")(app);
 require ("./app/routes/booking_doctor_data.route.js")(app);
 require ("./app/routes/emergency_doctor_data.route.js")(app);
 require ("./app/routes/Booked_slot.route.js")(app);
+require ("./app/routes/doctor_register.route.js")(app);
 db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db."); });
 
@@ -77,7 +80,6 @@ io.on("connection", (socket) => {
       });
     });
   }); 
-  
 
 
 server.listen(process.env.PORT || 5000);
