@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import CalendarComp from '../components/Calendar';
 import axios from "axios";
 import ReactPaginate from 'react-paginate';
+import Footer from '../components/Footer';
 
 
 // ... (other imports)
@@ -285,8 +286,12 @@ function Doctor_cards() {
               <CalendarComp doctor={selectedDoctor} BookedSlots={bookedSlots} />
             </div>
           </div>
+          
         )}
+        
       </div>
+          
+      
     </>
   );
 }

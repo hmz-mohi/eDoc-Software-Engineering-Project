@@ -36,7 +36,9 @@ router.post("/login",async(req,res)=>{
     //} else if (result === "username password incorrect") {
      // res.status(401).json({ success: false, message: "Username or password incorrect" });
      else {
-       res.json("false user")
+      //  res.json("false user")
+      res.status(201).send()
+       console.log("hjehee")
     //}
 
      // res.status(500).json({ success: false, message: "Internal server error" });

@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import Doctor_cards from './pages/doctor_cards';
 import DoctorDashboard from './pages/DoctorDashboard';
 import DoctorAuth from './pages/DoctorAuth';
+import AboutUs from './pages/AboutUs';
 
 
 //importing react routers
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
   path:"/regasdoctor",
   element:<DoctorAuth/>,
   },
+
+  {
+    path:'/about_us',
+    element:<AboutUs/>
+  }
 
   
 
