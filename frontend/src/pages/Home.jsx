@@ -6,6 +6,7 @@ import { useDraggable } from "react-use-draggable-scroll";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Footer from "../components/Footer";
 
 
 // import components
@@ -14,6 +15,8 @@ import Feature from "../components/Feature";
 import SearchTable from "../components/SearchFeature";
 import Domain from "../components/home_page_domains";
 import SeeMoreModal from "../components/SeeMoreModal";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 // import CSS
 import "../styles/Home.css";
@@ -114,7 +117,10 @@ function Home() {
   }, [isSeeMoreModalOpen, toggleModal]);
 
 
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <div className="homepage">
@@ -177,8 +183,23 @@ function Home() {
             className="custom_css"
             img={nearby_img}
             btn_text="View"
+            onClick={handleShow}
           />
         </div>
+        <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>NearBy Clinics</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>This Feature will be available on this site soon. Stay Tuned</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Okay Cool
+          </Button>
+        </Modal.Footer>
+      </Modal>
         <div>
           {isSearchModalOpen && (
             <div className="search-modal modals">
@@ -256,6 +277,7 @@ function Home() {
           </div>
         )}
       </div>
+      <Footer/>
 
       
 

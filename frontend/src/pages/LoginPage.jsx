@@ -22,51 +22,89 @@ export default function LoginPage() {
   const handleClick = () => {
     setLogin(!login);
   };
+
+  const validateFields = () => {
+    let hasMissingField = false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for a basic email format
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/;
+  
+    Object.entries(values).forEach(([key, value]) => {
+      if (key === 'email' && !emailRegex.test(value)) {
+        alert('Invalid email format. Please enter a valid email address.');
+        hasMissingField = true;
+      } else if (key === 'password' && (!value || !passwordRegex.test(value))) {
+        alert('Password must contain at least one uppercase letter, one number, one special character, and be at least 6 characters long.');
+        hasMissingField = true;
+      } else if (key !== 'contactno' && !value) {
+        hasMissingField = true;
+      }
+    });
+  
+    if (hasMissingField) {
+      alert('Please fill in your information carefully. Make sure all required fields are filled.');
+      return false;
+    }
+  
+    return true;
+  };
+  
+  
+  
+  
+  
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (login === true) {
-      console.log("idher hn meon")
+      // console.log("idher hn meon")
 
       const decide = await axios.post('http://localhost:5000/auth/login', { 'email': values['email'], 'password': values['password'] })
 
-      console.log(decide.data)
+      // console.log(decide.data)
       const username = decide.data[1]
       const email = decide.data[2]
-      const pt_id=decide.data[3]
-      console.log(username)
+      const pt_id = decide.data[3]
+      // console.log(username)
 
       if (decide.data[0] == "true user") {
         console.log("it is true user")
         sessionStorage.setItem("username", username)
         sessionStorage.setItem("email", email)
-        sessionStorage.setItem("pt_id",pt_id)
+        sessionStorage.setItem("pt_id", pt_id)
 
 
         navigate('/home')
       }
-      if (decide.data[0] == "false user") {
-        alert("it is false user")
+      if (decide.data === "false user") {
+        alert("Incorrect Email or Password")
       }
     }
 
     else {
-      const check = await axios.post('http://localhost:5000/auth/signup', values)
-      const email =values["email"]
-      const Fname =values["Fname"]
-      const Lname=values["Lname"]
-      const username=Fname+Lname
-      const pt_id=check.data[1]
+      // Handle sign-up logic
+      const isValid = validateFields();
+  
+      if (!isValid) {
+        return;
+      }
 
+      const check = await axios.post('http://localhost:5000/auth/signup', values);
+      const email = values["email"];
+      const Fname = values["Fname"];
+      const Lname = values["Lname"];
+      const username = Fname + Lname;
+      const pt_id = check.data[1];
 
-      if (check.data[0] == "user_registered") {
-        sessionStorage.setItem("username", username)
-        sessionStorage.setItem("email", email)
-        sessionStorage.setItem("pt_id",pt_id)
-        console.log("hello mother ficjer")
-        navigate('/home')
+      if (check.data[0] === "user_registered") {
+        sessionStorage.setItem("username", username);
+        sessionStorage.setItem("email", email);
+        sessionStorage.setItem("pt_id", pt_id);
+        console.log("hello mother ficjer");
+        navigate('/home');
       }
     }
-  }
+  };
+
 
   return (
     <div className="Loginpage_main_section">
@@ -77,40 +115,44 @@ export default function LoginPage() {
           <hr style={{ width: "50%", marginLeft: "20%" }} />
           <div className="paralogin-signuptext">
           </div>
-          {login ? "" : <div className="inpDiv fullname">
-            <div className="labels">
-              <label>First Name</label>
-              <label>Last Name</label>
-            </div>
-            <div className="Inputs">
-              <input type="text" onChange={(e) => setValues({ ...values, Fname: e.target.value })} placeholder="Enter your First Name" />
-              <input type="text" onChange={(e) => setValues({ ...values, Lname: e.target.value })} placeholder="Enter your last Name" />
-            </div>
-            <div className="labels" style={{ width: "59%" }}>
-              <label>Contact Number</label>
-              <label>Date of Birth</label>
-            </div>
-            <div className="Inputs">
-              <input type="tel" onChange={(e) => setValues({ ...values, contactno: e.target.value })} placeholder="Enter your Contact Number" />
-              <input type="date" onChange={(e) => setValues({ ...values, dob: e.target.value })} placeholder="Enter your Date of Birth" />
-            </div>
+          <form>
 
 
-          </div>}
+            {login ? "" : <div className="inpDiv fullname">
+              <div className="labels">
+                <label>First Name</label>
+                <label>Last Name</label>
+              </div>
+              <div className="Inputs">
+                <input required type="text" onChange={(e) => setValues({ ...values, Fname: e.target.value })} placeholder="John" />
+                <input required type="text" onChange={(e) => setValues({ ...values, Lname: e.target.value })} placeholder="Wick" />
+              </div>
+              <div className="labels" style={{ width: "59%" }}>
+                <label>Contact Number</label>
+                <label>Date of Birth</label>
+              </div>
+              <div className="Inputs">
+                <input type="phone" onChange={(e) => setValues({ ...values, contactno: e.target.value })} placeholder="+92 **********" defaultValue="+92" />
+                <input type="date" onChange={(e) => setValues({ ...values, dob: e.target.value })} placeholder="Enter your Date of Birth" />
+              </div>
 
-          <div className="inpDiv">
-            <label>Your Email</label>
-            <input type="email" onChange={(e) => setValues({ ...values, email: e.target.value })} placeholder="Enter your Email" />
-          </div>
-          <div className="inpDiv">
-            <label>Your password</label>
-            <input type="password" onChange={(e) => setValues({ ...values, password: e.target.value })} placeholder="Enter your Password" />
-          </div>
-          <div className="login-signup-btn-div">
-            <button className="login-signupbtn" onClick={handleSubmit}>
-              {login ? "SIGN IN" : "SIGN UP"}
-            </button>
-          </div>
+
+            </div>}
+
+            <div className="inpDiv">
+              <label>Your Email</label>
+              <input required type="email" onChange={(e) => setValues({ ...values, email: e.target.value })} placeholder="JohnWick@gmail.com" />
+            </div>
+            <div className="inpDiv">
+              <label>Your password</label>
+              <input required type="password" onChange={(e) => setValues({ ...values, password: e.target.value })} placeholder="*********" />
+            </div>
+            <div className="login-signup-btn-div">
+              <button className="login-signupbtn" onClick={handleSubmit}>
+                {login ? "SIGN IN" : "SIGN UP"}
+              </button>
+            </div>
+          </form>
 
           <div className='switchaccdiv'>
 
