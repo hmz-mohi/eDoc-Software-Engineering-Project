@@ -9,6 +9,9 @@ import DocRegEducation from '../components/DocRegEducation';
 import { FaStar } from 'react-icons/fa';
 
 function DoctorAuth() {
+
+  const [isRegister, SetIsRegister] = useState(false)
+
   const [doctorAuth, setDoctorAuth] = useState({
     email: '',
     phoneNumber: '',
@@ -69,6 +72,13 @@ function DoctorAuth() {
     });
   };
 
+
+
+
+  const handleIsRegisterClick = () => {
+    SetIsRegister(!isRegister)
+  }
+
   return (
     <div>
       <div className="doctor-auth-top-section">
@@ -79,54 +89,94 @@ function DoctorAuth() {
       </div>
       <div className="doctor-auth-form-section">
         <div className="formdiv">
-          <Accordion defaultActiveKey="0" flush>
-            {/* ... (existing code) */}
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>Doctor's Introduction</Accordion.Header>
-              <Accordion.Body>
-                {/* Pass the function to update state down to DocRegIntro */}
-                <DocRegIntro updateIntroDetails={updateIntroDetails} />
-              </Accordion.Body>
-            </Accordion.Item>
-            {/* ... (existing code) */}
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>Contact Details<FaStar style={{color:"red"}} /></Accordion.Header>
-              <Accordion.Body>
-                {/* Pass the function to update state down to DocRegContact */}
-                <DocRegContact updateContactDetails={updateContactDetails} />
-              </Accordion.Body>
-            </Accordion.Item>
-            {/* ... (existing code) */}
-            <Accordion.Item eventKey="2">
-              <Accordion.Header>Education & Qualification</Accordion.Header>
-              <Accordion.Body>
-                {/* Pass the function to update state down to DocRegEducation */}
-                <DocRegEducation updateEducationDetails={updateEducationDetails} />
-              </Accordion.Body>
-            </Accordion.Item>
-            {/* ... (existing code) */}
-            <Accordion.Item eventKey="3">
-              <Accordion.Header>Additional Details</Accordion.Header>
-              <Accordion.Body>
-                {/* Pass the function to update state down to DocRegAdditional */}
-                <DocRegAdditional updateAdditionalDetails={updateAdditionalDetails} />
-              </Accordion.Body>
-            </Accordion.Item>
-            {/* ... (existing code) */}
-            <Accordion.Item eventKey="4">
-              <Accordion.Header>Credential Part</Accordion.Header>
-              <Accordion.Body>
-                {/* Pass the function to update state down to DocRegCred */}
-                <DocRegCred updateCredDetails={updateCredDetails} />
-                <div className="buttons">
-                  <button className="btn"><span></span><p data-start="good luck!" data-text="start!" data-title="new game"></p></button>
+          {isRegister &&
+            <Accordion defaultActiveKey="0" flush>
+              {/* ... (existing code) */}
+              <Accordion.Item eventKey="0">
+                <Accordion.Header><FaStar style={{fontSize:'0.5rem', marginBottom:"1rem", marginRight:"0.5rem"}} />Doctor's Introduction</Accordion.Header>
+                <Accordion.Body>
+                  {/* Pass the function to update state down to DocRegIntro */}
+                  <DocRegIntro updateIntroDetails={updateIntroDetails} />
+                </Accordion.Body>
+              </Accordion.Item>
+              {/* ... (existing code) */}
+              <Accordion.Item eventKey="1">
+                <Accordion.Header><FaStar style={{fontSize:'0.5rem', marginBottom:"1rem", marginRight:"0.5rem"}} />Contact Details</Accordion.Header>
+                <Accordion.Body>
+                  {/* Pass the function to update state down to DocRegContact */}
+                  <DocRegContact updateContactDetails={updateContactDetails} />
+                </Accordion.Body>
+              </Accordion.Item>
+              {/* ... (existing code) */}
+              <Accordion.Item eventKey="2">
+                <Accordion.Header><FaStar style={{fontSize:'0.5rem', marginBottom:"1rem", marginRight:"0.5rem"}} />Education & Qualification</Accordion.Header>
+                <Accordion.Body>
+                  {/* Pass the function to update state down to DocRegEducation */}
+                  <DocRegEducation updateEducationDetails={updateEducationDetails} />
+                </Accordion.Body>
+              </Accordion.Item>
+              {/* ... (existing code) */}
+              <Accordion.Item eventKey="3">
+                <Accordion.Header><FaStar style={{fontSize:'0.5rem', marginBottom:"1rem", marginRight:"0.5rem"}} />Additional Details</Accordion.Header>
+                <Accordion.Body>
+                  {/* Pass the function to update state down to DocRegAdditional */}
+                  <DocRegAdditional updateAdditionalDetails={updateAdditionalDetails} />
+                </Accordion.Body>
+              </Accordion.Item>
+              {/* ... (existing code) */}
+              <Accordion.Item eventKey="4">
+                <Accordion.Header><FaStar style={{fontSize:'0.5rem', marginBottom:"1rem", marginRight:"0.5rem"}} />Credential Part</Accordion.Header>
+                <Accordion.Body>
+                  {/* Pass the function to update state down to DocRegCred */}
+                  <DocRegCred updateCredDetails={updateCredDetails} />
+                  <div className="buttons">
+                    <button className="btn"><span></span><p data-start="good luck!" data-text="RegisterNow" data-title="SUBMIT"></p></button>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          }
+          {!isRegister &&
+            <div>
+              <div className="login">
+                <h1>LOGIN FORM</h1>
+                <hr />
+                <div className="first-row">
+                  <div className="row2-fields">
+                    <label>UserName</label>
+                    <input
+                      type="text"
+                      name="userName"
+                      placeholder="Enter Your UserName"
+                      id=""
+
+                    />
+                  </div>
+                  <div className="row2-fields">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Your Password"
+                      id=""
+
+                    />
+                  </div>
+                  <button className='SignInBtn'> SIGN IN
+              </button>
                 </div>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
+              </div>
+
+            </div>
+          }
+
         </div>
         <div className='image-div'>
-          {/* ... (existing code) */}
+          <h6>Don't have an account?</h6>
+          <button className='changingbtn' onClick={handleIsRegisterClick}>
+            <span> SignUp
+            </span>
+          </button>
         </div>
       </div>
     </div>

@@ -54,11 +54,30 @@
 }
 .image-div{
     width: 25%;
+    padding-top: 27rem;
+    position: relative;
     height: 100%;
-    background-image: url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    /* display: flex; */
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    color: white;
+
+}
+
+.image-div::before{
+  background-image: url('https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-position: center;
+  filter: brightness(0.4);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 
@@ -307,3 +326,153 @@ input[type="file"] {
   .buttons button:focus {
     outline: 0;
   }
+
+
+
+
+  .changingbtn {
+    z-index: 1;
+    position: relative;
+    height: 50px;
+    padding: 0 30px;
+    border: 2px solid #000;
+    background: #e8e8e8;
+    user-select: none;
+    white-space: nowrap;
+    transition: all .05s linear;
+    font-family: inherit;
+   }
+   
+   .changingbtn:before, .changingbtn:after {
+    content: "";
+    position: absolute;
+    background: #e8e8e8;
+    transition: all .2s linear;
+   }
+   
+   .changingbtn:before {
+    width: calc(100% + 6px);
+    height: calc(100% - 16px);
+    top: 8px;
+    left: -3px;
+   }
+   
+   .changingbtn:after {
+    width: calc(100% - 16px);
+    height: calc(100% + 6px);
+    top: -3px;
+    left: 8px;
+   }
+   
+   .changingbtn:hover {
+    cursor: crosshair;
+   }
+   
+   .changingbtn:active {
+    transform: scale(0.95);
+   }
+   
+   .changingbtn:hover:before {
+    height: calc(100% - 32px);
+    top: 16px;
+   }
+   
+   .changingbtn:hover:after {
+    width: calc(100% - 32px);
+    left: 16px;
+   }
+   
+   .changingbtn span {
+    font-size: 15px;
+    z-index: 3;
+    position: relative;
+    font-weight: 600;
+   }
+
+
+.login{
+  padding-top: 10%;
+}
+
+.login h1{
+  text-align: center;
+}
+
+.login hr{
+  width: 50%;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.login .first-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.login .first-row .row2-fields{
+  justify-content: center;
+  margin: auto;
+
+}
+
+.login .first-row .row2-fields input{
+  width: 30rem !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.SignInBtn {
+  margin: auto;
+  padding: 10px 25px;
+  border: unset;
+  border-radius: 15px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-weight: 400;
+  font-size: 14px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+ .SignInBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ .SignInBtn:hover {
+  color: #e8e8e8;
+ }
+ 
+ .SignInBtn:hover::before {
+  width: 100%;
+ }
