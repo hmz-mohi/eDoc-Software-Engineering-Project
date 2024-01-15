@@ -1,22 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, createRef } from 'react';
+//import { createRef } from 'react';
 
 function DocRegIntro({ updateIntroDetails }) {
-  const [profilePicture, setProfilePicture] = useState(null);
+
+    const [profilePicture, setProfilePicture] = useState("");
+    const fileinput = createRef();
+  
+    const handleFileChange = (event) => {
+      const selectedFile = event.target.files[0];
+  
+      if (selectedFile && selectedFile.type === 'image/png') {
+        const formData = new FormData();
+        formData.set("profilePicture", fileinput.current.files[0]);
+  
+        // Update the state with the FormData
+        setProfilePicture(formData);
+  
+        // Pass the updated profile picture to the parent component
+        updateIntroDetails({ profilePicture: formData });
+      } else {
+        // Invalid file type
+        console.error('Please select a PNG file.');
+      }
+    };
+  
+    useEffect(() => {
+      console.log("Profile Picture:", profilePicture);
+    }, [profilePicture]);
+  
+ /*  const [profilePicture, setProfilePicture] = useState(null);
+  const fileinput =createRef()
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
 
+    //event.preventDefault();
+  
+    //setProfilePicture(formdata);
+    
+
     if (selectedFile && selectedFile.type === 'image/png') {
+      const formdata=new FormData();
+      formdata.set("profilePicture",fileinput.current.value[0])
+      console.log(" i am here")
       // Valid PNG file
-      setProfilePicture(selectedFile);
+      setProfilePicture(formdata);
+      
+      console.log(profilePicture)
 
       // Pass the updated profile picture to the parent component
-      updateIntroDetails({ profilePicture: selectedFile });
+      updateIntroDetails({ profilePicture: formdata });
     } else {
       // Invalid file type
       console.error('Please select a PNG file.');
     }
-  };
+  };  */
+  //console.log(ptofilePic)
 
   const handleInputChange = (field, value) => {
     // Pass the updated introduction details to the parent component
@@ -83,6 +122,8 @@ function DocRegIntro({ updateIntroDetails }) {
           <input
             type="file"
             name="profilePicture"
+            
+            ref={fileinput}
             accept=".png"
             placeholder="png file"
             id=""
