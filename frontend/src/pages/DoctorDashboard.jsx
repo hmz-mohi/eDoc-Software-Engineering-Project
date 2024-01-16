@@ -33,7 +33,7 @@ function DoctorDashboard() {
 
 
         const filteredData = Slots.filter(
-          (data) => data.DoctorDocId === 17 && data.slot_date == formattedSelectedDate
+          (data) => data.DoctorDocId === 2 && data.slot_date == formattedSelectedDate
           
           );
 
@@ -65,16 +65,17 @@ function DoctorDashboard() {
 
   const isToday = formattedSelectedDate === today.toDateString();
 
-  const initiatecall= async () => {
-    const pt_id= sessionStorage.getItem("pt_id")
-    const linkresponse=await axios.get(`http://localhost:5000?pt_id=${pt_id}`)
+  const initiatecall= async (id,time) => {
+   
+//const linkresponse=await axios.get(`http://localhost:5000?pt_id=${id}`)
+const linkresponse = await axios.get(`http://localhost:5000?pt_id=${id}&time=${time}`);
     const link = linkresponse.data.link;
     window.location.href = link;
     
     
   }
 
-
+// const pt_id= sessionStorage.getItem("pt_id")
 
   // PAGINATE
 
@@ -139,7 +140,7 @@ function DoctorDashboard() {
                     <button
                       className="button"
                       disabled={!isToday || currentTime < slotStartTime || currentTime > slotEndTime}
-                      onClick={initiatecall}
+                      onClick={() => initiatecall(data.regPatientId,data.slot_start_time)}
                         //alert(`Button clicked for Slot_start_time: ${data.Slot_start_time}`);
                    // }}
                     >

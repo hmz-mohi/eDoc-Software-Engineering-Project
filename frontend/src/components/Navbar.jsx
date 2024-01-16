@@ -27,6 +27,23 @@ function NavScrollExample(props) {
   if (username) {
     login = true;
   }
+  const pt_id = sessionStorage.getItem('pt_id');
+  
+
+// Make the GET request using Axios
+const fetchLinkData = () => {
+  axios.get(`http://localhost:5000/sendlink?pt_id=${pt_id}`)
+    .then(response => {
+      // Handle the response data here
+      console.log(response.data["data"]);
+
+     window.location.href=response.data["data"]
+    })
+    .catch(error => {
+      // Handle errors here
+      console.error('Error:', error);
+    });
+};
 
 
   
@@ -63,7 +80,13 @@ function NavScrollExample(props) {
           </Link> */}
           {login ? (
             <div className="nav-text-para">
-              <img src={require('../assets/images/icons/notification.png')} style={{ width: '20px' }} />
+             <button style={{background:'transparent',border:'none'}} onClick={fetchLinkData}>
+            
+                <img src={require('../assets/images/icons/notification.png')} style={{ width: '25px' }} />
+          
+              
+
+              </button>
             </div>
           ) : (
             <Link className="nav-text-para" to="/regasdoctor">

@@ -35,6 +35,7 @@ require ("./app/routes/booking_doctor_data.route.js")(app);
 require ("./app/routes/emergency_doctor_data.route.js")(app);
 require ("./app/routes/Booked_slot.route.js")(app);
 require ("./app/routes/doctor_register.route.js")(app);
+require ("./app/routes/to_send_call_link.route.js")(app);
 db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and re-sync db."); });
 
@@ -46,8 +47,9 @@ app.get("/", (req, res) => {
   const link="http://localhost:5000"+`/${id}`
   console.log(link)
   const pt_id = req.query.pt_id;
+  const time=req.query.time
   console.log(pt_id)
-  savelinkcontroller.update(req,res,pt_id,link)
+  savelinkcontroller.update(req,res,pt_id,link,time)
   console.log(pt_id)
 
 
@@ -56,7 +58,7 @@ app.get("/", (req, res) => {
 
   res.json({link});
 });
-app.get("/sendlinktouser",(req,res)=>{
+app.get("/tosend",(req,res)=>{
 })
 
 app.get("/:room", (req, res) => {
@@ -80,6 +82,12 @@ io.on("connection", (socket) => {
       });
     });
   }); 
+  app.post('/doctorsignin', (req, res) => {
+    console.log(req.body )
+    const { userName, password } = req.body;
+  
+  
+  })
 
 
 server.listen(process.env.PORT || 5000);

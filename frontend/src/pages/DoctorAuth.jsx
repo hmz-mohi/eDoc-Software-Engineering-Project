@@ -10,6 +10,33 @@ import { FaStar } from 'react-icons/fa';
 import axios from "axios"
 
 function DoctorAuth() {
+  const [loginData, setLoginData] = useState({
+    userName: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(name, value); // Add this line for debugging
+    setLoginData({
+      ...loginData,
+      [name]: value,
+    });
+  };
+
+  const signinauth = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/doctorsignin', loginData);
+      console.log('Login successful:', response.data);
+      setLoginData({
+        userName: '',
+        password: '',
+      });
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
+  };
+  
 
   const [isRegister, SetIsRegister] = useState(false)
 
@@ -83,6 +110,8 @@ function DoctorAuth() {
     const check = await axios.post('http://localhost:5000/applyforregisteration', doctorAuth)
   }
  
+ 
+ 
 
   return (
     <div>
@@ -145,30 +174,32 @@ function DoctorAuth() {
             <div>
               <div className="login">
                 <h1>LOGIN FORM</h1>
-                <hr />
+                <hr /> 
                 <div className="first-row">
                   <div className="row2-fields">
                     <label>UserName</label>
                     <input
-                      type="text"
-                      name="userName"
-                      placeholder="Enter Your UserName"
-                      id=""
-
-                    />
+                    type="text"
+                    placeholder="Enter Your UserName"
+                   id=""
+                     value={loginData.userName}
+                   onChange={handleChange}
+                />
                   </div>
                   <div className="row2-fields">
                     <label>Password</label>
                     <input
-                      type="password"
-                      name="password"
-                      placeholder="Your Password"
-                      id=""
-
-                    />
+                  type="password"
+                  name="password"
+                  placeholder="Your Password"
+                  id=""
+                  value={loginData.password}
+                  onChange={handleChange}
+                />
                   </div>
-                  <button className='SignInBtn'> SIGN IN
-              </button>
+                  
+                  <button onClick={signinauth} className='SignInBtn'>SIGN IN</button>
+             
                 </div>
               </div>
 
